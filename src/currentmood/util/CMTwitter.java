@@ -1,11 +1,11 @@
 package currentmood.util;
-import twitter4j.*;
+import twitter4j.Twitter;
 import twitter4j.conf.ConfigurationBuilder;
 
 public class CMTwitter {
 
-	protected final String TWITTER_PUBLIC_KEY = "",
-						   TWITTER_PRIVATE_KEY = "";
+	protected final String TWITTER_CONSUMER_KEY = "",
+						   TWITTER_CONSUMER_SECRET = "";
 	protected boolean authentified;
 	
 	protected Twitter twitterClient;
@@ -22,6 +22,11 @@ public class CMTwitter {
 		twitterConfiguration.setHttpProxyPort(proxy.getPort());
 		twitterConfiguration.setHttpProxyUser(proxy.getUser());
 		twitterConfiguration.setHttpProxyPassword(proxy.getPassword());
+	}
+	
+	public void connect()
+	{
+		
 	}
 
 }
