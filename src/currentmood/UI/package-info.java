@@ -5,4 +5,4 @@
  * @author vandekadsye
  *
  */
-package currentMood.UI;
+package currentmood.UI;

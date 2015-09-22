@@ -1,6 +1,6 @@
-package currentMood;
+package currentmood;
 
-import currentMood.UI.*;
+import currentmood.UI.*;
 
 public class Main {
 

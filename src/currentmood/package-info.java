@@ -5,4 +5,4 @@
  * @author vandekadsye
  *
  */
-package currentMood;
+package currentmood;
