@@ -16,12 +16,21 @@ public class CMTwitter {
 	protected boolean authentified;
 	
 	protected Twitter twitterClient;
-	ConfigurationBuilder twitterConfiguration;
+	protected ConfigurationBuilder twitterConfiguration;
 	
 	protected String token, tokenSecret;
 	
 	public CMTwitter()
 	{
+		twitterConfiguration = new ConfigurationBuilder();
+		
+		twitterConfiguration.setOAuthConsumerKey(TwitterConfidentialInfo.TWITTER_CONSUMER_KEY);
+		twitterConfiguration.setOAuthConsumerSecret(TwitterConfidentialInfo.TWITTER_CONSUMER_SECRET);
+		twitterConfiguration.setOAuthAccessToken(TwitterConfidentialInfo.TWITTER_ACCESS_TOKEN);
+		twitterConfiguration.setOAuthAccessTokenSecret(TwitterConfidentialInfo.TWITTER_ACCESS_TOKEN_SECRET);
+		
+	
+		
 		this.authentified = false;
 	}
 	
@@ -29,17 +38,14 @@ public class CMTwitter {
 	{
 		twitterConfiguration.setHttpProxyHost(proxy.getHost());
 		twitterConfiguration.setHttpProxyPort(proxy.getPort());
-		twitterConfiguration.setHttpProxyUser(proxy.getUser());
-		twitterConfiguration.setHttpProxyPassword(proxy.getPassword());
 	}
 	
-	public void connect() throws TwitterException
+	public void connect()
 	{
-		twitterClient = TwitterFactory.getSingleton();
-		twitterClient.setOAuthConsumer(TwitterConfidentialInfo.TWITTER_CONSUMER_KEY, TwitterConfidentialInfo.TWITTER_CONSUMER_SECRET);
-		RequestToken requestToken = twitterClient.getOAuthRequestToken();
-		AccessToken accessToken = twitterClient.getOAuthAccessToken();
-		storeAccessToken(twitterClient.verifyCredentials().getId() , accessToken);
+		TwitterFactory twitterFactory = new TwitterFactory(twitterConfiguration.build());
+		twitterClient = twitterFactory.getInstance();
+		
+		authentified = true;
 	}
 	
 	protected void storeAccessToken(long token, AccessToken accessToken)
@@ -53,7 +59,7 @@ public class CMTwitter {
 		if(!authentified)
 			throw new NotConnectedException();
 		
-		Query query = new Query("source:twitter4j "+keywords);
+		Query query = new Query(keywords);
 		
 		return twitterClient.search(query).getTweets();
 	}
