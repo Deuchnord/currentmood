@@ -16,11 +16,11 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		
-		//Win win = new Win(); 
+		Win win = new Win(); 
 		
 		CMTwitter cmTwitter = new CMTwitter();
 		cmTwitter.setProxy(new Proxy("cache-etu.univ-lille1.fr", 3128));
-		
+		/*
 		try {
 			cmTwitter.connect();
 			List<Status> tweets = cmTwitter.searchTweets("SundayRandomSentence");
@@ -34,6 +34,7 @@ public class Main {
 		} catch (NotConnectedException e) {
 			System.out.println("You must be connected to perform this action!");
 		}
+		*/
 		
 	}
 

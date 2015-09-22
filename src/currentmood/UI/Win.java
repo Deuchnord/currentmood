@@ -7,6 +7,7 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.util.List;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -17,6 +18,13 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import twitter4j.Status;
+import twitter4j.TwitterException;
+
+import currentmood.util.CMTwitter;
+import currentmood.util.NotConnectedException;
+import currentmood.util.Proxy;
+
 public class Win extends JFrame {
 	protected JMenuBar menu;
 	protected JMenu fileMenu, aboutMenu, optionMenu;
@@ -24,9 +32,15 @@ public class Win extends JFrame {
 	protected JPanel searchpanel, infopanel;
 	protected JTextField search;
 	protected JButton Btn_search_Ok;
+	protected CMTwitter cmTwitter;
 	
 	public Win()
 	{
+		cmTwitter = new CMTwitter();
+		cmTwitter.setProxy(new Proxy("cache-etu.univ-lille1.fr", 3128));
+		System.out.println("1 " + (cmTwitter == null));
+		
+		
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 		//Paramétrage de la fenetre 
 		this.setSize(screen);
@@ -67,6 +81,26 @@ public class Win extends JFrame {
 		this.add(this.searchpanel,BorderLayout.NORTH);
 		this.Btn_search_Ok = new JButton("Recherche");
 		this.Btn_search_Ok.setMaximumSize(new Dimension(250, this.Btn_search_Ok.getMinimumSize().height));
+		this.Btn_search_Ok.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try{
+					Win.this.cmTwitter.connect();
+					List<Status> tweets = Win.this.cmTwitter.searchTweets(Win.this.search.getText());
+					for(Status status : tweets)
+					{
+						System.out.println("### Tweet from @"+status.getUser().getScreenName()+" ###\n"+status.getText()+"\n\n");
+					}
+				}
+				catch (TwitterException ex) {
+					System.out.println("Cannot connect: " + ex.getMessage());
+				} catch (NotConnectedException ex) {
+					System.out.println("You must be connected to perform this action!");
+				}
+				
+			}
+		});
 		this.search.setMaximumSize(new Dimension(this.getWidth()-200,this.Btn_search_Ok.getMinimumSize().height));
 		this.searchpanel.add(this.Btn_search_Ok);
 		
@@ -75,6 +109,11 @@ public class Win extends JFrame {
 		this.add(infopanel,BorderLayout.SOUTH);
 		
 		this.setVisible(true);
+		
+
+		
+		
+		
 		
 		
 		
