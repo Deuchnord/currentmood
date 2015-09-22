@@ -11,10 +11,17 @@ public class Proxy {
 		hasProxy = false;
 	}
 	
-	public Proxy(String host, int port, String user, String password)
+	public Proxy(String host, int port)
 	{
 		this.host = host;
 		this.port = port;
+		
+		hasProxy = true;
+	}
+	
+	public Proxy(String host, int port, String user, String password)
+	{
+		this(host, port);
 		this.user = user;
 		this.password = password;
 		
