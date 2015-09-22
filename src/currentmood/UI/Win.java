@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 import javax.swing.BoxLayout;
@@ -17,8 +19,8 @@ import javax.swing.JTextField;
 
 public class Win extends JFrame {
 	protected JMenuBar menu;
-	protected JMenu fileMenu, aboutMenu;
-	protected JMenuItem openCSVItem, createCSVItem ;
+	protected JMenu fileMenu, aboutMenu, optionMenu;
+	protected JMenuItem openCSVItem, createCSVItem, proxyItem ;
 	protected JPanel searchpanel, infopanel;
 	protected JTextField search;
 	protected JButton Btn_search_Ok;
@@ -38,8 +40,21 @@ public class Win extends JFrame {
 		this.createCSVItem = new JMenuItem("Créer un CSV", KeyEvent.VK_C);
 		this.fileMenu.add(this.openCSVItem);
 		this.fileMenu.add(this.createCSVItem);
+		this.optionMenu = new JMenu("Options");
+		this.proxyItem = new JMenuItem("Paramètres proxy");
+		this.proxyItem.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				WinProxy wProxy = new WinProxy();
+				
+			}
+		});
+		this.optionMenu.add(this.proxyItem);
+		this.menu.add(optionMenu);
 		this.aboutMenu = new JMenu("A propos");
 		this.menu.add(this.aboutMenu);
+		
 		this.setJMenuBar(menu);
 		
 		//Ajout de la barre de recherche
