@@ -1,6 +1,8 @@
 package currentmood.UI;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -11,14 +13,16 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SpringLayout;
-
 import currentmood.util.Proxy;
 
 public class WinProxy extends JFrame {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	JLabel lIP, lPort, lUser, lPassword;
-	JPanel panel;
+	JPanel panel, panelForButton;
 	JTextField tfProxy, tfPort, tfUser, tfPassword;
 	JButton bOK, bCancel;
 	JCheckBox bUseProxy;
@@ -30,28 +34,51 @@ public class WinProxy extends JFrame {
 	
 		this.setTitle("#CurrentMood - Modification du proxy");
 		this.setSize(500,300);
+		this.setResizable(false);
 		this.panel = new JPanel();
 		this.panel.setLayout( new BoxLayout(this.panel,BoxLayout.Y_AXIS));
+		this.panelForButton = new JPanel();
+		this.panelForButton.setLayout(new FlowLayout(FlowLayout.CENTER));
 		this.lIP = new JLabel("Adresse IP : ");
 		this.lPort = new JLabel("Numéro du port : ");
 		this.lUser = new JLabel("Utilisateur : ");
 		this.lPassword = new JLabel("Mot de passe : ");
 		this.tfProxy = new JTextField();
-		this.tfProxy.setSize(700,70);
+		this.tfProxy.setEnabled(false);
 		this.tfPort= new JTextField();
+		this.tfPort.setEnabled(false);
 		this.tfUser = new JTextField();
+		this.tfUser.setEnabled(false);
 		this.tfPassword = new JTextField();
+		this.tfPassword.setEnabled(false);
 		this.bOK = new JButton("OK");
 		this.bOK.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				WinProxy.this.proxySetting = WinProxy.this.changeProxy(WinProxy.this.tfProxy.getText(),WinProxy.this.tfPort.getText(), WinProxy.this.tfUser.getText(), WinProxy.this.tfPassword.getText());
+				WinProxy.this.dispose();
 				
 			}
 		});
 		this.bCancel = new JButton("Annuler");
+		this.bCancel.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				WinProxy.this.dispose();
+				
+			}
+		});
 		this.bUseProxy= new JCheckBox("Utiliser un serveur proxy");
+		this.bUseProxy.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				WinProxy.this.enableField(WinProxy.this.bUseProxy.isSelected());
+				
+			}
+		});
 		this.panel.add(this.lIP);
 		this.panel.add(this.tfProxy);
 		this.panel.add(this.lPort);
@@ -61,8 +88,10 @@ public class WinProxy extends JFrame {
 		this.panel.add(this.lPassword);
 		this.panel.add(this.tfPassword);
 		this.panel.add(bUseProxy);
-		this.panel.add(bOK);
-		this.panel.add(bCancel);
+		this.panelForButton.add(bOK);
+		this.panelForButton.add(bCancel);
+		this.add(this.panelForButton,BorderLayout.SOUTH);
+		
 		this.add(this.panel, BorderLayout.CENTER);
 		this.setVisible(true);
 	
@@ -80,6 +109,15 @@ public class WinProxy extends JFrame {
 		}
 		else return new Proxy();
 	}
+	
+	private void enableField(boolean usingProxy)
+	{
+		this.tfProxy.setEnabled(usingProxy);
+		this.tfPort.setEnabled(usingProxy);
+		this.tfUser.setEnabled(usingProxy);
+		this.tfPassword.setEnabled(usingProxy);
+	}
+	
 	
 
 }

@@ -37,7 +37,7 @@ public class Win extends JFrame {
 	public Win()
 	{
 		cmTwitter = new CMTwitter();
-		cmTwitter.setProxy(new Proxy("cache-etu.univ-lille1.fr", 3128));
+		//cmTwitter.setProxy(new Proxy("cache-etu.univ-lille1.fr", 3128));
 		System.out.println("1 " + (cmTwitter == null));
 		
 		
