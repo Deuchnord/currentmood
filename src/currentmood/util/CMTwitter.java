@@ -17,11 +17,20 @@ public class CMTwitter {
 	
 	protected Twitter twitterClient;
 	protected ConfigurationBuilder twitterConfiguration;
+	protected Proxy proxy;
 	
 	protected String token, tokenSecret;
 	
 	public CMTwitter()
 	{
+		proxy = null;
+		reset();
+	}
+	
+	protected void reset()
+	{
+		this.authentified = false;
+		
 		twitterConfiguration = new ConfigurationBuilder();
 		
 		twitterConfiguration.setOAuthConsumerKey(TwitterConfidentialInfo.TWITTER_CONSUMER_KEY);
@@ -29,19 +38,26 @@ public class CMTwitter {
 		twitterConfiguration.setOAuthAccessToken(TwitterConfidentialInfo.TWITTER_ACCESS_TOKEN);
 		twitterConfiguration.setOAuthAccessTokenSecret(TwitterConfidentialInfo.TWITTER_ACCESS_TOKEN_SECRET);
 		
-	
-		
-		this.authentified = false;
+		if(proxy != null)
+			setProxy(proxy);
 	}
 	
 	public void setProxy(Proxy proxy)
 	{
+		if(authentified)
+			reset();
+		
 		twitterConfiguration.setHttpProxyHost(proxy.getHost());
 		twitterConfiguration.setHttpProxyPort(proxy.getPort());
+		
+		this.proxy = proxy;
 	}
 	
 	public void connect()
 	{
+		if(authentified)
+			reset();
+		
 		TwitterFactory twitterFactory = new TwitterFactory(twitterConfiguration.build());
 		twitterClient = twitterFactory.getInstance();
 		

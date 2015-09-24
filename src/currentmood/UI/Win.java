@@ -60,7 +60,7 @@ public class Win extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				WinProxy wProxy = new WinProxy();
+				WinProxy wProxy = new WinProxy(Win.this);
 				
 			}
 		});

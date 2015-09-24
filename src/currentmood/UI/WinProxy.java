@@ -27,11 +27,12 @@ public class WinProxy extends JFrame {
 	JButton bOK, bCancel;
 	JCheckBox bUseProxy;
 	Proxy proxySetting;
+	Win winMother;
 	
-	public WinProxy()
+	public WinProxy(Win mother)
 	{
 		
-	
+		this.winMother=mother;
 		this.setTitle("#CurrentMood - Modification du proxy");
 		this.setSize(500,300);
 		this.setResizable(false);
@@ -56,9 +57,9 @@ public class WinProxy extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				WinProxy.this.proxySetting = WinProxy.this.changeProxy(WinProxy.this.tfProxy.getText(),WinProxy.this.tfPort.getText(), WinProxy.this.tfUser.getText(), WinProxy.this.tfPassword.getText());
+				WinProxy.this.winMother.cmTwitter.setProxy(WinProxy.this.changeProxy(WinProxy.this.tfProxy.getText(),WinProxy.this.tfPort.getText(), WinProxy.this.tfUser.getText(), WinProxy.this.tfPassword.getText()));
+				//WinProxy.this.winMother.cmTwitter.connect();
 				WinProxy.this.dispose();
-				
 			}
 		});
 		this.bCancel = new JButton("Annuler");
@@ -94,6 +95,7 @@ public class WinProxy extends JFrame {
 		
 		this.add(this.panel, BorderLayout.CENTER);
 		this.setVisible(true);
+		
 	
 	}
 	
