@@ -29,7 +29,7 @@ public class Win extends JFrame {
 	protected JMenuBar menu;
 	protected JMenu fileMenu, aboutMenu, optionMenu;
 	protected JMenuItem openCSVItem, createCSVItem, proxyItem ;
-	protected JPanel searchpanel, infopanel;
+	protected JPanel searchpanel, infopanel, moodPanel;
 	protected JTextField search;
 	protected JButton Btn_search_Ok;
 	protected CMTwitter cmTwitter;
@@ -91,7 +91,19 @@ public class Win extends JFrame {
 					for(Status status : tweets)
 					{
 						System.out.println("### Tweet from @"+status.getUser().getScreenName()+" ###\n"+status.getText()+"\n\n");
+						
 					}
+					TweetUI tw = new TweetUI(tweets.get(0));
+					tw.addActionListener(new ActionListener() {
+						
+						@Override
+						public void actionPerformed(ActionEvent arg0) {
+							System.out.println("Coucou");
+							
+						}
+					});
+					Win.this.add(tw, BorderLayout.CENTER);
+					Win.this.validate();
 				}
 				catch (TwitterException ex) {
 					System.out.println("Cannot connect: " + ex.getMessage());
@@ -105,8 +117,11 @@ public class Win extends JFrame {
 		this.searchpanel.add(this.Btn_search_Ok);
 		
 		this.infopanel = new JPanel();
+		this.moodPanel = new JPanel();
 		this.infopanel.setBackground(new Color(0, 255, 0));
+		this.moodPanel.setBackground(new Color(255, 255,0));
 		this.add(infopanel,BorderLayout.SOUTH);
+		this.add(moodPanel,BorderLayout.EAST);
 		
 		this.setVisible(true);
 		
