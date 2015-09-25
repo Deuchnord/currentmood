@@ -9,10 +9,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.util.List;
+import java.util.Map;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -20,6 +22,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
+import twitter4j.RateLimitStatus;
 import twitter4j.Status;
 import twitter4j.TwitterException;
 
@@ -36,6 +39,7 @@ public class Win extends JFrame {
 	protected JButton Btn_search_Ok;
 	protected CMTwitter cmTwitter;
 	protected JScrollPane scrollTweetPanel;
+	protected JLabel lInfo, lInfoNb, lInfoTimeReload, lInfoTimeReloadNb;
 	
 	public Win()
 	{
@@ -48,7 +52,7 @@ public class Win extends JFrame {
 		//Paramétrage de la fenetre 
 		this.setSize(screen);
 		
-		this.setTitle("JframeTest");
+		this.setTitle("#currentmood");
 		//paramétrage du menu
 		this.menu = new JMenuBar();
 		this.fileMenu = new JMenu("Fichier");
@@ -91,6 +95,7 @@ public class Win extends JFrame {
 				try{
 					Win.this.cmTwitter.connect();
 					List<Status> tweets = Win.this.cmTwitter.searchTweets(Win.this.search.getText());
+					Win.this.refreshLimit(Win.this.cmTwitter.getRateLimit());
 					for(Status status : tweets)
 					{
 						TweetUI tw = new TweetUI(status);
@@ -101,6 +106,7 @@ public class Win extends JFrame {
 					
 					
 					Win.this.validate();
+					
 				}
 				catch (TwitterException ex) {
 					System.out.println("Cannot connect: " + ex.getMessage());
@@ -116,11 +122,19 @@ public class Win extends JFrame {
 		this.infopanel = new JPanel();
 		this.moodPanel = new JPanel();
 		this.tweetpanel= new JPanel();
-		this.infopanel.setBackground(new Color(0, 255, 0));
+		//this.infopanel.setBackground(new Color(0, 255, 0));
 		this.moodPanel.setBackground(new Color(255, 255,0));
 		//this.tweetpanel.setBackground(new Color(0, 0, 255));
 		this.tweetpanel.setLayout(new BoxLayout(this.tweetpanel, BoxLayout.Y_AXIS));
 		this.scrollTweetPanel=new JScrollPane(this.tweetpanel);
+		this.lInfo = new JLabel("Nombre de requêtes possible : ");
+		this.lInfoNb = new JLabel("___");
+		this.lInfoTimeReload = new JLabel("Rechargement dans : ");
+		this.lInfoTimeReloadNb = new JLabel("___");
+		this.infopanel.add(lInfo);
+		this.infopanel.add(lInfoNb);
+		this.infopanel.add(lInfoTimeReload);
+		this.infopanel.add(lInfoTimeReloadNb);
 		this.add(infopanel,BorderLayout.SOUTH);
 		this.add(moodPanel,BorderLayout.EAST);
 		this.add(scrollTweetPanel,BorderLayout.CENTER);
@@ -135,6 +149,12 @@ public class Win extends JFrame {
 		
 		
 		
+	}
+	private void refreshLimit(RateLimitStatus rl)
+	{
+		this.lInfoNb.setText(rl.getRemaining()+"/"+rl.getLimit());
+		this.lInfoTimeReloadNb.setText(rl.getSecondsUntilReset()+" secondes");
+	
 	}
 
 }

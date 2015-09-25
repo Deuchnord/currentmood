@@ -1,8 +1,10 @@
 package currentmood.util;
 import java.util.List;
+import java.util.Map;
 
 import twitter4j.Query;
 import twitter4j.QueryResult;
+import twitter4j.RateLimitStatus;
 import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
@@ -78,6 +80,11 @@ public class CMTwitter {
 		Query query = new Query(keywords);
 		
 		return twitterClient.search(query).getTweets();
+	}
+	
+	public RateLimitStatus getRateLimit() throws TwitterException
+	{
+		return this.twitterClient.getRateLimitStatus().get(("/search/tweets"));
 	}
 
 }
