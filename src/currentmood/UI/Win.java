@@ -3,6 +3,7 @@ package currentmood.UI;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,6 +17,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 import twitter4j.Status;
@@ -29,10 +31,11 @@ public class Win extends JFrame {
 	protected JMenuBar menu;
 	protected JMenu fileMenu, aboutMenu, optionMenu;
 	protected JMenuItem openCSVItem, createCSVItem, proxyItem ;
-	protected JPanel searchpanel, infopanel, moodPanel;
+	protected JPanel searchpanel, infopanel, moodPanel,tweetpanel;
 	protected JTextField search;
 	protected JButton Btn_search_Ok;
 	protected CMTwitter cmTwitter;
+	protected JScrollPane scrollTweetPanel;
 	
 	public Win()
 	{
@@ -90,19 +93,13 @@ public class Win extends JFrame {
 					List<Status> tweets = Win.this.cmTwitter.searchTweets(Win.this.search.getText());
 					for(Status status : tweets)
 					{
+						TweetUI tw = new TweetUI(status);
 						System.out.println("### Tweet from @"+status.getUser().getScreenName()+" ###\n"+status.getText()+"\n\n");
-						
+						Win.this.tweetpanel.add(tw, BorderLayout.CENTER);
 					}
-					TweetUI tw = new TweetUI(tweets.get(0));
-					tw.addActionListener(new ActionListener() {
-						
-						@Override
-						public void actionPerformed(ActionEvent arg0) {
-							System.out.println("Coucou");
-							
-						}
-					});
-					Win.this.add(tw, BorderLayout.CENTER);
+					//TweetUI tw = new TweetUI(tweets.get(0));
+					
+					
 					Win.this.validate();
 				}
 				catch (TwitterException ex) {
@@ -118,10 +115,15 @@ public class Win extends JFrame {
 		
 		this.infopanel = new JPanel();
 		this.moodPanel = new JPanel();
+		this.tweetpanel= new JPanel();
 		this.infopanel.setBackground(new Color(0, 255, 0));
 		this.moodPanel.setBackground(new Color(255, 255,0));
+		//this.tweetpanel.setBackground(new Color(0, 0, 255));
+		this.tweetpanel.setLayout(new BoxLayout(this.tweetpanel, BoxLayout.Y_AXIS));
+		this.scrollTweetPanel=new JScrollPane(this.tweetpanel);
 		this.add(infopanel,BorderLayout.SOUTH);
 		this.add(moodPanel,BorderLayout.EAST);
+		this.add(scrollTweetPanel,BorderLayout.CENTER);
 		
 		this.setVisible(true);
 		
