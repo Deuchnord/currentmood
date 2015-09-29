@@ -19,6 +19,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
@@ -40,6 +41,7 @@ public class Win extends JFrame {
 	protected CMTwitter cmTwitter;
 	protected JScrollPane scrollTweetPanel;
 	protected JLabel lInfo, lInfoNb, lInfoTimeReload, lInfoTimeReloadNb;
+	protected JRadioButton JRNone, JRNeutral, JRBad, JRGood;
 	
 	public Win()
 	{
@@ -124,6 +126,12 @@ public class Win extends JFrame {
 		this.tweetpanel= new JPanel();
 		//this.infopanel.setBackground(new Color(0, 255, 0));
 		this.moodPanel.setBackground(new Color(255, 255,0));
+		
+		this.moodPanel.setLayout(new BoxLayout(this.moodPanel,BoxLayout.Y_AXIS));
+		
+		this.JRBad = new JRadioButton("Mauvais");
+		this.JRBad.setVisible(false);
+		
 		//this.tweetpanel.setBackground(new Color(0, 0, 255));
 		this.tweetpanel.setLayout(new BoxLayout(this.tweetpanel, BoxLayout.Y_AXIS));
 		this.scrollTweetPanel=new JScrollPane(this.tweetpanel);
@@ -141,20 +149,19 @@ public class Win extends JFrame {
 		
 		this.setVisible(true);
 		
-
-		
-		
-		
-		
-		
-		
 		
 	}
+	
 	private void refreshLimit(RateLimitStatus rl)
 	{
 		this.lInfoNb.setText(rl.getRemaining()+"/"+rl.getLimit());
 		this.lInfoTimeReloadNb.setText(rl.getSecondsUntilReset()+" secondes");
 	
+	}
+	
+	private void displayAnnotationPanel()
+	{
+		
 	}
 
 }
