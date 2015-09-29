@@ -131,6 +131,13 @@ public class Win extends JFrame {
 		
 		this.JRBad = new JRadioButton("Mauvais");
 		this.JRBad.setVisible(false);
+		this.JRNeutral = new JRadioButton("Neutre");
+		this.JRNeutral.setVisible(false);
+		this.JRGood = new JRadioButton("Bon");
+		this.JRGood.setVisible(false);
+		this.moodPanel.add(this.JRBad);
+		this.moodPanel.add(this.JRNeutral);
+		this.moodPanel.add(this.JRGood);
 		
 		//this.tweetpanel.setBackground(new Color(0, 0, 255));
 		this.tweetpanel.setLayout(new BoxLayout(this.tweetpanel, BoxLayout.Y_AXIS));

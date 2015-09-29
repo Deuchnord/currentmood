@@ -2,6 +2,7 @@ package currentmood.UI;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
@@ -15,7 +16,7 @@ import javax.swing.border.EtchedBorder;
 
 import twitter4j.Status;
 
-public class TweetUI extends JPanel   {
+public class TweetUI extends JPanel implements ActionListener  {
 	
 	/**
 	 * 
@@ -37,18 +38,22 @@ public class TweetUI extends JPanel   {
 		this.text = new JLabel(tweet.getText());
 		this.tPanelBtn = new JPanel();
 		this.tPanelBtn.setLayout(new FlowLayout(FlowLayout.CENTER));
-		this.btnAnnote= new JButton("Annoter");
-		this.tPanelBtn.add(btnAnnote);
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		this.add(this.name);
 		this.add(this.text);
+		this.btnAnnote= new JButton("Annoter");
+		this.btnAnnote.addActionListener(this);
 		this.add(btnAnnote);
 	}
-	
-	public void addActionListener(ActionListener al)
-	{
-		this.listener= al;
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		((Win) this.getParent()).moodPanel.setStatus(tweet);
+		
+		
 	}
+	
+	
 
 	
 		
