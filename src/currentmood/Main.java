@@ -20,12 +20,12 @@ public class Main {
 	public static void main(String[] args) {
 		
 		Win win = new Win(); 
-		WinProxy winp= new WinProxy();
+		//WinProxy winp= new WinProxy();
 		
 		//CMTwitter cmTwitter = new CMTwitter();
 		//cmTwitter.setProxy(new Proxy("cache-etu.univ-lille1.fr", 3128));
 		
-		CSVFile file = new CSVFile("/home/m1/tanghe/test.csv");
+		String fileName = "/home/m1/tanghe/test.csv";
 		
 		// Écriture :
 		List<List<String>> content = new ArrayList<List<String>>();
@@ -44,7 +44,7 @@ public class Main {
 		content.get(1).add("1");
 		
 		try {
-			file.writeCSV(content);
+			CSVFile.writeCSV(fileName, content);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -52,7 +52,7 @@ public class Main {
 		
 		// Lecture :
 		try {
-			content = file.readCSV();
+			content = CSVFile.readCSV(fileName);
 			
 			for(List<String> line : content)
 			{

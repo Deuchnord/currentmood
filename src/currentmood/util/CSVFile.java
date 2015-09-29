@@ -10,25 +10,12 @@ import java.util.List;
 
 public class CSVFile {
 	
-	protected String fileName;
-	
-	/**
-	 * CSV file constructor.
-	 * @param name the name of the file to read or create
-	 * @param mode the file opening mode.
-	 */
-	public CSVFile(String name)
-	{
-		this.fileName = name;
-	}
-	
-	
 	/**
 	 * Reads the content of the file and returns its content.
 	 * @return the content of the CSV file. The first list is the lines, the second the cells.
 	 * @throws IOException thrown if the file cannot be read, for instance if it does not exist.
 	 */
-	public List<List<String>> readCSV() throws IOException
+	public static List<List<String>> readCSV(String fileName) throws IOException
 	{
 		BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName));
 		List<List<String>> returned = new ArrayList<List<String>>(); 
@@ -55,7 +42,7 @@ public class CSVFile {
 	 * @param data the content of the file. The first list is the lines, the second the cells.
 	 * @throws IOException
 	 */
-	public void writeCSV(List<List<String>> data) throws IOException
+	public static void writeCSV(String fileName, List<List<String>> data) throws IOException
 	{
 		BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileName));
 		
