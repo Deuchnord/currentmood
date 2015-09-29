@@ -6,7 +6,10 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+
+import twitter4j.Status;
 
 public class CSVFile {
 	
@@ -68,6 +71,21 @@ public class CSVFile {
 		
 		bufferedWriter.write(fileContent);		
 		bufferedWriter.close();
+	}
+	
+	public static HashMap<Status, Integer> readTweetsInCSV(String fileName) throws IOException
+	{
+		List<List<String>> csvContent = readCSV(fileName);
+		
+		HashMap<Status, Integer> hashTweets = new HashMap<Status, Integer>();
+		
+		for(List<String> line : csvContent)
+		{
+			for(String cell : line)
+			{
+				Status status = new Tweet();
+			}
+		}
 	}
 
 }
