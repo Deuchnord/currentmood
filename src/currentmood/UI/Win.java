@@ -35,7 +35,8 @@ public class Win extends JFrame {
 	protected JMenuBar menu;
 	protected JMenu fileMenu, aboutMenu, optionMenu;
 	protected JMenuItem openCSVItem, createCSVItem, proxyItem ;
-	protected JPanel searchpanel, infopanel, moodPanel,tweetpanel;
+	protected JPanel searchpanel, infopanel, tweetpanel;
+	protected MoodPanel moodPanel;
 	protected JTextField search;
 	protected JButton Btn_search_Ok;
 	protected CMTwitter cmTwitter;
@@ -122,22 +123,12 @@ public class Win extends JFrame {
 		this.searchpanel.add(this.Btn_search_Ok);
 		
 		this.infopanel = new JPanel();
-		this.moodPanel = new JPanel();
+		this.moodPanel = new MoodPanel();
 		this.tweetpanel= new JPanel();
 		//this.infopanel.setBackground(new Color(0, 255, 0));
-		this.moodPanel.setBackground(new Color(255, 255,0));
 		
-		this.moodPanel.setLayout(new BoxLayout(this.moodPanel,BoxLayout.Y_AXIS));
 		
-		this.JRBad = new JRadioButton("Mauvais");
-		this.JRBad.setVisible(false);
-		this.JRNeutral = new JRadioButton("Neutre");
-		this.JRNeutral.setVisible(false);
-		this.JRGood = new JRadioButton("Bon");
-		this.JRGood.setVisible(false);
-		this.moodPanel.add(this.JRBad);
-		this.moodPanel.add(this.JRNeutral);
-		this.moodPanel.add(this.JRGood);
+		
 		
 		//this.tweetpanel.setBackground(new Color(0, 0, 255));
 		this.tweetpanel.setLayout(new BoxLayout(this.tweetpanel, BoxLayout.Y_AXIS));
