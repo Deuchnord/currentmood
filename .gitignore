@@ -12,3 +12,4 @@ hs_err_pid*
 
 # Classe contenant nos informations personnelles pour l'API Twitter :3
 src/currentmood/util/TwitterConfidentialInfo.java
+/bin/

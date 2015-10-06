@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 
@@ -32,6 +33,7 @@ public class TweetUI extends JPanel implements ActionListener  {
 	public TweetUI (Status tweet)
 	{
 		//this.setBackground(new Color(255, 255, 255));
+		this.tweet = tweet;
 		this.setSize((int)this.getMaximumSize().getWidth(), 1000);
 		this.setBorder(BorderFactory.createCompoundBorder(new EmptyBorder(0, 0, 10, 10), new EtchedBorder()));
 		this.name = new JLabel(tweet.getUser().getName()+" - "+tweet.getUser().getScreenName());
@@ -48,10 +50,11 @@ public class TweetUI extends JPanel implements ActionListener  {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		((Win) this.getParent()).moodPanel.setStatus(tweet);
-		
+		 ((Win) SwingUtilities.getRoot(this)).moodPanel.setStatus(tweet);
 		
 	}
+	
+	
 	
 	
 

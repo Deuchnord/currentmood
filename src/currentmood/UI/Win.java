@@ -157,7 +157,7 @@ public class Win extends JFrame {
 	
 	}
 	
-	private void displayAnnotationPanel()
+	private void displayMoodPanel()
 	{
 		
 	}
