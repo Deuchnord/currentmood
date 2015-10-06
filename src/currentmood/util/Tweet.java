@@ -35,6 +35,10 @@ public class Tweet {
 		return text;
 	}
 
+	public void setText(String text) {
+		this.text = text;
+	}
+
 	public String getQuery() {
 		return query;
 	}
@@ -43,6 +47,15 @@ public class Tweet {
 		return createdAt;
 	}
 	
-	
+	@Override
+	public boolean equals(Object o)
+	{
+		Tweet t = (Tweet) o;
+		
+		if(t.getUser().equals(user) && t.getText().equals(text))
+			return true;
+		
+		else return false;
+	}
 
 }
