@@ -113,5 +113,40 @@ public class CSVFile {
 		
 		writeCSV(filename, csvContent);
 	}
+	
+	public static void writeTweetsInCSV(String filename, HashMap<Tweet, Integer> hashTweets, boolean wash) throws IOException
+	{
+		if(wash)
+			hashTweets = washTweets(hashTweets);
+		
+		writeTweetsInCSV(filename, hashTweets);
+	}
+	
+	public static HashMap<Tweet, Integer> washTweets(HashMap<Tweet, Integer> hashTweets)
+	{
+		HashMap<Tweet, Integer> newHashTweets = new HashMap<Tweet, Integer>();
+		
+		for(Tweet tweet : hashTweets.keySet())
+		{
+			String text = tweet.getText();
+			
+			if(!text.matches("^RT "))
+			{
+				text.replaceAll("@([a-zA-Z0-9_.-])", " $1 "); // Suppression des @
+				text.replaceAll("#\\w", " $1 "); // Suppression des #
+				text.replaceAll("https?://[^ ,]", " "); // Suppression des liens
+				text.replaceAll(":'?[D()]", " "); // Suppression des smileys :) :( :D :') :'( :'D
+			}
+			
+			// Si le message se retrouve vide, on ne le met pas dans la hashmap à retourner
+			if(!text.replace(" ", "").equals(""))
+			{
+				tweet.setText(text);
+				newHashTweets.put(tweet, hashTweets.get(tweet));
+			}
+		}
+		
+		return newHashTweets;
+	}
 
 }
