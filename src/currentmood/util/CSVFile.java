@@ -5,11 +5,10 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-import twitter4j.Status;
 
 public class CSVFile {
 	
@@ -73,19 +72,46 @@ public class CSVFile {
 		bufferedWriter.close();
 	}
 	
-	public static HashMap<Status, Integer> readTweetsInCSV(String fileName) throws IOException
+	public static HashMap<Tweet, Integer> readTweetsInCSV(String fileName) throws IOException
 	{
 		List<List<String>> csvContent = readCSV(fileName);
 		
-		HashMap<Status, Integer> hashTweets = new HashMap<Status, Integer>();
+		HashMap<Tweet, Integer> hashTweets = new HashMap<Tweet, Integer>();
 		
 		for(List<String> line : csvContent)
 		{
-			for(String cell : line)
-			{
-				Status status = new Tweet();
-			}
+			Tweet tweet = new Tweet(new Long(line.get(0)), line.get(1), line.get(2), new Date(new Long(line.get(3))), line.get(4));
+			
+			Integer notation;
+			// If there is a notation, we give it to the HashMap,
+			// else we give it the default value -1.
+			if(line.size() == 6)
+				notation = new Integer(line.get(5));
+			else
+				notation = new Integer(-1);
+			
+			hashTweets.put(tweet, notation);
 		}
+		
+		return hashTweets;
+	}
+	
+	public static void writeTweetsInCSV(String filename, HashMap<Tweet, Integer> hashTweets) throws IOException
+	{
+		List<List<String>> csvContent = new ArrayList<List<String>>();
+		for(Tweet tweet : hashTweets.keySet())
+		{
+			List<String> line = new ArrayList<String>();
+			line.add(String.valueOf(tweet.getId()));
+			line.add(tweet.getUser());
+			line.add(tweet.getText());
+			line.add(String.valueOf(tweet.getCreatedAt().getTime()));
+			line.add(tweet.getQuery());
+			
+			csvContent.add(line);
+		}
+		
+		writeCSV(filename, csvContent);
 	}
 
 }
