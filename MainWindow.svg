@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="69cm" height="27cm" viewBox="98 8 1363 533" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <rect style="fill: #1e90ff" x="100" y="40" width="680" height="320"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="100" y="40" width="680" height="320"/>
+  </g>
+  <g>
+    <rect style="fill: #bfbfbf" x="120" y="60" width="640" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="120" y="60" width="640" height="20"/>
+  </g>
+  <g>
+    <rect style="fill: #00ff00" x="120" y="280" width="640" height="60"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="120" y="280" width="640" height="60"/>
+  </g>
+  <g>
+    <rect style="fill: #00ff00" x="120" y="80" width="640" height="60"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="120" y="80" width="640" height="60"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="140" y="100" width="460" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="140" y="100" width="460" height="20"/>
+  </g>
+  <g>
+    <rect style="fill: #bfbfbf" x="100" y="380" width="160" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="100" y="380" width="160" height="20"/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="180" y="394.45">
+    <tspan x="180" y="394.45">JMenuBar</tspan>
+  </text>
+  <g>
+    <rect style="fill: #0000ff" x="600" y="100" width="100" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="600" y="100" width="100" height="20"/>
+  </g>
+  <g>
+    <rect style="fill: #ff0000" x="180" y="300" width="120" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="180" y="300" width="120" height="20"/>
+  </g>
+  <g>
+    <rect style="fill: #ff0000" x="300" y="300" width="120" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="300" y="300" width="120" height="20"/>
+  </g>
+  <g>
+    <rect style="fill: #ff0000" x="420" y="300" width="120" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="420" y="300" width="120" height="20"/>
+  </g>
+  <g>
+    <rect style="fill: #ff0000" x="540" y="300" width="120" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="540" y="300" width="120" height="20"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="280" y="380" width="160" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="280" y="380" width="160" height="20"/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="360" y="394.45">
+    <tspan x="360" y="394.45">JTextField</tspan>
+  </text>
+  <g>
+    <rect style="fill: #ff0000" x="460" y="380" width="160" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="460" y="380" width="160" height="20"/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="540" y="394.45">
+    <tspan x="540" y="394.45">JLabel</tspan>
+  </text>
+  <g>
+    <rect style="fill: #0000ff" x="100" y="420" width="160" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="100" y="420" width="160" height="20"/>
+  </g>
+  <text font-size="12.8" style="fill: #ffffff;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="180" y="434.45">
+    <tspan x="180" y="434.45">JButton</tspan>
+  </text>
+  <g>
+    <rect style="fill: #1e90ff" x="640" y="380" width="140" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="640" y="380" width="140" height="20"/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="710" y="394.45">
+    <tspan x="710" y="394.45">Fenêtre principale</tspan>
+  </text>
+  <g>
+    <rect style="fill: #ffffff" x="120" y="140" width="420" height="140"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="120" y="140" width="420" height="140"/>
+  </g>
+  <g>
+    <rect style="fill: #00ff00" x="540" y="140" width="220" height="140"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="540" y="140" width="220" height="140"/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="650" y="214.45">
+    <tspan x="650" y="214.45">MoodPanel</tspan>
+  </text>
+  <g>
+    <rect style="fill: #ffffff" x="140" y="160" width="380" height="100"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #ff0000" x="140" y="160" width="380" height="100"/>
+  </g>
+  <g>
+    <rect style="fill: #00ff00" x="160" y="180" width="340" height="60"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="160" y="180" width="340" height="60"/>
+  </g>
+  <g>
+    <rect style="fill: #00ff00" x="180" y="200" width="300" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="180" y="200" width="300" height="20"/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="330" y="214.45">
+    <tspan x="330" y="214.45">TweetUI</tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="1140" y="20">
+    <tspan x="1140" y="20">TweetUI :</tspan>
+  </text>
+  <g>
+    <rect style="fill: #00ff00" x="860" y="40" width="600" height="320"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="860" y="40" width="600" height="320"/>
+  </g>
+  <g>
+    <rect style="fill: #ff0000" x="880" y="60" width="560" height="100"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="880" y="60" width="560" height="100"/>
+  </g>
+  <g>
+    <rect style="fill: #ff0000" x="880" y="160" width="560" height="100"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="880" y="160" width="560" height="100"/>
+  </g>
+  <g>
+    <rect style="fill: #0000ff" x="880" y="260" width="560" height="80"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="880" y="260" width="560" height="80"/>
+  </g>
+  <g>
+    <rect style="fill: #00ff00" x="860" y="440" width="600" height="100"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="860" y="440" width="600" height="100"/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="1120" y="420">
+    <tspan x="1120" y="420">MoodPanel :</tspan>
+  </text>
+  <g>
+    <rect style="fill: #ff0000" x="880" y="460" width="560" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="880" y="460" width="560" height="20"/>
+  </g>
+  <g>
+    <rect style="fill: #ffff00" x="880" y="480" width="180" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="880" y="480" width="180" height="20"/>
+  </g>
+  <g>
+    <rect style="fill: #ffff00" x="1060" y="480" width="200" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1060" y="480" width="200" height="20"/>
+  </g>
+  <g>
+    <rect style="fill: #ffff00" x="1260" y="480" width="180" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1260" y="480" width="180" height="20"/>
+  </g>
+  <g>
+    <rect style="fill: #0000ff" x="880" y="500" width="560" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="880" y="500" width="560" height="20"/>
+  </g>
+  <text font-size="12.8" style="fill: #ffffff;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="1160" y="474.45">
+    <tspan x="1160" y="474.45">id du tweet</tspan>
+  </text>
+  <g>
+    <rect style="fill: #ffff00" x="280" y="420" width="160" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="280" y="420" width="160" height="20"/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="360" y="434.45">
+    <tspan x="360" y="434.45">CheckBox</tspan>
+  </text>
+</svg>
