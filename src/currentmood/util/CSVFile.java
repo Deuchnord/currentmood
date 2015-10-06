@@ -113,5 +113,24 @@ public class CSVFile {
 		
 		writeCSV(filename, csvContent);
 	}
+	
+	public static void writeTweetsInCSV(String filename, HashMap<Tweet, Integer> hashTweets, boolean wash) throws IOException
+	{
+		if(wash)
+			hashTweets = washTweets(hashTweets);
+		
+		writeTweetsInCSV(filename, hashTweets);
+	}
+	
+	public static HashMap<Tweet, Integer> washTweets(HashMap<Tweet, Integer> hashTweets)
+	{
+		for(Tweet tweet : hashTweets.keySet())
+		{
+			String text = tweet.getText();
+			
+		}
+		
+		return hashTweets;
+	}
 
 }
