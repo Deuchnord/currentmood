@@ -8,6 +8,7 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -30,8 +31,11 @@ import twitter4j.TwitterException;
 import currentmood.util.CMTwitter;
 import currentmood.util.NotConnectedException;
 import currentmood.util.Proxy;
+import currentmood.util.Tweet;
 
 public class Win extends JFrame {
+	protected HashMap<Tweet, Integer> annotatedTweets;
+	
 	protected JMenuBar menu;
 	protected JMenu fileMenu, aboutMenu, optionMenu;
 	protected JMenuItem openCSVItem, createCSVItem, proxyItem ;
@@ -46,6 +50,7 @@ public class Win extends JFrame {
 	
 	public Win()
 	{
+		this.annotatedTweets = new HashMap<Tweet,Integer>();
 		cmTwitter = new CMTwitter();
 		//cmTwitter.setProxy(new Proxy("cache-etu.univ-lille1.fr", 3128));
 		System.out.println("1 " + (cmTwitter == null));
