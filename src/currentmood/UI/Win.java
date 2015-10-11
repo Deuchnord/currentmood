@@ -39,7 +39,7 @@ import currentmood.util.Proxy;
 import currentmood.util.Tweet;
 
 public class Win extends JFrame {
-	protected ArrayList<Tweet> annotatedTweets;
+	protected List<Tweet> annotatedTweets;
 	
 	protected JMenuBar menu;
 	protected JMenu fileMenu, aboutMenu, optionMenu;
@@ -80,7 +80,7 @@ public class Win extends JFrame {
 				if(jfc.showOpenDialog((Component) e.getSource())==JFileChooser.APPROVE_OPTION)
 				{
 					try {
-						CSVFile.readCSV(jfc.getSelectedFile().getAbsolutePath());
+						Win.this.annotatedTweets = CSVFile.readTweetsInCSV(jfc.getSelectedFile().getAbsolutePath());
 					} catch (IOException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
