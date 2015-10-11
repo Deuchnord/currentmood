@@ -51,11 +51,12 @@ public class MoodPanel extends JPanel {
 		
 		
 		this.lIdTweet= new JLabel();
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.gridwidth=3;
+	
+		c.gridwidth=GridBagConstraints.REMAINDER;
+		c.gridheight=1;
 		c.gridx=0;
 		c.gridy=0;
-		c.weightx=0.0;
+		c.weightx=0.5;
 		c.anchor =GridBagConstraints.FIRST_LINE_START;
 		this.choicePanel.add(this.lIdTweet,c);
 		
@@ -64,7 +65,6 @@ public class MoodPanel extends JPanel {
 		this.JRBad = new JRadioButton("Mauvais");
 		this.JRBad.setActionCommand("0");
 		this.JRBad.setVisible(false);
-		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx=0;
 		c.gridy=1;
 		c.weightx=0.0;
@@ -74,9 +74,10 @@ public class MoodPanel extends JPanel {
 		
 		this.JRNeutral = new JRadioButton("Neutre");
 		this.JRNeutral.setActionCommand("2");
-		c.fill = GridBagConstraints.HORIZONTAL;
 		c.weightx=1.0;
-		c.insets = new Insets(0,70, 0, 0);
+		c.gridx=GridBagConstraints.RELATIVE;
+		c.gridy=1;
+		///c.insets = new Insets(0,70, 0, 0);
 		this.choicePanel.add(this.JRNeutral,c);
 		this.JRNeutral.setVisible(false);
 		
@@ -86,9 +87,10 @@ public class MoodPanel extends JPanel {
 		this.JRGood = new JRadioButton("Bon");
 		this.JRGood.setVisible(false);
 		this.JRGood.setActionCommand("4");
-		c.fill = GridBagConstraints.HORIZONTAL;
 		c.weightx=0.0;
-		c.insets = new Insets(0,0, 0, 0);
+		c.gridx=GridBagConstraints.REMAINDER;
+		c.gridy=1;
+		//c.insets = new Insets(0,0, 0, 0);
 		this.choicePanel.add(this.JRGood,c);
 		
 		
@@ -118,9 +120,9 @@ public class MoodPanel extends JPanel {
 		
 		
 		
-		c.fill = GridBagConstraints.HORIZONTAL;
+	
 		c.gridx=0;
-		c.gridy=1;
+		c.gridy=2;
 		c.weightx=0.0;
 		c.gridwidth=3;
 		this.choicePanel.add(buttonPanel,c);

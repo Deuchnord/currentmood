@@ -2,18 +2,22 @@ package currentmood.UI;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -29,12 +33,13 @@ import twitter4j.Status;
 import twitter4j.TwitterException;
 
 import currentmood.util.CMTwitter;
+import currentmood.util.CSVFile;
 import currentmood.util.NotConnectedException;
 import currentmood.util.Proxy;
 import currentmood.util.Tweet;
 
 public class Win extends JFrame {
-	protected HashMap<Tweet, Integer> annotatedTweets;
+	protected ArrayList<Tweet> annotatedTweets;
 	
 	protected JMenuBar menu;
 	protected JMenu fileMenu, aboutMenu, optionMenu;
@@ -48,9 +53,10 @@ public class Win extends JFrame {
 	protected JLabel lInfo, lInfoNb, lInfoTimeReload, lInfoTimeReloadNb;
 	protected JRadioButton JRNone, JRNeutral, JRBad, JRGood;
 	
+	
 	public Win()
 	{
-		this.annotatedTweets = new HashMap<Tweet,Integer>();
+		this.annotatedTweets = new ArrayList<Tweet>();
 		cmTwitter = new CMTwitter();
 		//cmTwitter.setProxy(new Proxy("cache-etu.univ-lille1.fr", 3128));
 		System.out.println("1 " + (cmTwitter == null));
@@ -66,6 +72,23 @@ public class Win extends JFrame {
 		this.fileMenu = new JMenu("Fichier");
 		this.menu.add(this.fileMenu);
 		this.openCSVItem = new JMenuItem("Ouvrir un CSV", KeyEvent.VK_O);
+		this.openCSVItem.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JFileChooser jfc = new JFileChooser();
+				if(jfc.showOpenDialog((Component) e.getSource())==JFileChooser.APPROVE_OPTION)
+				{
+					try {
+						CSVFile.readCSV(jfc.getSelectedFile().getAbsolutePath());
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+				
+			}
+		});
 		this.createCSVItem = new JMenuItem("Créer un CSV", KeyEvent.VK_C);
 		this.fileMenu.add(this.openCSVItem);
 		this.fileMenu.add(this.createCSVItem);
