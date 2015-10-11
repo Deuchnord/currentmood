@@ -185,9 +185,12 @@ public class Win extends JFrame {
 	
 	}
 	
-	private void displayMoodPanel()
+	private void readTweet()
 	{
-		
+		for(Tweet tweet : this.annotatedTweets)
+		{
+			System.out.println(tweet.getUser()+" : "+tweet.getText());
+		}
 	}
 
 }
