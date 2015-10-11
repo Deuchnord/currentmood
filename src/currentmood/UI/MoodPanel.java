@@ -19,6 +19,8 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.SwingUtilities;
 
+import currentmood.util.Tweet;
+
 import twitter4j.Status;
 
 public class MoodPanel extends JPanel {
@@ -26,7 +28,8 @@ public class MoodPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 4687360968395176153L;
-	protected Status tweet;
+	protected Status status;
+	protected Tweet tweet;
 	protected JLabel lIdTweet;
 	protected ButtonGroup moodGroup;
 	protected JRadioButton JRNone, JRNeutral, JRBad, JRGood;
@@ -133,7 +136,14 @@ public class MoodPanel extends JPanel {
 		
 	}
 	
-	public void setStatus(Status tweet)
+	public void setStatus(Status status)
+	{
+		this.status = status;
+		this.lIdTweet.setText(String.valueOf(status.getId()));
+		this.appeared();
+	}
+	
+	public void setStatus(Tweet tweet)
 	{
 		this.tweet = tweet;
 		this.lIdTweet.setText(String.valueOf(tweet.getId()));

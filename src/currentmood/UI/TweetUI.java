@@ -15,6 +15,8 @@ import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 
+import currentmood.util.Tweet;
+
 import twitter4j.Status;
 
 public class TweetUI extends JPanel implements ActionListener  {
@@ -23,35 +25,60 @@ public class TweetUI extends JPanel implements ActionListener  {
 	 * 
 	 */
 	private static final long serialVersionUID = -579383294132336090L;
-	protected Status tweet;
+	protected Status status;
 	protected ActionListener listener;
 	protected JLabel name, text;
 	protected JCheckBox feelButton;
 	protected JPanel tPanelBtn;
 	protected JButton btnAnnote;
+	protected Tweet tweet;
 	
-	public TweetUI (Status tweet)
+	public TweetUI (Status status)
 	{
 		//this.setBackground(new Color(255, 255, 255));
-		this.tweet = tweet;
+		this.status = status;
 		this.setSize((int)this.getMaximumSize().getWidth(), 1000);
 		this.setBorder(BorderFactory.createCompoundBorder(new EmptyBorder(0, 0, 10, 10), new EtchedBorder()));
-		this.name = new JLabel(tweet.getUser().getName()+" - "+tweet.getUser().getScreenName());
-		this.text = new JLabel(tweet.getText());
+		this.setLabel(status.getUser().getName(), status.getUser().getScreenName(), status.getText());
 		this.tPanelBtn = new JPanel();
 		this.tPanelBtn.setLayout(new FlowLayout(FlowLayout.CENTER));
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		this.add(this.name);
-		this.add(this.text);
+		
+		addButton();
+	}
+	
+	public TweetUI(Tweet tweet)
+	{
+		this.tweet = tweet;
+		this.setSize((int)this.getMaximumSize().getWidth(), 1000);
+		this.setBorder(BorderFactory.createCompoundBorder(new EmptyBorder(0, 0, 10, 10), new EtchedBorder()));
+		this.setLabel(tweet.getUser(), tweet.getUser(), tweet.getText());
+		this.tPanelBtn = new JPanel();
+		this.tPanelBtn.setLayout(new FlowLayout(FlowLayout.CENTER));
+		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		addButton();
+	}
+
+	private void addButton() {
 		this.btnAnnote= new JButton("Annoter");
 		this.btnAnnote.addActionListener(this);
 		this.add(btnAnnote);
 	}
+	
+	private void setLabel(String user, String screenName, String text)
+	{
+		this.name = new JLabel(user+" - "+screenName);
+		this.text = new JLabel(text);
+		this.add(this.name);
+		this.add(this.text);
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		 ((Win) SwingUtilities.getRoot(this)).moodPanel.setStatus(tweet);
-		
+		if(TweetUI.this.status !=null && TweetUI.this.tweet==null)
+			((Win) SwingUtilities.getRoot(this)).moodPanel.setStatus(status);
+		else if(TweetUI.this.status == null && TweetUI.this.tweet!=null)
+			((Win) SwingUtilities.getRoot(this)).moodPanel.setStatus(tweet);
 	}
 	
 	

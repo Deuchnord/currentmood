@@ -190,7 +190,7 @@ public class Win extends JFrame {
 	{
 		for(Tweet tweet : this.annotatedTweets)
 		{
-			System.out.println(tweet.getUser()+" : "+tweet.getText());
+			this.tweetpanel.add(new TweetUI(tweet),BorderLayout.CENTER);
 		}
 	}
 
