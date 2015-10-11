@@ -81,6 +81,7 @@ public class Win extends JFrame {
 				{
 					try {
 						Win.this.annotatedTweets = CSVFile.readTweetsInCSV(jfc.getSelectedFile().getAbsolutePath());
+						Win.this.readTweet();
 					} catch (IOException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
