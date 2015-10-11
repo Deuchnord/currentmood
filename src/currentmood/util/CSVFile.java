@@ -7,7 +7,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class CSVFile {
@@ -72,11 +71,11 @@ public class CSVFile {
 		bufferedWriter.close();
 	}
 	
-	public static HashMap<Tweet, Integer> readTweetsInCSV(String fileName) throws IOException
+	public static List<Tweet> readTweetsInCSV(String fileName) throws IOException
 	{
 		List<List<String>> csvContent = readCSV(fileName);
 		
-		HashMap<Tweet, Integer> hashTweets = new HashMap<Tweet, Integer>();
+		List<Tweet> hashTweets = new ArrayList<Tweet>();
 		
 		for(List<String> line : csvContent)
 		{
@@ -90,16 +89,18 @@ public class CSVFile {
 			else
 				notation = new Integer(-1);
 			
-			hashTweets.put(tweet, notation);
+			tweet.setValue(notation);
+			
+			hashTweets.add(tweet);
 		}
 		
 		return hashTweets;
 	}
 	
-	public static void writeTweetsInCSV(String filename, HashMap<Tweet, Integer> hashTweets) throws IOException
+	public static void writeTweetsInCSV(String filename, List<Tweet> hashTweets) throws IOException
 	{
 		List<List<String>> csvContent = new ArrayList<List<String>>();
-		for(Tweet tweet : hashTweets.keySet())
+		for(Tweet tweet : hashTweets)
 		{
 			List<String> line = new ArrayList<String>();
 			line.add(String.valueOf(tweet.getId()));
@@ -107,6 +108,7 @@ public class CSVFile {
 			line.add(tweet.getText());
 			line.add(String.valueOf(tweet.getCreatedAt().getTime()));
 			line.add(tweet.getQuery());
+			line.add(String.valueOf(tweet.getValue()));
 			
 			csvContent.add(line);
 		}
@@ -114,7 +116,7 @@ public class CSVFile {
 		writeCSV(filename, csvContent);
 	}
 	
-	public static void writeTweetsInCSV(String filename, HashMap<Tweet, Integer> hashTweets, boolean wash) throws IOException
+	public static void writeTweetsInCSV(String filename, List<Tweet> hashTweets, boolean wash) throws IOException
 	{
 		if(wash)
 			hashTweets = washTweets(hashTweets);
@@ -122,11 +124,11 @@ public class CSVFile {
 		writeTweetsInCSV(filename, hashTweets);
 	}
 	
-	public static HashMap<Tweet, Integer> washTweets(HashMap<Tweet, Integer> hashTweets)
+	public static List<Tweet> washTweets(List<Tweet> hashTweets)
 	{
-		HashMap<Tweet, Integer> newHashTweets = new HashMap<Tweet, Integer>();
+		List<Tweet> newHashTweets = new ArrayList<Tweet>();
 		
-		for(Tweet tweet : hashTweets.keySet())
+		for(Tweet tweet : hashTweets)
 		{
 			String text = tweet.getText();
 			
@@ -142,7 +144,7 @@ public class CSVFile {
 			if(!text.replace(" ", "").equals(""))
 			{
 				tweet.setText(text);
-				newHashTweets.put(tweet, hashTweets.get(tweet));
+				newHashTweets.add(tweet);
 			}
 		}
 		
