@@ -9,14 +9,21 @@ public class Tweet {
 	protected String user;
 	protected String text, query;
 	protected Date createdAt;
+	protected int value;
 
-	public Tweet(long id, String user, String text, Date createdAt, String query)
+	public Tweet(long id, String user, String text, Date createdAt, String query, int value)
 	{
 		this.id = id;
 		this.user = user;
 		this.text = text;
 		this.createdAt = createdAt;
 		this.query = query;
+		this.value = value;
+	}
+	
+	public Tweet(long id, String user, String text, Date createdAt, String query)
+	{
+		this(id,user,text,createdAt,query,-1);
 	}
 
 	public static long getSerialversionuid() {
@@ -45,6 +52,16 @@ public class Tweet {
 
 	public Date getCreatedAt() {
 		return createdAt;
+	}
+	
+	public int getValue()
+	{
+		return this.value;
+	}
+	
+	public void setValue(int newValue)
+	{
+		this.value=newValue;
 	}
 	
 	@Override
