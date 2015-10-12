@@ -52,48 +52,51 @@ public class MoodPanel extends JPanel {
 		this.statPanel.setLayout(new BorderLayout());
 		
 		
-		
-		this.lIdTweet= new JLabel();
 	
+		this.lIdTweet= new JLabel();
+		c.fill =GridBagConstraints.NONE;
 		c.gridwidth=GridBagConstraints.REMAINDER;
 		c.gridheight=1;
 		c.gridx=0;
 		c.gridy=0;
 		c.weightx=0.5;
 		c.anchor =GridBagConstraints.FIRST_LINE_START;
+		c.insets = new Insets(-200,0,0,0);
 		this.choicePanel.add(this.lIdTweet,c);
 		
 		this.moodGroup = new ButtonGroup();
 		
-		this.JRBad = new JRadioButton("Mauvais");
+		this.JRBad = new JRadioButton(":(");
 		this.JRBad.setActionCommand("0");
 		this.JRBad.setVisible(false);
 		c.gridx=0;
 		c.gridy=1;
 		c.weightx=0.0;
+		c.insets = new Insets(-180,0,0,0);
 		this.choicePanel.add(this.JRBad,c);
 		
 		
 		
-		this.JRNeutral = new JRadioButton("Neutre");
+		this.JRNeutral = new JRadioButton(":|");
 		this.JRNeutral.setActionCommand("2");
-		c.weightx=1.0;
-		c.gridx=GridBagConstraints.RELATIVE;
-		c.gridy=1;
-		///c.insets = new Insets(0,70, 0, 0);
-		this.choicePanel.add(this.JRNeutral,c);
 		this.JRNeutral.setVisible(false);
+		c.weightx=0.0;
+		c.gridx=1;
+		c.gridy=1;
+		c.insets = new Insets(-180,75,0,0);
+		this.choicePanel.add(this.JRNeutral,c);
+		
 		
 		
 
 		
-		this.JRGood = new JRadioButton("Bon");
+		this.JRGood = new JRadioButton(":)");
 		this.JRGood.setVisible(false);
 		this.JRGood.setActionCommand("4");
 		c.weightx=0.0;
-		c.gridx=GridBagConstraints.REMAINDER;
+		c.gridx=2;
 		c.gridy=1;
-		//c.insets = new Insets(0,0, 0, 0);
+		c.insets = new Insets(-180,150,0,0);
 		this.choicePanel.add(this.JRGood,c);
 		
 		
@@ -128,6 +131,7 @@ public class MoodPanel extends JPanel {
 		c.gridy=2;
 		c.weightx=0.0;
 		c.gridwidth=3;
+		c.insets = new Insets(-150,0,0,0);
 		this.choicePanel.add(buttonPanel,c);
 		this.add(choicePanel,BorderLayout.NORTH);
 		this.add(statPanel,BorderLayout.SOUTH);
@@ -157,6 +161,7 @@ public class MoodPanel extends JPanel {
 		this.JRGood.setVisible(true);
 		this.buttonPanel.setVisible(true);
 		
+		
 	}
 	
 	private void intializingListener()
@@ -183,7 +188,7 @@ public class MoodPanel extends JPanel {
 	public void disappeared()
 	{
 		this.lIdTweet.setText("");
-		this.JRBad.setVisible(false);
+		//this.JRBad.setVisible(false);
 		this.JRNeutral.setVisible(false);
 		this.JRGood.setVisible(false);
 		this.buttonPanel.setVisible(false);
