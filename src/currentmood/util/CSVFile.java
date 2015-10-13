@@ -135,7 +135,7 @@ public class CSVFile {
 			if(!text.matches("^RT "))
 			{
 				text.replaceAll("@([a-zA-Z0-9_.-])", " $1 "); // Suppression des @
-				text.replaceAll("#\\w", " $1 "); // Suppression des #
+				text.replaceAll("#([a-zA-Z0-9_])", " $1 "); // Suppression des #
 				text.replaceAll("https?://[^ ,]", " "); // Suppression des liens
 				text.replaceAll(":'?[D()]", " "); // Suppression des smileys :) :( :D :') :'( :'D
 			}
