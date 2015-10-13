@@ -46,7 +46,6 @@ public class MoodPanel extends JPanel {
 		
 		this.choicePanel = new JPanel();
 		this.choicePanel.setLayout(new GridBagLayout());
-		this.choicePanel.setBackground(new Color(255, 0, 0));
 		GridBagConstraints c = new GridBagConstraints();
 		this.statPanel = new JPanel();
 		this.statPanel.setLayout(new BorderLayout());
@@ -120,7 +119,7 @@ public class MoodPanel extends JPanel {
 		this.buttonPanel.add(MPClose);
 		this.buttonPanel.setVisible(false);
 		this.buttonPanel.setSize(new Dimension(this.buttonPanel.getPreferredSize().width,this.btnAddToList.getPreferredSize().height));
-		this.buttonPanel.setBackground(new Color(60, 90, 60));
+		
 		
 		
 		
