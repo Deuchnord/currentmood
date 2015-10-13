@@ -69,10 +69,7 @@ public class Tweet {
 	{
 		Tweet t = (Tweet) o;
 		
-		if(t.getUser().equals(user) && t.getText().equals(text))
-			return true;
-		
-		else return false;
+		return (t.getId() == this.id || t.getUser().equals(user) && t.getText().equals(text));
 	}
 
 }

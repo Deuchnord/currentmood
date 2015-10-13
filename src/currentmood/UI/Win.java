@@ -23,6 +23,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
@@ -39,6 +40,9 @@ import currentmood.util.Proxy;
 import currentmood.util.Tweet;
 
 public class Win extends JFrame {
+	
+	private static final long serialVersionUID = -3653464037872958325L;
+
 	protected List<Tweet> annotatedTweets;
 	
 	protected JMenuBar menu;
@@ -90,7 +94,32 @@ public class Win extends JFrame {
 				
 			}
 		});
+		
 		this.createCSVItem = new JMenuItem("Créer un CSV", KeyEvent.VK_C);
+		this.createCSVItem.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				if(annotatedTweets.isEmpty())
+				{
+					JOptionPane.showMessageDialog(Win.this, "Vous ne pouvez pas enregistrer maintenant.\nVeuillez commencer par annoter des tweets.", "Impossible d'enregistrer un CSV", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				
+				JFileChooser jfc = new JFileChooser();
+				
+				if(jfc.showSaveDialog((Component) e.getSource()) == JFileChooser.APPROVE_OPTION)
+				{
+					try {
+						CSVFile.writeTweetsInCSV(jfc.getSelectedFile().getAbsolutePath(), Win.this.annotatedTweets, true);
+					} catch (IOException e1) {
+						JOptionPane.showMessageDialog(Win.this, "Une erreur s'es produite lors de l'enregistrement.\nVérifiez que vous avez les droits d'écriture à l'emplacement choisi.\n\nErreur : "+e1.getLocalizedMessage(), "Erreur à l'enregistrement", JOptionPane.ERROR_MESSAGE);
+					}
+				}
+			}
+		});
+		
 		this.fileMenu.add(this.openCSVItem);
 		this.fileMenu.add(this.createCSVItem);
 		this.optionMenu = new JMenu("Options");
@@ -133,6 +162,7 @@ public class Win extends JFrame {
 						TweetUI tw = new TweetUI(status);
 						System.out.println("### Tweet from @"+status.getUser().getScreenName()+" ###\n"+status.getText()+"\n\n");
 						Win.this.tweetpanel.add(tw, BorderLayout.CENTER);
+						
 					}
 					//TweetUI tw = new TweetUI(tweets.get(0));
 					
