@@ -134,17 +134,18 @@ public class CSVFile {
 			
 			if(!text.matches("^RT "))
 			{
-				text.replaceAll("@([a-zA-Z0-9_.-])", " $1 "); // Suppression des @
-				text.replaceAll("#([a-zA-Z0-9_])", " $1 "); // Suppression des #
-				text.replaceAll("https?://[^ ,]", " "); // Suppression des liens
-				text.replaceAll(":'?[D()]", " "); // Suppression des smileys :) :( :D :') :'( :'D
-			}
+				text.replaceAll("@([a-zA-Z0-9_.-]+)", " $1 "); // Suppression des @
+				text.replaceAll("#([a-zA-Z0-9_]+)", " $1 "); // Suppression des #
+				text.replaceAll("https?://[^ ,]+", " "); // Suppression des liens
+				text.replaceAll(":\\'?[D()]", " "); // Suppression des smileys :) :( :D :') :'( :'D
+				text.replaceAll(",", "[[[VIRGULE__HERE]]]"); // La virgule étant un caractère de séparation, on le replace par un marqueur.
 			
-			// Si le message se retrouve vide, on ne le met pas dans la hashmap à retourner
-			if(!text.replace(" ", "").equals(""))
-			{
-				tweet.setText(text);
-				newHashTweets.add(tweet);
+				// Si le message se retrouve vide, on ne le met pas dans la hashmap à retourner
+				if(!text.replaceAll(" ", "").equals(""))
+				{
+					tweet.setText(text);
+					newHashTweets.add(tweet);
+				}
 			}
 		}
 		
