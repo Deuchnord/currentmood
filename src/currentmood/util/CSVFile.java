@@ -138,10 +138,10 @@ public class CSVFile {
 			{
 				text = text.replaceAll("@([a-zA-Z0-9_.-]+)", " @ "); // Suppression des usernames
 				text = text.replaceAll("#([a-zA-Z0-9_]+)", " # "); // Suppression des hashtags
-				text = text.replaceAll(" [?!,.:;\"] ?", "$1 "); // Suppression des espaces avant la ponctution & le guillemet
-				text = text.replaceAll("[$€£]([0-9.]+)", "\\$XX"); // Suppression des $, des € et des £
+				text = text.replaceAll("( )*([?!,.:;\"])( )?", "$2 "); // Suppression des espaces avant la ponctuation & le guillemet
+				text = text.replaceAll("[$€£]([0-9.]+)(\\.)?", "\\$XX$2"); // Suppression des $, des € et des £
 				text = text.replaceAll("([0-9.]+)[$€£]", "\\$XX"); // Suppression des $, des € et des £
-				text = text.replaceAll("[0-9]{1,2}%", "XX%");
+				text = text.replaceAll("[0-9]{1,3}%", "XX%");
 				text = text.replaceAll("https?://[^ ,]+", " "); // Suppression des liens
 				text = text.replaceAll(":\\'?[D()]", " "); // Suppression des smileys :) :( :D :') :'( :'D
 				text = text.replaceAll(",", "[[[VIRGULE__HERE]]]"); // La virgule étant un caractère de séparation, on le replace par un marqueur.
