@@ -10,6 +10,10 @@ import twitter4j.TwitterFactory;
 import twitter4j.auth.AccessToken;
 import twitter4j.conf.ConfigurationBuilder;
 
+/**
+ * This class is an interface between Twitter4J and #Currentmood.
+ * It provides methods to make it easier to communicate with Twitter.
+ */
 public class CMTwitter {
 
 	protected boolean authentified;
@@ -26,6 +30,10 @@ public class CMTwitter {
 		reset();
 	}
 	
+	/**
+	 * Regenerates the object before making a new query.
+	 * This method is called automatically.
+	 */
 	protected void reset()
 	{
 		this.authentified = false;
@@ -41,6 +49,10 @@ public class CMTwitter {
 			setProxy(proxy);
 	}
 	
+	/**
+	 * Gives the proxy settings to Twitter4J.
+	 * @param proxy a <code>Proxy</code> object containing the setting.
+	 */
 	public void setProxy(Proxy proxy)
 	{
 		if(authentified)
@@ -52,6 +64,9 @@ public class CMTwitter {
 		this.proxy = proxy;
 	}
 	
+	/**
+	 * Connects to Twitter. This must be done before each query.
+	 */
 	public void connect()
 	{
 		if(authentified)
@@ -61,12 +76,6 @@ public class CMTwitter {
 		twitterClient = twitterFactory.getInstance();
 		
 		authentified = true;
-	}
-	
-	protected void storeAccessToken(long token, AccessToken accessToken)
-	{
-		this.token = accessToken.getToken();
-		this.tokenSecret = accessToken.getTokenSecret();
 	}
 	
 	public List<Status> searchTweets(String keywords) throws TwitterException, NotConnectedException
