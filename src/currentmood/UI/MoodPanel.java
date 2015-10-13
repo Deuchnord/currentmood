@@ -179,7 +179,10 @@ public class MoodPanel extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				if(MoodPanel.this.tweet!=null)
+						MoodPanel.this.addAnnotedTweet(MoodPanel.this.tweet);
+				else if(MoodPanel.this.status!=null)
+					MoodPanel.this.addAnnotedTweet(MoodPanel.this.status);
 				
 			}
 		};
@@ -188,7 +191,7 @@ public class MoodPanel extends JPanel {
 	public void disappeared()
 	{
 		this.lIdTweet.setText("");
-		//this.JRBad.setVisible(false);
+		this.JRBad.setVisible(false);
 		this.JRNeutral.setVisible(false);
 		this.JRGood.setVisible(false);
 		this.buttonPanel.setVisible(false);
@@ -197,7 +200,35 @@ public class MoodPanel extends JPanel {
 	
 	private void annote()
 	{
-		 //((Win) SwingUtilities.getRoot(this)).annotatedTweets.put(key, value);
+		 
 	}
+	
+	/**
+	 * @return La valeur numérique de l'humeur sélectionnée (-1 si rien)
+	 */
+	private int getFeelValue()
+	{
+		if(this.JRBad.isSelected())
+			return 0;
+		else if(this.JRNeutral.isSelected())
+			return 2;
+		else if(this.JRGood.isSelected())
+			return 4;
+		return -1;
+	}
+	
+	private void addAnnotedTweet(Status status)
+	{
+		Tweet tweet = new Tweet(status.getId(), status.getUser().getName(), status.getText(), status.getCreatedAt() ,status.getSource(), this.getFeelValue());
+		((Win) SwingUtilities.getRoot(this)).annotatedTweets.add(tweet);
+	}
+	
+	private void addAnnotedTweet(Tweet tw)
+	{
+		Tweet tweet = new Tweet(tw.getId(), tw.getUser(), tw.getText(), tw.getCreatedAt() ,tw.getQuery(), this.getFeelValue());
+		((Win) SwingUtilities.getRoot(this)).annotatedTweets.remove(tw);
+		((Win) SwingUtilities.getRoot(this)).annotatedTweets.add(tweet);
+	}
+
 
 }
