@@ -9,6 +9,20 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class contains all the functions to create a CSV file (*.csv).
+ * A CSV file contains a table with a set of values separated by a comma per line.
+ * 
+ * A tweet in the CSV file is represented by its id, author's nickname, content, timestamp,
+ * the query associated and its annotation.
+ * It is formated as this:
+ * <code>156156048640,potus,Vote for me!,1444567840,obama,2</code>
+ * 
+ * For memory, these values are used for the humor of the tweet:
+ * 		0: bad		
+ * 		2: neutral
+ * 		4: good
+ */
 public class CSVFile {
 	
 	/**

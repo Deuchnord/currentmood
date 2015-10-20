@@ -1,0 +1,10 @@
+Tweets à étiqueter :
+
+[A] : Fatigué de travailler, super les vacances arrivent à point !
+
+t1 : Grève chez Air France, les vacances commencent mal...
+t2 : Direction soleil pour les vacances, super !
+t3 : Je vais devoir travailler pendant les vacances pour rattraper mon retard en PJE
+
+1) Classer à la main t1 à t3.
+2) Utiliser KNN pour étiqueter le tweet [A] avec la méthode du 1 plus proche voisin
