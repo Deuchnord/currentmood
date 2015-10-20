@@ -2,32 +2,34 @@ package currentmood.util;
 
 import java.util.Date;
 
+import twitter4j.Status;
+
 public class Tweet {
 	
-	private static final long serialVersionUID = 612840971502887287L;
 	protected long id;
 	protected String user;
 	protected String text, query;
 	protected Date createdAt;
-	protected int value;
+	protected int annotation;
 
-	public Tweet(long id, String user, String text, Date createdAt, String query, int value)
+	public Tweet(long id, String user, String text, Date createdAt, String query, int annotation)
 	{
 		this.id = id;
 		this.user = user;
 		this.text = text;
 		this.createdAt = createdAt;
 		this.query = query;
-		this.value = value;
+		this.annotation = annotation;
 	}
 	
 	public Tweet(long id, String user, String text, Date createdAt, String query)
 	{
 		this(id,user,text,createdAt,query,-1);
 	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	
+	public Tweet(Status status, String query)
+	{
+		this(status.getId(), status.getUser().getName(), status.getText(), status.getCreatedAt(), query, -1);
 	}
 
 	public long getId() {
@@ -56,12 +58,12 @@ public class Tweet {
 	
 	public int getValue()
 	{
-		return this.value;
+		return this.annotation;
 	}
 	
 	public void setValue(int newValue)
 	{
-		this.value=newValue;
+		this.annotation=newValue;
 	}
 	
 	@Override

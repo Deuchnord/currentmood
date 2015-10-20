@@ -56,7 +56,7 @@ public class Win extends JFrame {
 	protected JScrollPane scrollTweetPanel;
 	protected JLabel lInfo, lInfoNb, lInfoTimeReload, lInfoTimeReloadNb;
 	protected JRadioButton JRNone, JRNeutral, JRBad, JRGood;
-	
+	protected String lastSearch;
 	
 	public Win()
 	{
@@ -153,13 +153,15 @@ public class Win extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				Win.this.lastSearch = Win.this.search.getText();
+				
 				try{
 					Win.this.cmTwitter.connect();
-					List<Status> tweets = Win.this.cmTwitter.searchTweets(Win.this.search.getText());
+					List<Status> tweets = Win.this.cmTwitter.searchTweets(Win.this.lastSearch);
 					Win.this.refreshLimit(Win.this.cmTwitter.getRateLimit());
 					for(Status status : tweets)
 					{
-						TweetUI tw = new TweetUI(status);
+						TweetUI tw = new TweetUI(status, Win.this.lastSearch);
 						System.out.println("### Tweet from @"+status.getUser().getScreenName()+" ###\n"+status.getText()+"\n\n");
 						Win.this.tweetpanel.add(tw, BorderLayout.CENTER);
 						

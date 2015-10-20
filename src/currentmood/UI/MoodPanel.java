@@ -6,7 +6,6 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -178,10 +177,7 @@ public class MoodPanel extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(MoodPanel.this.tweet!=null)
-						MoodPanel.this.addAnnotedTweet(MoodPanel.this.tweet);
-				else if(MoodPanel.this.status!=null)
-					MoodPanel.this.addAnnotedTweet(MoodPanel.this.status);
+				MoodPanel.this.addAnnotedTweet(MoodPanel.this.tweet);
 				
 			}
 		};
@@ -214,12 +210,6 @@ public class MoodPanel extends JPanel {
 		else if(this.JRGood.isSelected())
 			return 4;
 		return -1;
-	}
-	
-	private void addAnnotedTweet(Status status)
-	{
-		Tweet tweet = new Tweet(status.getId(), status.getUser().getName(), status.getText(), status.getCreatedAt() ,status.getSource(), this.getFeelValue());
-		((Win) SwingUtilities.getRoot(this)).annotatedTweets.add(tweet);
 	}
 	
 	private void addAnnotedTweet(Tweet tw)
