@@ -24,8 +24,6 @@ import java.util.List;
  * 		<li>2: neutral</li>
  * 		<li>4: good</li>
  * </ul>
- * 
- * <p>Nota: the commas contained in the tweet are replaced by <code>[[[VIRGULE__HERE]]]</code>.</p>
  */
 public class CSVFile {
 	
@@ -156,7 +154,7 @@ public class CSVFile {
 			{
 				text = text.replaceAll("@([a-zA-Z0-9_.-]+)", " @ "); // Suppression des usernames
 				text = text.replaceAll("#([a-zA-Z0-9_]+)", " # "); // Suppression des hashtags
-				text = text.replaceAll("( )*([?!,.:;\"])( )?", "$2 "); // Suppression des espaces avant la ponctuation & le guillemet
+				text = text.replaceAll("( )*([?!,.:;\"])( )?", " "); // Suppression des espaces avant la ponctuation & le guillemet
 				text = text.replaceAll("[$€£]([0-9.]+)(\\.)?", "\\$XX$2"); // Suppression des $, des € et des £
 				text = text.replaceAll("([0-9.]+)[$€£]", "\\$XX"); // Suppression des $, des € et des £
 				text = text.replaceAll("[0-9]{1,3}%", "XX%");
