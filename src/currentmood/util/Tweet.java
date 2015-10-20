@@ -11,6 +11,8 @@ public class Tweet {
 	protected String text, query;
 	protected Date createdAt;
 	protected int annotation;
+	
+	public static final int BAD = 0, NEUTRAL = 2, GOOD = 4;
 
 	public Tweet(long id, String user, String text, Date createdAt, String query, int annotation)
 	{
@@ -72,6 +74,24 @@ public class Tweet {
 		Tweet t = (Tweet) o;
 		
 		return (t.getId() == this.id || t.getUser().equals(user) && t.getText().equals(text));
+	}
+
+	public String getAnnotation(boolean human) {
+		String s = "Indéfini";
+		
+		switch (annotation) {
+		case 0:
+			s = "Mauvais";
+			break;
+		case 4:
+			s = "Bon";
+			break;
+		case 2:
+			s = "Neutre";
+			break;
+		}
+		
+		return s;
 	}
 
 }

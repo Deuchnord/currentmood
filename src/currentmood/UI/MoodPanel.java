@@ -2,6 +2,7 @@ package currentmood.UI;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
@@ -14,11 +15,13 @@ import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.SwingUtilities;
 
 import currentmood.util.Tweet;
+import currentmood.util.classifier.Classification;
 
 import twitter4j.Status;
 
@@ -32,9 +35,9 @@ public class MoodPanel extends JPanel {
 	protected JLabel lIdTweet;
 	protected ButtonGroup moodGroup;
 	protected JRadioButton JRNone, JRNeutral, JRBad, JRGood;
-	protected JButton btnAddToList, MPClose;
+	protected JButton btnAddToList, MPClose, KNNButton;
 	protected JPanel buttonPanel, choicePanel, statPanel; 
-	protected ActionListener CancelAction, OKAction;
+	protected ActionListener CancelAction, OKAction, KNNAction;
 	
 	public MoodPanel(){
 		super();
@@ -114,6 +117,8 @@ public class MoodPanel extends JPanel {
 		this.btnAddToList.addActionListener(OKAction);
 		this.MPClose= new JButton("Fermer");
 		this.MPClose.addActionListener(CancelAction);
+		this.KNNButton = new JButton("Utiliser K-NN");
+		this.KNNButton.addActionListener(KNNAction);
 		this.buttonPanel.add(btnAddToList);
 		this.buttonPanel.add(MPClose);
 		this.buttonPanel.setVisible(false);
@@ -130,6 +135,7 @@ public class MoodPanel extends JPanel {
 		c.weightx=0.0;
 		c.gridwidth=3;
 		c.insets = new Insets(-150,0,0,0);
+		this.choicePanel.add(KNNButton);
 		this.choicePanel.add(buttonPanel,c);
 		this.add(choicePanel,BorderLayout.NORTH);
 		this.add(statPanel,BorderLayout.SOUTH);
@@ -181,6 +187,17 @@ public class MoodPanel extends JPanel {
 				
 			}
 		};
+		
+		this.KNNAction = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				MoodPanel.this.tweet= Classification.knnTweet(MoodPanel.this.displayK(), MoodPanel.this.tweet, MoodPanel.this.mainWindow().annotatedTweets );
+				MoodPanel.this.addAnnotedTweet(MoodPanel.this.tweet);
+				JOptionPane.showMessageDialog(MoodPanel.this,"Le tweet a été annoté : "+tweet.getAnnotation(true));
+				
+			}
+		};
 	}
 	
 	public void disappeared()
@@ -215,8 +232,20 @@ public class MoodPanel extends JPanel {
 	private void addAnnotedTweet(Tweet tw)
 	{
 		Tweet tweet = new Tweet(tw.getId(), tw.getUser(), tw.getText(), tw.getCreatedAt() ,tw.getQuery(), this.getFeelValue());
-		((Win) SwingUtilities.getRoot(this)).annotatedTweets.remove(tw);
-		((Win) SwingUtilities.getRoot(this)).annotatedTweets.add(tweet);
+		mainWindow().annotatedTweets.remove(tw);
+		mainWindow().annotatedTweets.add(tweet);
+	}
+	
+	private int displayK()
+	{
+		JOptionPane jop = new JOptionPane();
+		String choix = jop.showInputDialog(this, "Indiquez un nombre de plus proches voisins :", "Choix du nombre des plus proches voisins", JOptionPane.QUESTION_MESSAGE);
+		return Integer.parseInt(choix);
+	}
+	
+	private Win mainWindow()
+	{
+		return (Win) (SwingUtilities.getRoot(this));
 	}
 
 
