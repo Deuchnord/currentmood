@@ -10,18 +10,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class contains all the functions to create a CSV file (*.csv).
- * A CSV file contains a table with a set of values separated by a comma per line.
+ * <p>This class contains all the functions to create a CSV file (*.csv).
+ * A CSV file contains a table with a set of values separated by a comma per line.</p>
  * 
- * A tweet in the CSV file is represented by its id, author's nickname, content, timestamp,
- * the query associated and its annotation.
- * It is formated as this:
+ * <p>A tweet in the CSV file is represented by its id, author's nickname, content, timestamp,
+ * the query associated and its annotation.<br />
+ * It is formated as this:</p>
  * <code>156156048640,potus,Vote for me!,1444567840,obama,2</code>
  * 
- * For memory, these values are used for the humor of the tweet:
- * 		0: bad		
- * 		2: neutral
- * 		4: good
+ * <p>For memory, these values are used for the humor of the tweet:</p>
+ * <ul>		
+ * 		<li>0: bad</li>		
+ * 		<li>2: neutral</li>
+ * 		<li>4: good</li>
+ * </ul>
+ * 
+ * <p>Nota: the commas contained in the tweet are replaced by <code>[[[VIRGULE__HERE]]]</code>.</p>
  */
 public class CSVFile {
 	

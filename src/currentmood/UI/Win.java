@@ -1,20 +1,15 @@
 package currentmood.UI;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -36,7 +31,6 @@ import twitter4j.TwitterException;
 import currentmood.util.CMTwitter;
 import currentmood.util.CSVFile;
 import currentmood.util.NotConnectedException;
-import currentmood.util.Proxy;
 import currentmood.util.Tweet;
 
 public class Win extends JFrame {
