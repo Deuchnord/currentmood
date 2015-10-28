@@ -38,11 +38,11 @@ public class Classification {
 		return s;
 	}
 	
-	public static Tweet knnTweet(int k, Tweet tweetAAnnonter, List<Tweet> tweetsAComparer)
+	public static Tweet knnTweet(int k, Tweet tweetAAnnonter, List<Tweet> tweetsAComparer) throws OutOfBoundsException
 	{
 		float tempScore = 1.0f;
 		Tweet tempTweet = null;
-		if(k ==1)
+		if(k == 1)
 		{
 			for(Tweet tweetAComparer : tweetsAComparer )
 			{
@@ -68,6 +68,14 @@ public class Classification {
 			
 			tempTweet = annotateTweet(tweetAAnnonter, compteurBon, compteurMauvais, compteurNeutre);
 		}
+		
+		else if(k < tweetsAComparer.size())
+		{
+			
+		}
+		
+		else
+			throw new OutOfBoundsException();
 		
 		return tempTweet;
 	}
