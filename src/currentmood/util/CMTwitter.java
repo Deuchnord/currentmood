@@ -78,14 +78,22 @@ public class CMTwitter {
 		authentified = true;
 	}
 	
-	public List<Status> searchTweets(String keywords) throws TwitterException, NotConnectedException
+	public List<Status> searchTweets(String keywords, String lang) throws TwitterException, NotConnectedException
 	{
 		if(!authentified)
 			throw new NotConnectedException();
 		
 		Query query = new Query(keywords);
+		query.lang(lang);
+		query.count(100);
+		
 		
 		return twitterClient.search(query).getTweets();
+	}
+	
+	public List<Status> searchTweets(String keywords) throws TwitterException, NotConnectedException
+	{
+		return searchTweets(keywords, "fr");
 	}
 	
 	public RateLimitStatus getRateLimit() throws TwitterException
