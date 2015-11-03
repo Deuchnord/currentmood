@@ -5,7 +5,7 @@ import java.util.List;
 
 import currentmood.util.Tweet;
 
-public class Classification {
+public class ClassificationKNN {
 	
 	public static float distanceTweet(Tweet t1, Tweet t2)
 	{
