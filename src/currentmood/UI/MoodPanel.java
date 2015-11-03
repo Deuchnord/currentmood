@@ -21,7 +21,8 @@ import javax.swing.JRadioButton;
 import javax.swing.SwingUtilities;
 
 import currentmood.util.Tweet;
-import currentmood.util.classifier.Classification;
+import currentmood.util.classifier.ClassificationKNN;
+import currentmood.util.classifier.OutOfBoundsException;
 
 import twitter4j.Status;
 
@@ -192,7 +193,12 @@ public class MoodPanel extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MoodPanel.this.tweet= Classification.knnTweet(MoodPanel.this.displayK(), MoodPanel.this.tweet, MoodPanel.this.mainWindow().annotatedTweets );
+				try {
+					MoodPanel.this.tweet= ClassificationKNN.knnTweet(MoodPanel.this.displayK(), MoodPanel.this.tweet, MoodPanel.this.mainWindow().annotatedTweets );
+				} catch (OutOfBoundsException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				MoodPanel.this.addAnnotedTweet(MoodPanel.this.tweet);
 				JOptionPane.showMessageDialog(MoodPanel.this,"Le tweet a été annoté : "+tweet.getAnnotation(true));
 				
