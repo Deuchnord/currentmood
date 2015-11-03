@@ -188,6 +188,7 @@ public class Win extends JFrame {
 		//this.tweetpanel.setBackground(new Color(0, 0, 255));
 		this.tweetpanel.setLayout(new BoxLayout(this.tweetpanel, BoxLayout.Y_AXIS));
 		this.scrollTweetPanel=new JScrollPane(this.tweetpanel);
+		this.scrollTweetPanel.getVerticalScrollBar().setUnitIncrement(20);
 		this.lInfo = new JLabel("Nombre de requêtes possible : ");
 		this.lInfoNb = new JLabel("___");
 		this.lInfoTimeReload = new JLabel("Rechargement dans : ");
