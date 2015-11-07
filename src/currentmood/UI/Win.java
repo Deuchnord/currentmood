@@ -219,6 +219,7 @@ public class Win extends JFrame {
 		{
 			this.tweetpanel.add(new TweetUI(tweet),BorderLayout.CENTER);
 		}
+		this.validate();
 	}
 
 }
