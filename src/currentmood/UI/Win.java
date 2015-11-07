@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -32,6 +33,7 @@ import currentmood.util.CMTwitter;
 import currentmood.util.CSVFile;
 import currentmood.util.NotConnectedException;
 import currentmood.util.Tweet;
+import currentmood.util.classifier.ClassificationBaysienne;
 
 public class Win extends JFrame {
 	
@@ -220,6 +222,16 @@ public class Win extends JFrame {
 			this.tweetpanel.add(new TweetUI(tweet),BorderLayout.CENTER);
 		}
 		this.validate();
+		HashMap[] test= ClassificationBaysienne.getnDeCs(this.annotatedTweets);
+		int[] testt = ClassificationBaysienne.getnbMotClasse(this.annotatedTweets);
+		System.out.println("mauvais : " +test[0].size());
+		System.out.println("neutre : " +test[1].size());
+		System.out.println("bon : " +test[2].size());
+		
+		System.out.println("mauvais : " +testt[0]);
+		System.out.println("neutre : " +testt[1]);
+		System.out.println("bon : " +testt[2]);
+		
 	}
 
 }
