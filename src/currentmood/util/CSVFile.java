@@ -95,7 +95,7 @@ public class CSVFile {
 		
 		for(List<String> line : csvContent)
 		{
-			Tweet tweet = new Tweet(new Long(line.get(0)), line.get(1), line.get(2), new Date(new Long(line.get(3))), line.get(4));
+			Tweet tweet = new Tweet(new Long(line.get(0)), line.get(1), line.get(2).replace("\n", " "), new Date(new Long(line.get(3))), line.get(4));
 			
 			Integer notation;
 			// If there is a notation, we give it to the HashMap,
