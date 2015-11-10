@@ -24,7 +24,7 @@ public class WinProxy extends JFrame {
 	JLabel lIP, lPort, lUser, lPassword;
 	JPanel panel, panelForButton;
 	JTextField tfProxy, tfPort, tfUser, tfPassword;
-	JButton bOK, bCancel;
+	JButton bOK, bCancel, bSetProxyUnivLille1;
 	JCheckBox bUseProxy;
 	Proxy proxySetting;
 	Win winMother;
@@ -71,6 +71,19 @@ public class WinProxy extends JFrame {
 				
 			}
 		});
+		
+		this.bSetProxyUnivLille1 = new JButton("Univ Lille 1");
+		this.bSetProxyUnivLille1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				WinProxy.this.tfProxy.setText("cache-etu.univ-lille1.fr");
+				WinProxy.this.tfPort.setText("3128");
+				if(!WinProxy.this.bUseProxy.isSelected())
+					WinProxy.this.bUseProxy.doClick();
+			}
+		});
+		
 		this.bUseProxy= new JCheckBox("Utiliser un serveur proxy");
 		this.bUseProxy.addActionListener(new ActionListener() {
 			
@@ -91,6 +104,7 @@ public class WinProxy extends JFrame {
 		this.panel.add(bUseProxy);
 		this.panelForButton.add(bOK);
 		this.panelForButton.add(bCancel);
+		this.panelForButton.add(bSetProxyUnivLille1);
 		this.add(this.panelForButton,BorderLayout.SOUTH);
 		
 		this.add(this.panel, BorderLayout.CENTER);
