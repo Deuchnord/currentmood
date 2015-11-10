@@ -28,7 +28,7 @@ public class ClassificationBaysienne
 		listeRatioClasse[1] = nbNeutre/database.size();
 		listeRatioClasse[2] = nbBon/database.size();
 		
-		System.out.println("getRatioClasse : NEGATIVE = " + listeRatioClasse[0] + " ; NEUTRAL = " + listeRatioClasse[1] + " ; POSITIVE = " + listeRatioClasse[3]);
+		System.out.println("getRatioClasse : NEGATIVE = " + listeRatioClasse[0] + " ; NEUTRAL = " + listeRatioClasse[1] + " ; POSITIVE = " + listeRatioClasse[2]);
 		
 		return listeRatioClasse;
 		
@@ -90,7 +90,7 @@ public class ClassificationBaysienne
 			
 		}
 		
-		System.out.println("getnDeCs : NEGATIVE = " + nbTotaloccurencedeMotsParClasse[0] + " ; NEUTRAL = " + nbTotaloccurencedeMotsParClasse[1] + " ; POSITIVE = " + nbTotaloccurencedeMotsParClasse[3]);
+		System.out.println("getnDeCs : NEGATIVE = " + nbTotaloccurencedeMotsParClasse[0] + " ; NEUTRAL = " + nbTotaloccurencedeMotsParClasse[1] + " ; POSITIVE = " + nbTotaloccurencedeMotsParClasse[2]);
 		
 		return nbTotaloccurencedeMotsParClasse;
 	}
@@ -101,7 +101,7 @@ public class ClassificationBaysienne
 	
 		int[] tabNbMotsClasse = {nDeCs[0].size(), nDeCs[1].size(), nDeCs[2].size()};
 		
-		System.out.println("getnbMotClasse : NEGATIVE = " + tabNbMotsClasse[0] + " ; NEUTRAL = " + tabNbMotsClasse[1] + " ; POSITIVE = " + tabNbMotsClasse[3]);
+		System.out.println("getnbMotClasse : NEGATIVE = " + tabNbMotsClasse[0] + " ; NEUTRAL = " + tabNbMotsClasse[1] + " ; POSITIVE = " + tabNbMotsClasse[2]);
 		
 		return tabNbMotsClasse;
 	}
