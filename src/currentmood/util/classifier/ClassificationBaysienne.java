@@ -88,24 +88,10 @@ public class ClassificationBaysienne
 	
 	public static int[] getnbMotClasse(List<Tweet> database)
 	{
-		int[] tabNbMotsClasse =new int[3];
-		int valuetweet;
-		int indiceclass=0;
-		for(Tweet tw : database)
-		{
-			valuetweet = tw.getValue();
-			String[] mots = tw.getText().split(" ");
-			if(valuetweet==Tweet.BAD)
-				indiceclass=0;
-			else if(valuetweet==Tweet.NEUTRAL)
-				indiceclass=1;
-			else if(valuetweet==Tweet.GOOD)
-				indiceclass=2;
-			for(int i=0; i<mots.length; i++)
-			{
-				tabNbMotsClasse[indiceclass]++;
-			}
-		}
+		HashMap<String, Integer>[] nDeCs = getnDeCs(database);
+	
+		int[] tabNbMotsClasse = {nDeCs[0].size(), nDeCs[1].size(), nDeCs[2].size()};
+		
 		return tabNbMotsClasse;
 		
 	}
