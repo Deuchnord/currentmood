@@ -10,6 +10,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
@@ -21,6 +22,7 @@ import javax.swing.JRadioButton;
 import javax.swing.SwingUtilities;
 
 import currentmood.util.Tweet;
+import currentmood.util.classifier.ClassificationBaysienne;
 import currentmood.util.classifier.ClassificationKNN;
 import currentmood.util.classifier.OutOfBoundsException;
 
@@ -36,9 +38,9 @@ public class MoodPanel extends JPanel {
 	protected JLabel lIdTweet;
 	protected ButtonGroup moodGroup;
 	protected JRadioButton JRNone, JRNeutral, JRBad, JRGood;
-	protected JButton btnAddToList, MPClose, KNNButton;
+	protected JButton btnAddToList, MPClose, KNNButton, BayesButton;
 	protected JPanel buttonPanel, choicePanel, statPanel; 
-	protected ActionListener CancelAction, OKAction, KNNAction;
+	protected ActionListener CancelAction, OKAction, KNNAction, BayesAction;
 	
 	public MoodPanel(){
 		super();
@@ -120,6 +122,8 @@ public class MoodPanel extends JPanel {
 		this.MPClose.addActionListener(CancelAction);
 		this.KNNButton = new JButton("Utiliser K-NN");
 		this.KNNButton.addActionListener(KNNAction);
+		this.BayesButton = new JButton("Utiliser Bayes");
+		this.BayesButton.addActionListener(BayesAction);
 		this.buttonPanel.add(btnAddToList);
 		this.buttonPanel.add(MPClose);
 		this.buttonPanel.setVisible(false);
@@ -137,6 +141,7 @@ public class MoodPanel extends JPanel {
 		c.gridwidth=3;
 		c.insets = new Insets(-150,0,0,0);
 		this.choicePanel.add(KNNButton);
+		this.choicePanel.add(BayesButton);
 		this.choicePanel.add(buttonPanel,c);
 		this.add(choicePanel,BorderLayout.NORTH);
 		this.add(statPanel,BorderLayout.SOUTH);
@@ -199,6 +204,18 @@ public class MoodPanel extends JPanel {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				MoodPanel.this.addAnnotedTweet(MoodPanel.this.tweet);
+				JOptionPane.showMessageDialog(MoodPanel.this,"Le tweet a été annoté : "+tweet.getAnnotation(true));
+				
+			}
+		};
+		
+		this.BayesAction = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				List<Tweet> listTweet= MoodPanel.this.mainWindow().annotatedTweets;
+				MoodPanel.this.tweet.setValue(ClassificationBaysienne.evaluateTweet(MoodPanel.this.tweet,listTweet));
 				MoodPanel.this.addAnnotedTweet(MoodPanel.this.tweet);
 				JOptionPane.showMessageDialog(MoodPanel.this,"Le tweet a été annoté : "+tweet.getAnnotation(true));
 				
