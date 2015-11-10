@@ -27,6 +27,9 @@ public class ClassificationBaysienne
 		listeRatioClasse[0] = nbNegatif/database.size();
 		listeRatioClasse[1] = nbNeutre/database.size();
 		listeRatioClasse[2] = nbBon/database.size();
+		
+		System.out.println("getRatioClasse : NEGATIVE = " + listeRatioClasse[0] + " ; NEUTRAL = " + listeRatioClasse[1] + " ; POSITIVE = " + listeRatioClasse[3]);
+		
 		return listeRatioClasse;
 		
 	}
@@ -42,7 +45,10 @@ public class ClassificationBaysienne
 		{
 			String[] words = tw.getText().split(" ");
 			laplaceEstimateur= laplaceEstimateur+words.length;
-		}	
+		}
+		
+		System.out.println("getEstimateurLaplace : " + laplaceEstimateur);
+		
 		return laplaceEstimateur;
 		
 	}
@@ -83,6 +89,9 @@ public class ClassificationBaysienne
 			
 			
 		}
+		
+		System.out.println("getnDeCs : NEGATIVE = " + nbTotaloccurencedeMotsParClasse[0] + " ; NEUTRAL = " + nbTotaloccurencedeMotsParClasse[1] + " ; POSITIVE = " + nbTotaloccurencedeMotsParClasse[3]);
+		
 		return nbTotaloccurencedeMotsParClasse;
 	}
 	
@@ -92,8 +101,9 @@ public class ClassificationBaysienne
 	
 		int[] tabNbMotsClasse = {nDeCs[0].size(), nDeCs[1].size(), nDeCs[2].size()};
 		
-		return tabNbMotsClasse;
+		System.out.println("getnbMotClasse : NEGATIVE = " + tabNbMotsClasse[0] + " ; NEUTRAL = " + tabNbMotsClasse[1] + " ; POSITIVE = " + tabNbMotsClasse[3]);
 		
+		return tabNbMotsClasse;
 	}
 	
 	public static double mSachantc(String mot,List<Tweet> database, int classe)
@@ -111,6 +121,9 @@ public class ClassificationBaysienne
 			numérateur = occurences.get(mot);
 		}
 		double res = (numérateur+1)/(nbmotsclassec+laplace);
+		
+		System.out.println("mSachantc : " + res);
+		
 		return res;
 
 	}
@@ -120,10 +133,14 @@ public class ClassificationBaysienne
 		double res = 1.0;
 		double ratioclasse = getRatioClasse(database)[classe];
 		String[] mots = tw.getText().split(" ");
+		
 		for(int i=0; i<mots.length;i++)
 		{
-			res = res*(ClassificationBaysienne.mSachantc(mots[i], database, classe)*ratioclasse);
+			res = res * (mSachantc(mots[i], database, classe) * ratioclasse);
 		}
+		
+		System.out.println("classeSachantTweet : " + res);
+		
 		return res;
 		
 	}
@@ -151,6 +168,9 @@ public class ClassificationBaysienne
 		{
 			res= Tweet.GOOD;
 		}
+		
+		System.out.println("evaluateTweet : " + res);
+		
 		return res;
 		
 		
