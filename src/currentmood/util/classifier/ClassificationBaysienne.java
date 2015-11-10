@@ -13,15 +13,24 @@ public class ClassificationBaysienne
 	 */
 	public static double[] getRatioClasse(List<Tweet> database)
 	{
-		int nbNegatif =0, nbNeutre=0, nbBon=0;
+		double nbNegatif = 0.0, nbNeutre = 0.0, nbBon = 0.0;
 		for(Tweet tw: database)
 		{
 			if(tw.getValue()==Tweet.BAD)
+			{
+				System.out.println("BAD");
 				nbNegatif++;
+			}
 			else if(tw.getValue()==Tweet.NEUTRAL)
+			{
+				System.out.println("NEU");
 				nbNeutre++;
+			}
 			else
+			{
+				System.out.println("GOO");
 				nbBon++;
+			}
 		}
 		double[] listeRatioClasse = new double[3];
 		listeRatioClasse[0] = nbNegatif/database.size();
@@ -90,7 +99,7 @@ public class ClassificationBaysienne
 			
 		}
 		
-		System.out.println("getnDeCs : NEGATIVE = " + nbTotaloccurencedeMotsParClasse[0] + " ; NEUTRAL = " + nbTotaloccurencedeMotsParClasse[1] + " ; POSITIVE = " + nbTotaloccurencedeMotsParClasse[2]);
+		//System.out.println("getnDeCs : NEGATIVE = " + nbTotaloccurencedeMotsParClasse[0] + " ; NEUTRAL = " + nbTotaloccurencedeMotsParClasse[1] + " ; POSITIVE = " + nbTotaloccurencedeMotsParClasse[2]);
 		
 		return nbTotaloccurencedeMotsParClasse;
 	}
@@ -101,7 +110,7 @@ public class ClassificationBaysienne
 	
 		int[] tabNbMotsClasse = {nDeCs[0].size(), nDeCs[1].size(), nDeCs[2].size()};
 		
-		System.out.println("getnbMotClasse : NEGATIVE = " + tabNbMotsClasse[0] + " ; NEUTRAL = " + tabNbMotsClasse[1] + " ; POSITIVE = " + tabNbMotsClasse[2]);
+		//System.out.println("getnbMotClasse : NEGATIVE = " + tabNbMotsClasse[0] + " ; NEUTRAL = " + tabNbMotsClasse[1] + " ; POSITIVE = " + tabNbMotsClasse[2]);
 		
 		return tabNbMotsClasse;
 	}
@@ -120,9 +129,13 @@ public class ClassificationBaysienne
 		{
 			numérateur = occurences.get(mot);
 		}
-		double res = (numérateur+1)/(nbmotsclassec+laplace);
+		double res = (numérateur+1.0)/(nbmotsclassec+laplace);
 		
-		System.out.println("mSachantc : " + res);
+//		System.out.println("mSachantc : " + res);
+//		System.out.println(">0 :"+(res>0));
+//		System.out.println("numérateur :"+numérateur);
+//		System.out.println("nbmotsclassec :"+nbmotsclassec);
+//		System.out.println("mot : "+mot+"---->resultat : "+res);
 		
 		return res;
 
@@ -140,6 +153,7 @@ public class ClassificationBaysienne
 		}
 		
 		System.out.println("classeSachantTweet : " + res);
+		System.out.println("Ratioclasse : "+ratioclasse);
 		
 		return res;
 		
