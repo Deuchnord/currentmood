@@ -40,10 +40,11 @@ public class Win extends JFrame {
 	private static final long serialVersionUID = -3653464037872958325L;
 
 	protected List<Tweet> annotatedTweets;
+	protected String cheminPositif, cheminNegatif;
 	
 	protected JMenuBar menu;
 	protected JMenu fileMenu, aboutMenu, optionMenu;
-	protected JMenuItem openCSVItem, createCSVItem, proxyItem ;
+	protected JMenuItem openCSVItem, createCSVItem, proxyItem,motcleItem ;
 	protected JPanel searchpanel, infopanel, tweetpanel;
 	protected MoodPanel moodPanel;
 	protected JTextField search;
@@ -116,6 +117,7 @@ public class Win extends JFrame {
 			}
 		});
 		
+		
 		this.fileMenu.add(this.openCSVItem);
 		this.fileMenu.add(this.createCSVItem);
 		this.optionMenu = new JMenu("Options");
@@ -129,6 +131,30 @@ public class Win extends JFrame {
 			}
 		});
 		this.optionMenu.add(this.proxyItem);
+		
+		this.motcleItem = new JMenuItem("Annotation mots clés");
+		this.motcleItem.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JFileChooser jfc = new JFileChooser();
+				jfc.setDialogTitle("Choisissez le fichier des mots positifs");
+				
+				if(jfc.showSaveDialog((Component) e.getSource()) == JFileChooser.APPROVE_OPTION)
+				{
+					Win.this.cheminPositif=jfc.getSelectedFile().getAbsolutePath();
+				}
+				
+				jfc.setDialogTitle("Choisissez le fichier des mots negatifs");
+				
+				if(jfc.showSaveDialog((Component) e.getSource()) == JFileChooser.APPROVE_OPTION)
+				{
+					Win.this.cheminNegatif=jfc.getSelectedFile().getAbsolutePath();
+				}
+				
+			}
+		});
+		this.optionMenu.add(motcleItem);
 		this.menu.add(optionMenu);
 		this.aboutMenu = new JMenu("A propos");
 		this.menu.add(this.aboutMenu);

@@ -24,6 +24,7 @@ import javax.swing.SwingUtilities;
 import currentmood.util.Tweet;
 import currentmood.util.classifier.ClassificationBaysienne;
 import currentmood.util.classifier.ClassificationKNN;
+import currentmood.util.classifier.ClassificationMotCle;
 import currentmood.util.classifier.OutOfBoundsException;
 
 import twitter4j.Status;
@@ -38,9 +39,9 @@ public class MoodPanel extends JPanel {
 	protected JLabel lIdTweet;
 	protected ButtonGroup moodGroup;
 	protected JRadioButton JRNone, JRNeutral, JRBad, JRGood;
-	protected JButton btnAddToList, MPClose, KNNButton, BayesButton;
+	protected JButton btnAddToList, MPClose, KNNButton, BayesButton,motscleButton;
 	protected JPanel buttonPanel, choicePanel, statPanel; 
-	protected ActionListener CancelAction, OKAction, KNNAction, BayesAction;
+	protected ActionListener CancelAction, OKAction, KNNAction, BayesAction, motclesAction;
 	
 	public MoodPanel(){
 		super();
@@ -124,6 +125,8 @@ public class MoodPanel extends JPanel {
 		this.KNNButton.addActionListener(KNNAction);
 		this.BayesButton = new JButton("Utiliser Bayes");
 		this.BayesButton.addActionListener(BayesAction);
+		this.motscleButton = new JButton("Mots-cles");
+		this.motscleButton.addActionListener(motclesAction);
 		this.buttonPanel.add(btnAddToList);
 		this.buttonPanel.add(MPClose);
 		this.buttonPanel.setVisible(false);
@@ -139,7 +142,8 @@ public class MoodPanel extends JPanel {
 		c.gridy=2;
 		c.weightx=0.0;
 		c.gridwidth=3;
-		c.insets = new Insets(-150,0,0,0);
+		c.insets = new Insets(0,0,0,0);
+		this.choicePanel.add(motscleButton);
 		this.choicePanel.add(KNNButton);
 		this.choicePanel.add(BayesButton);
 		this.choicePanel.add(buttonPanel,c);
@@ -216,6 +220,20 @@ public class MoodPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				List<Tweet> listTweet= MoodPanel.this.mainWindow().annotatedTweets;
 				MoodPanel.this.tweet.setValue(ClassificationBaysienne.evaluateTweet(MoodPanel.this.tweet,listTweet));
+				MoodPanel.this.addAnnotedTweet(MoodPanel.this.tweet);
+				JOptionPane.showMessageDialog(MoodPanel.this,"Le tweet a été annoté : "+tweet.getAnnotation(true));
+				
+			}
+		};
+		
+		this.motclesAction =new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String cp = mainWindow().cheminPositif;
+				String cn = mainWindow().cheminNegatif;
+				ClassificationMotCle classifier = new ClassificationMotCle(cp, cn);
+				MoodPanel.this.tweet = classifier.evaluateTweet(MoodPanel.this.tweet);
 				MoodPanel.this.addAnnotedTweet(MoodPanel.this.tweet);
 				JOptionPane.showMessageDialog(MoodPanel.this,"Le tweet a été annoté : "+tweet.getAnnotation(true));
 				
