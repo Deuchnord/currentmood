@@ -46,7 +46,7 @@ public class Win extends JFrame {
 	protected JMenu fileMenu, aboutMenu, optionMenu;
 	protected JMenuItem openCSVItem, createCSVItem, proxyItem,motcleItem ;
 	protected JPanel searchpanel, infopanel, tweetpanel;
-	protected MoodPanel moodPanel;
+	//protected MoodPanel moodPanel;
 	protected JTextField search;
 	protected JButton Btn_search_Ok;
 	protected CMTwitter cmTwitter;
@@ -206,7 +206,7 @@ public class Win extends JFrame {
 		this.searchpanel.add(this.Btn_search_Ok);
 		
 		this.infopanel = new JPanel();
-		this.moodPanel = new MoodPanel();
+		//this.moodPanel = new MoodPanel();
 		this.tweetpanel= new JPanel();
 		//this.infopanel.setBackground(new Color(0, 255, 0));
 		
@@ -226,7 +226,7 @@ public class Win extends JFrame {
 		this.infopanel.add(lInfoTimeReload);
 		this.infopanel.add(lInfoTimeReloadNb);
 		this.add(infopanel,BorderLayout.SOUTH);
-		this.add(moodPanel,BorderLayout.EAST);
+		///this.add(moodPanel,BorderLayout.EAST);
 		this.add(scrollTweetPanel,BorderLayout.CENTER);
 		
 		this.setVisible(true);

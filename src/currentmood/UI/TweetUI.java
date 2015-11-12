@@ -86,15 +86,23 @@ public class TweetUI extends JPanel implements ActionListener  {
 		this.motcleItem.addActionListener(motcleAction);
 		this.bayesItem = new JMenuItem("Classer avec la méthode Bayesienne");
 		this.annotealamain = new JMenu("Annoter à la main");
+		
 		this.badItem=new JMenuItem("Mauvais");
 		this.badItem.addActionListener(badAction);
+		
 		this.neutralItem= new JMenuItem("Neutre");
 		this.neutralItem.addActionListener(neutralAction);
+		
 		this.goodItem = new JMenuItem("Bon");
 		this.goodItem.addActionListener(goodAction);
+		
 		this.annotealamain.add(this.badItem);
 		this.annotealamain.add(this.neutralItem);
 		this.annotealamain.add(this.goodItem);
+		
+		this.knnItem.addActionListener(knnAction);
+		this.bayesItem.addActionListener(bayesAction);
+		
 		this.menuContextuel.add(this.idTweet);
 		this.menuContextuel.add(this.annotealamain);
 		this.menuContextuel.add(this.motcleItem);
@@ -132,7 +140,7 @@ public class TweetUI extends JPanel implements ActionListener  {
 				List<Tweet> listTweet= TweetUI.this.mainWindow().annotatedTweets;
 				TweetUI.this.tweet.setValue(ClassificationBaysienne.evaluateTweet(TweetUI.this.tweet,listTweet));
 				TweetUI.this.addAnnotedTweet(TweetUI.this.tweet);
-				JOptionPane.showMessageDialog(TweetUI.this,"Le tweet a été annoté : "+tweet.getAnnotation(true));
+				JOptionPane.showMessageDialog(TweetUI.this.mainWindow(),"Le tweet a été annoté : "+tweet.getAnnotation(true));
 				
 			}
 		};
@@ -202,7 +210,7 @@ public class TweetUI extends JPanel implements ActionListener  {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		((Win) SwingUtilities.getRoot(this)).moodPanel.setStatus(tweet);
+		//((Win) SwingUtilities.getRoot(this)).moodPanel.setStatus(tweet);
 	}
 	
 	
