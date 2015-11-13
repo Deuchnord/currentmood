@@ -219,7 +219,7 @@ public class MoodPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				List<Tweet> listTweet= MoodPanel.this.mainWindow().annotatedTweets;
-				MoodPanel.this.tweet.setValue(ClassificationBaysienne.evaluateTweet(MoodPanel.this.tweet,listTweet));
+				//MoodPanel.this.tweet.setValue(ClassificationBaysienne.evaluateTweet(MoodPanel.this.tweet,listTweet));
 				MoodPanel.this.addAnnotedTweet(MoodPanel.this.tweet);
 				JOptionPane.showMessageDialog(MoodPanel.this,"Le tweet a été annoté : "+tweet.getAnnotation(true));
 				

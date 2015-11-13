@@ -141,15 +141,31 @@ public class ClassificationBaysienne
 
 	}
 	
-	public static double classeSachantTweet(int classe, Tweet tw,List<Tweet> database)
+	public static double classeSachantTweet(int classe, Tweet tw,List<Tweet> database, Boolean frequence)
 	{
 		double res = 1.0;
 		double ratioclasse = getRatioClasse(database)[classe];
 		String[] mots = tw.getText().split(" ");
-		
-		for(int i=0; i<mots.length;i++)
+		if(!frequence)
 		{
-			res = res * (mSachantc(mots[i], database, classe) * ratioclasse);
+			for(int i=0; i<mots.length;i++)
+			{
+				res = res * (mSachantc(mots[i], database, classe) * ratioclasse);
+			}
+		}
+		
+		else
+		{
+			for(int i = 0;i<mots.length;i++)
+			{
+				double nbmot=0.0;
+				for(int j = 0; j<mots.length;j++)
+				{
+					if(mots[i].equals(mots[j]))
+						nbmot++;
+				}
+				res = res * (Math.pow(mSachantc(mots[i], database, classe),nbmot) * ratioclasse);
+			}
 		}
 		
 		System.out.println("classeSachantTweet : " + res);
@@ -159,11 +175,14 @@ public class ClassificationBaysienne
 		
 	}
 	
-	public static int evaluateTweet(Tweet tw,List<Tweet> database)
+	
+		
+	
+	public static int evaluateTweet(Tweet tw,List<Tweet> database, Boolean frequence)
 	{
-		double probabad = classeSachantTweet(0,tw,database);
-		double probaneutre = classeSachantTweet(1,tw,database);
-		double probagood=classeSachantTweet(2,tw,database);
+		double probabad = classeSachantTweet(0,tw,database,frequence);
+		double probaneutre = classeSachantTweet(1,tw,database,frequence);
+		double probagood=classeSachantTweet(2,tw,database,frequence);
 		double temp;
 		 int res;
 		

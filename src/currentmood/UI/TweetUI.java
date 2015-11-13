@@ -40,9 +40,9 @@ public class TweetUI extends JPanel implements ActionListener  {
 	protected JButton btnAnnote;
 	protected Tweet tweet;
 	protected JPopupMenu menuContextuel;
-	protected JMenu annotealamain;
-	protected JMenuItem idTweet, motcleItem, knnItem,bayesItem,badItem,neutralItem,goodItem;
-	protected ActionListener knnAction, motcleAction, bayesAction,badAction,neutralAction,goodAction;
+	protected JMenu annotealamain,bayesMenu;
+	protected JMenuItem idTweet, motcleItem, knnItem,bayesItemPresence,bayesItemFrequence,badItem,neutralItem,goodItem;
+	protected ActionListener knnAction, motcleAction, bayesActionPresence,bayesActionFrequence, badAction,neutralAction,goodAction;
 	
 	public TweetUI (Status status, String query)
 	{
@@ -84,8 +84,10 @@ public class TweetUI extends JPanel implements ActionListener  {
 		this.knnItem = new JMenuItem("Classer avec KNN");
 		this.motcleItem = new JMenuItem("Classer avec les mots-clés");
 		this.motcleItem.addActionListener(motcleAction);
-		this.bayesItem = new JMenuItem("Classer avec la méthode Bayesienne");
+		this.bayesItemPresence = new JMenuItem("Présence");
+		this.bayesItemFrequence = new JMenuItem("Fréquence");
 		this.annotealamain = new JMenu("Annoter à la main");
+		this.bayesMenu = new JMenu("Classer avec la méthode Bayésienne");
 		
 		this.badItem=new JMenuItem("Mauvais");
 		this.badItem.addActionListener(badAction);
@@ -101,13 +103,18 @@ public class TweetUI extends JPanel implements ActionListener  {
 		this.annotealamain.add(this.goodItem);
 		
 		this.knnItem.addActionListener(knnAction);
-		this.bayesItem.addActionListener(bayesAction);
+		
+		this.bayesItemPresence.addActionListener(bayesActionPresence);
+		this.bayesMenu.add(this.bayesItemPresence);
+		
+		this.bayesItemFrequence.addActionListener(bayesActionFrequence);
+		this.bayesMenu.add(this.bayesItemFrequence);
 		
 		this.menuContextuel.add(this.idTweet);
 		this.menuContextuel.add(this.annotealamain);
 		this.menuContextuel.add(this.motcleItem);
 		this.menuContextuel.add(this.knnItem);
-		this.menuContextuel.add(this.bayesItem);
+		this.menuContextuel.add(this.bayesMenu);
 		
 		this.setComponentPopupMenu(menuContextuel);
 		
@@ -133,12 +140,24 @@ public class TweetUI extends JPanel implements ActionListener  {
 			}
 		};
 		
-		this.bayesAction = new ActionListener() {
+		this.bayesActionPresence = new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				List<Tweet> listTweet= TweetUI.this.mainWindow().annotatedTweets;
-				TweetUI.this.tweet.setValue(ClassificationBaysienne.evaluateTweet(TweetUI.this.tweet,listTweet));
+				TweetUI.this.tweet.setValue(ClassificationBaysienne.evaluateTweet(TweetUI.this.tweet,listTweet,false));
+				TweetUI.this.addAnnotedTweet(TweetUI.this.tweet);
+				JOptionPane.showMessageDialog(TweetUI.this.mainWindow(),"Le tweet a été annoté : "+tweet.getAnnotation(true));
+				
+			}
+		};
+		
+		this.bayesActionFrequence = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				List<Tweet> listTweet= TweetUI.this.mainWindow().annotatedTweets;
+				TweetUI.this.tweet.setValue(ClassificationBaysienne.evaluateTweet(TweetUI.this.tweet,listTweet,true));
 				TweetUI.this.addAnnotedTweet(TweetUI.this.tweet);
 				JOptionPane.showMessageDialog(TweetUI.this.mainWindow(),"Le tweet a été annoté : "+tweet.getAnnotation(true));
 				
