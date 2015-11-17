@@ -34,10 +34,9 @@ public class TweetUI extends JPanel implements ActionListener  {
 	 */
 	private static final long serialVersionUID = -579383294132336090L;
 	protected ActionListener listener;
-	protected JLabel name, text;
+	protected JLabel name, text, feel;
 	protected JCheckBox feelButton;
 	protected JPanel tPanelBtn;
-	protected JButton btnAnnote;
 	protected Tweet tweet;
 	protected JPopupMenu menuContextuel;
 	protected JMenu annotealamain,bayesMenu;
@@ -58,23 +57,18 @@ public class TweetUI extends JPanel implements ActionListener  {
 		this.tPanelBtn = new JPanel();
 		this.tPanelBtn.setLayout(new FlowLayout(FlowLayout.CENTER));
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		addButton();
 		this.intializingListener();
 		this.setMenuContextuel();
 	}
 
-	private void addButton() {
-		this.btnAnnote= new JButton("Annoter");
-		this.btnAnnote.addActionListener(this);
-		this.add(btnAnnote);
-	}
-	
 	private void setLabel(String user, String screenName, String text)
 	{
 		this.name = new JLabel(user+" - "+screenName);
 		this.text = new JLabel(text);
+		this.feel = new JLabel(this.getFeel());
 		this.add(this.name);
 		this.add(this.text);
+		this.add(this.feel);
 	}
 	
 	private void setMenuContextuel()
@@ -230,6 +224,26 @@ public class TweetUI extends JPanel implements ActionListener  {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		//((Win) SwingUtilities.getRoot(this)).moodPanel.setStatus(tweet);
+	}
+	
+	private String getFeel()
+	{
+		if(this.tweet.getValue()==Tweet.GOOD)
+		{
+			return "Bon";
+		}
+		else if(this.tweet.getValue()==Tweet.NEUTRAL)
+			return "Neutre";
+		else if(this.tweet.getValue()==Tweet.BAD)
+			return "Mauvais";
+		else
+			return "Non annoté";
+	}
+	
+	private void refresh()
+	{
+		this.feel.setText(this.getFeel());
+		this.validate();
 	}
 	
 	
