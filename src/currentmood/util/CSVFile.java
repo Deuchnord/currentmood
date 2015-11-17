@@ -142,25 +142,25 @@ public class CSVFile {
 		writeTweetsInCSV(filename, newHashTweets);
 	}
 	
-	public static List<Tweet> washTweets(List<Tweet> hashTweets)
+	public static List<Tweet> washTweets(List<Tweet> tweetsList)
 	{
 		List<Tweet> newHashTweets = new ArrayList<Tweet>();
 		
-		for(Tweet tweet : hashTweets)
+		for(Tweet tweet : tweetsList)
 		{
 			String text = tweet.getText();
 			
 			if(!text.matches("^RT.*"))
 			{
+				text = text.replaceAll("\n", " "); // Suppression des retours à la ligne (gênant pour le CSV
+				text = text.replaceAll(":\\'?[D()]", " "); // Suppression des smileys :) :( :D :') :'( :'D
+				text = text.replaceAll("https?://[^ ,]+", " "); // Suppression des liens
 				text = text.replaceAll("@([a-zA-Z0-9_.-]+)", " @ "); // Suppression des usernames
 				text = text.replaceAll("#([a-zA-Z0-9_]+)", " # "); // Suppression des hashtags
 				text = text.replaceAll("( )*([?!,.:;\"])( )?", " "); // Suppression des espaces avant la ponctuation & le guillemet
 				text = text.replaceAll("[$€£]([0-9.]+)(\\.)?", "\\$XX$2"); // Suppression des $, des € et des £
 				text = text.replaceAll("([0-9.]+)[$€£]", "\\$XX"); // Suppression des $, des € et des £
 				text = text.replaceAll("[0-9]{1,3}%", "XX%");
-				text = text.replaceAll("https?://[^ ,]+", " "); // Suppression des liens
-				text = text.replaceAll(":\\'?[D()]", " "); // Suppression des smileys :) :( :D :') :'( :'D
-				text = text.replaceAll(",", "[[[VIRGULE__HERE]]]"); // La virgule étant un caractère de séparation, on le replace par un marqueur.
 			
 				// Si le message se retrouve vide, on ne le met pas dans la hashmap à retourner
 				if(!text.replaceAll(" ", "").equals(""))
