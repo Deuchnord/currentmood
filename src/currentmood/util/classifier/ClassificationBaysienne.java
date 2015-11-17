@@ -1,5 +1,7 @@
 package currentmood.util.classifier;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -18,17 +20,17 @@ public class ClassificationBaysienne
 		{
 			if(tw.getValue()==Tweet.BAD)
 			{
-				System.out.println("BAD");
+				//System.out.println("BAD");
 				nbNegatif++;
 			}
 			else if(tw.getValue()==Tweet.NEUTRAL)
 			{
-				System.out.println("NEU");
+				//System.out.println("NEU");
 				nbNeutre++;
 			}
 			else
 			{
-				System.out.println("GOO");
+				//System.out.println("GOO");
 				nbBon++;
 			}
 		}
@@ -37,7 +39,7 @@ public class ClassificationBaysienne
 		listeRatioClasse[1] = nbNeutre/database.size();
 		listeRatioClasse[2] = nbBon/database.size();
 		
-		System.out.println("getRatioClasse : NEGATIVE = " + listeRatioClasse[0] + " ; NEUTRAL = " + listeRatioClasse[1] + " ; POSITIVE = " + listeRatioClasse[2]);
+		//System.out.println("getRatioClasse : NEGATIVE = " + listeRatioClasse[0] + " ; NEUTRAL = " + listeRatioClasse[1] + " ; POSITIVE = " + listeRatioClasse[2]);
 		
 		return listeRatioClasse;
 		
@@ -56,7 +58,7 @@ public class ClassificationBaysienne
 			laplaceEstimateur= laplaceEstimateur+words.length;
 		}
 		
-		System.out.println("getEstimateurLaplace : " + laplaceEstimateur);
+		//System.out.println("getEstimateurLaplace : " + laplaceEstimateur);
 		
 		return laplaceEstimateur;
 		
@@ -141,11 +143,32 @@ public class ClassificationBaysienne
 
 	}
 	
-	public static double classeSachantTweet(int classe, Tweet tw,List<Tweet> database, Boolean frequence)
+	public static double classeSachantTweet(int classe, Tweet tw,List<Tweet> database, boolean frequence)
+	{
+		return classeSachantTweet(classe, tw, database, frequence, false);
+	}
+	
+	public static double classeSachantTweet(int classe, Tweet tw,List<Tweet> database, boolean frequence, boolean sansMotsCourts)
 	{
 		double res = 1.0;
 		double ratioclasse = getRatioClasse(database)[classe];
 		String[] mots = tw.getText().split(" ");
+		
+		if(sansMotsCourts)
+		{
+			List<String> tempMots = new ArrayList<String>();
+			for(String mot : mots)
+			{
+				if(mot.length() > 2)
+					tempMots.add(mot);
+			}
+			
+			mots = (String[]) tempMots.toArray(new String[tempMots.size()]);
+		}
+		
+		for(String mot : mots)
+			System.out.print(mot + " ; ");
+		
 		if(!frequence)
 		{
 			for(int i=0; i<mots.length;i++)
@@ -168,15 +191,12 @@ public class ClassificationBaysienne
 			}
 		}
 		
-		System.out.println("classeSachantTweet : " + res);
-		System.out.println("Ratioclasse : "+ratioclasse);
+		//System.out.println("classeSachantTweet : " + res);
+		//System.out.println("Ratioclasse : "+ratioclasse);
 		
 		return res;
 		
 	}
-	
-	
-		
 	
 	public static int evaluateTweet(Tweet tw,List<Tweet> database, Boolean frequence)
 	{
@@ -202,7 +222,7 @@ public class ClassificationBaysienne
 			res= Tweet.GOOD;
 		}
 		
-		System.out.println("evaluateTweet : " + res);
+		//System.out.println("evaluateTweet : " + res);
 		
 		return res;
 		
