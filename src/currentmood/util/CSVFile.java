@@ -148,30 +148,42 @@ public class CSVFile {
 		
 		for(Tweet tweet : tweetsList)
 		{
-			String text = tweet.getText();
-			
-			if(!text.matches("^RT.*"))
-			{
-				text = text.replaceAll("\n", " "); // Suppression des retours à la ligne (gênant pour le CSV
-				text = text.replaceAll(":\\'?[D()]", " "); // Suppression des smileys :) :( :D :') :'( :'D
-				text = text.replaceAll("https?://[^ ,]+", " "); // Suppression des liens
-				text = text.replaceAll("@([a-zA-Z0-9_.-]+)", " @ "); // Suppression des usernames
-				text = text.replaceAll("#([a-zA-Z0-9_]+)", " # "); // Suppression des hashtags
-				text = text.replaceAll("( )*([?!,.:;\"])( )?", " "); // Suppression des espaces avant la ponctuation & le guillemet
-				text = text.replaceAll("[$€£]([0-9.]+)(\\.)?", "\\$XX$2"); // Suppression des $, des € et des £
-				text = text.replaceAll("([0-9.]+)[$€£]", "\\$XX"); // Suppression des $, des € et des £
-				text = text.replaceAll("[0-9]{1,3}%", "XX%");
-			
-				// Si le message se retrouve vide, on ne le met pas dans la hashmap à retourner
-				if(!text.replaceAll(" ", "").equals(""))
-				{
-					tweet.setText(text);
-					newHashTweets.add(tweet);
-				}
-			}
+			tweet = washTweet(tweet);
+		
+			if(tweet != null)
+				newHashTweets.add(tweet);
 		}
 		
 		return newHashTweets;
+	}
+	
+	public static Tweet washTweet(Tweet tweet)
+	{
+		String text = tweet.getText();
+			
+		if(!text.matches("^RT.*"))
+		{
+			text = text.replaceAll("\n", " "); // Suppression des retours à la ligne (gênant pour le CSV
+			text = text.replaceAll(":\\'?[D()]", " "); // Suppression des smileys :) :( :D :') :'( :'D
+			text = text.replaceAll("https?://[^ ,]+", " "); // Suppression des liens
+			text = text.replaceAll("@([a-zA-Z0-9_.-]+)", " @ "); // Suppression des usernames
+			text = text.replaceAll("#([a-zA-Z0-9_]+)", " # "); // Suppression des hashtags
+			text = text.replaceAll("( )*([?!,.:;\"])( )?", " "); // Suppression des espaces avant la ponctuation & le guillemet
+			text = text.replaceAll("[$€£]([0-9.]+)(\\.)?", "\\$XX$2"); // Suppression des $, des € et des £
+			text = text.replaceAll("([0-9.]+)[$€£]", "\\$XX"); // Suppression des $, des € et des £
+			text = text.replaceAll("[0-9]{1,3}%", "XX%");
+		
+			// Si le message se retrouve vide, on retourne null.
+			if(!text.replaceAll(" ", "").equals(""))
+			{
+				tweet.setText(text);
+			}
+			
+			else
+				tweet = null;
+		}
+		
+		return tweet;
 	}
 
 }
