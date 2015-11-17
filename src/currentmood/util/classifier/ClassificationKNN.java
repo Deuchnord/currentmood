@@ -1,6 +1,7 @@
 package currentmood.util.classifier;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import currentmood.util.Tweet;
@@ -71,6 +72,52 @@ public class ClassificationKNN {
 		
 		else if(k < tweetsAComparer.size())
 		{
+			//k = 2n+1;
+			HashMap<Tweet, Float> donneesVoisin = new HashMap<Tweet,Float>();
+			for(int i =0;i<7;i++)
+			{
+				Tweet twTemp =tweetsAComparer.get(i);
+				donneesVoisin.put(twTemp,distanceTweet(tweetAAnnonter, twTemp));
+			}
+			for(int i = 7; i<tweetsAComparer.size();i++)
+			{
+				Tweet twTemp=tweetsAComparer.get(i);
+				float currentdistance = distanceTweet(tweetAAnnonter, twTemp);
+				for(Tweet tw : donneesVoisin.keySet())
+				{
+					if(donneesVoisin.get(tw)>currentdistance)
+					{
+						donneesVoisin.remove(tw);
+						donneesVoisin.put(twTemp, currentdistance);
+					}
+				}
+			}
+			int nbMauvais = 0,nbNeutre = 0,nbBon = 0;
+			for(Tweet tw : donneesVoisin.keySet())
+			{
+				if(tw.getValue()==Tweet.BAD)
+					nbMauvais++;
+				else if(tw.getValue()==Tweet.NEUTRAL)
+					nbNeutre++;
+				else if(tw.getValue()==Tweet.GOOD)
+					nbBon++;
+				if(nbBon>nbNeutre && nbBon>nbMauvais)
+				{
+					tweetAAnnonter.setValue(Tweet.GOOD);
+					return tweetAAnnonter;
+					
+				}
+				else if(nbNeutre>nbBon && nbNeutre>nbMauvais)
+				{
+					tweetAAnnonter.setValue(Tweet.NEUTRAL);
+					return tweetAAnnonter;
+				}
+				else if(nbMauvais>nbNeutre && nbMauvais>nbNeutre)
+				{
+					tweetAAnnonter.setValue(Tweet.BAD);
+					return tweetAAnnonter;
+				}
+			}
 			
 		}
 		
