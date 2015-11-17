@@ -39,8 +39,8 @@ public class TweetUI extends JPanel implements ActionListener  {
 	protected JPanel tPanelBtn;
 	protected Tweet tweet;
 	protected JPopupMenu menuContextuel;
-	protected JMenu annotealamain,bayesMenu;
-	protected JMenuItem idTweet, motcleItem, knnItem,bayesItemPresence,bayesItemFrequence,badItem,neutralItem,goodItem;
+	protected JMenu annotealamain,bayesMenu,presenceMenu,frequenceMenu, motsMenu,pasMotMenu, motsmenuFrequence, pasMotMenuFrequence;
+	protected JMenuItem idTweet, motcleItem, knnItem,bayesItemPresence,bayesItemFrequence,badItem,neutralItem,goodItem ;
 	protected ActionListener knnAction, motcleAction, bayesActionPresence,bayesActionFrequence, badAction,neutralAction,goodAction;
 	
 	public TweetUI (Status status, String query)
@@ -82,6 +82,12 @@ public class TweetUI extends JPanel implements ActionListener  {
 		this.bayesItemFrequence = new JMenuItem("Fréquence");
 		this.annotealamain = new JMenu("Annoter à la main");
 		this.bayesMenu = new JMenu("Classer avec la méthode Bayésienne");
+		this.presenceMenu=new JMenu("Par présence");
+		this.frequenceMenu = new JMenu("Par fréquence");
+		this.motsMenu = new JMenu("En utilisant tous les mots");
+		this.pasMotMenu = new JMenu("Pas < 3");
+		this.pasMotMenuFrequence = this.pasMotMenu;
+		this.motsmenuFrequence=this.motsMenu;
 		
 		this.badItem=new JMenuItem("Mauvais");
 		this.badItem.addActionListener(badAction);
@@ -103,6 +109,15 @@ public class TweetUI extends JPanel implements ActionListener  {
 		
 		this.bayesItemFrequence.addActionListener(bayesActionFrequence);
 		this.bayesMenu.add(this.bayesItemFrequence);
+		
+		this.presenceMenu.add(this.motsMenu);
+		this.presenceMenu.add(this.pasMotMenu);
+		
+		this.frequenceMenu.add(this.motsmenuFrequence);
+		this.frequenceMenu.add(this.pasMotMenuFrequence);
+		
+		this.bayesMenu.add(this.presenceMenu);
+		this.bayesMenu.add(this.frequenceMenu);
 		
 		this.menuContextuel.add(this.idTweet);
 		this.menuContextuel.add(this.annotealamain);
