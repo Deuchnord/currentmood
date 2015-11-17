@@ -89,6 +89,7 @@ public class ClassificationKNN {
 					{
 						donneesVoisin.remove(tw);
 						donneesVoisin.put(twTemp, currentdistance);
+						break;
 					}
 				}
 			}
