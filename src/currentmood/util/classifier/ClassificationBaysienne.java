@@ -1,7 +1,6 @@
 package currentmood.util.classifier;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -145,10 +144,10 @@ public class ClassificationBaysienne
 	
 	public static double classeSachantTweet(int classe, Tweet tw,List<Tweet> database, boolean frequence)
 	{
-		return classeSachantTweet(classe, tw, database, frequence, false);
+		return classeSachantTweet(classe, tw, database, frequence, false, false);
 	}
 	
-	public static double classeSachantTweet(int classe, Tweet tw,List<Tweet> database, boolean frequence, boolean sansMotsCourts)
+	public static double classeSachantTweet(int classe, Tweet tw,List<Tweet> database, boolean frequence, boolean sansMotsCourts, boolean bigrammes)
 	{
 		double res = 1.0;
 		double ratioclasse = getRatioClasse(database)[classe];
@@ -166,8 +165,19 @@ public class ClassificationBaysienne
 			mots = (String[]) tempMots.toArray(new String[tempMots.size()]);
 		}
 		
-		for(String mot : mots)
-			System.out.print(mot + " ; ");
+		if(bigrammes)
+		{
+			String[] motsBigrammes = new String[mots.length - 1];
+			int i = 0;
+			
+			for(int j = 0; j < mots.length - 1; j++)
+				motsBigrammes[i++] = mots[j] + " " + mots[j + 1];
+			
+			mots = motsBigrammes;
+		}
+		
+		//for(String mot : mots)
+			//System.out.print(mot + " ; ");
 		
 		if(!frequence)
 		{
