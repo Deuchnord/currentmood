@@ -208,11 +208,19 @@ public class ClassificationBaysienne
 		
 	}
 	
-	public static int evaluateTweet(Tweet tw,List<Tweet> database, Boolean frequence)
+	/**
+	 * @param tw Le tweet à évaluer
+	 * @param database Labase d'aprentissage
+	 * @param frequence vrai si on fait par fréquence, faux par présence
+	 * @param sansMotsCourts vrai on enlève les mots courts, faux on les laisse
+	 * @param bigrammes, vrai on considère des bigrammes, faux des unigrammes;
+	 * @return
+	 */
+	public static int evaluateTweet(Tweet tw,List<Tweet> database, boolean frequence, boolean sansMotsCourts,boolean bigrammes)
 	{
-		double probabad = classeSachantTweet(0,tw,database,frequence);
-		double probaneutre = classeSachantTweet(1,tw,database,frequence);
-		double probagood=classeSachantTweet(2,tw,database,frequence);
+		double probabad = classeSachantTweet(0,tw,database,frequence, sansMotsCourts,bigrammes);
+		double probaneutre = classeSachantTweet(1,tw,database,frequence, sansMotsCourts,bigrammes);
+		double probagood=classeSachantTweet(2,tw,database,frequence, sansMotsCourts,bigrammes);
 		double temp;
 		 int res;
 		

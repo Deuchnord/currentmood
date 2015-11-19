@@ -40,8 +40,13 @@ public class TweetUI extends JPanel implements ActionListener  {
 	protected Tweet tweet;
 	protected JPopupMenu menuContextuel;
 	protected JMenu annotealamain,bayesMenu,presenceMenu,frequenceMenu, motsMenu,pasMotMenu, motsmenuFrequence, pasMotMenuFrequence;
-	protected JMenuItem idTweet, motcleItem, knnItem,bayesItemPresence,bayesItemFrequence,badItem,neutralItem,goodItem ;
-	protected ActionListener knnAction, motcleAction, bayesActionPresence,bayesActionFrequence, badAction,neutralAction,goodAction;
+	protected JMenuItem idTweet, motcleItem, knnItem,bayesItemPresence,bayesItemFrequence,badItem,neutralItem,goodItem,
+	unigrammePresenceMots,unigrammePresencePasMots,unigrammeFrequenceMots,unigrammeFrequencePasMots,
+	bigrammePresenceMots,bigrammePresencePasMots,bigrammeFrequenceMots,bigrammeFrequencePasMots;
+	protected ActionListener knnAction, motcleAction, 
+	bayesActionPresence,bayesActionFrequence,bayesPresenceBigrammeAction,bayesFrequenceBigrammeAction,
+	bayesPresenceUnigrammePasMotsAction,bayesFrequenceUnigrammePasMotsAction, bayesPresenceBigrammePasMotsAction,bayesFrequenceBigrammePasMotsAction,
+	badAction,neutralAction,goodAction;
 	
 	public TweetUI (Status status, String query)
 	{
@@ -86,8 +91,40 @@ public class TweetUI extends JPanel implements ActionListener  {
 		this.frequenceMenu = new JMenu("Par fréquence");
 		this.motsMenu = new JMenu("En utilisant tous les mots");
 		this.pasMotMenu = new JMenu("Pas < 3");
-		this.pasMotMenuFrequence = this.pasMotMenu;
-		this.motsmenuFrequence=this.motsMenu;
+		this.pasMotMenuFrequence = new JMenu("Pas < 3");
+		this.motsmenuFrequence=new JMenu("En utilisant tous les mots");
+		
+		this.unigrammePresenceMots = new JMenuItem("Unigramme");
+		this.unigrammePresenceMots.addActionListener(bayesActionPresence);
+		this.motsMenu.add(unigrammePresenceMots);
+		
+		this.bigrammePresenceMots = new JMenuItem("Bigramme");
+		this.bigrammePresenceMots.addActionListener(bayesPresenceBigrammeAction);
+		this.motsMenu.add(bigrammePresenceMots);
+		
+		this.unigrammeFrequenceMots = new JMenuItem("Unigramme");
+		this.unigrammeFrequenceMots.addActionListener(bayesActionFrequence);
+		this.motsmenuFrequence.add(unigrammeFrequenceMots);
+		
+		this.bigrammeFrequenceMots = new JMenuItem("Bigramme");
+		this.bigrammeFrequenceMots.addActionListener(bayesFrequenceBigrammeAction);
+		this.motsmenuFrequence.add(bigrammeFrequenceMots);
+
+		this.unigrammePresencePasMots = new JMenuItem("Unigramme");
+		this.unigrammePresencePasMots.addActionListener(bayesPresenceUnigrammePasMotsAction);
+		this.pasMotMenu.add(unigrammePresencePasMots);
+		
+		this.bigrammePresencePasMots = new JMenuItem("Bigramme");
+		this.bigrammePresencePasMots.addActionListener(bayesPresenceBigrammePasMotsAction);
+		this.pasMotMenu.add(bigrammePresencePasMots);
+		
+		this.unigrammeFrequencePasMots = new JMenuItem("Unigramme");
+		this.unigrammeFrequencePasMots.addActionListener(bayesFrequenceUnigrammePasMotsAction);
+		this.pasMotMenuFrequence.add(unigrammeFrequencePasMots);
+		
+		this.bigrammeFrequencePasMots = new JMenuItem("Bigramme");
+		this.bigrammeFrequencePasMots.addActionListener(bayesFrequenceBigrammePasMotsAction);
+		this.pasMotMenuFrequence.add(bigrammeFrequencePasMots);
 		
 		this.badItem=new JMenuItem("Mauvais");
 		this.badItem.addActionListener(badAction);
@@ -149,29 +186,7 @@ public class TweetUI extends JPanel implements ActionListener  {
 			}
 		};
 		
-		this.bayesActionPresence = new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				List<Tweet> listTweet= TweetUI.this.mainWindow().annotatedTweets;
-				TweetUI.this.tweet.setValue(ClassificationBaysienne.evaluateTweet(TweetUI.this.tweet,listTweet,false));
-				TweetUI.this.addAnnotedTweet(TweetUI.this.tweet);
-				JOptionPane.showMessageDialog(TweetUI.this.mainWindow(),"Le tweet a été annoté : "+tweet.getAnnotation(true));
-				
-			}
-		};
-		
-		this.bayesActionFrequence = new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				List<Tweet> listTweet= TweetUI.this.mainWindow().annotatedTweets;
-				TweetUI.this.tweet.setValue(ClassificationBaysienne.evaluateTweet(TweetUI.this.tweet,listTweet,true));
-				TweetUI.this.addAnnotedTweet(TweetUI.this.tweet);
-				JOptionPane.showMessageDialog(TweetUI.this.mainWindow(),"Le tweet a été annoté : "+tweet.getAnnotation(true));
-				
-			}
-		};
+		initializeBayesListener();
 		
 		this.motcleAction =new ActionListener() {
 			
@@ -187,6 +202,13 @@ public class TweetUI extends JPanel implements ActionListener  {
 			}
 		};
 		
+		initializeFeelListener();
+	}
+
+	/**
+	 * Initialise les listener pour l'annotation à la main
+	 */
+	private void initializeFeelListener() {
 		this.badAction =new ActionListener() {
 			
 			@Override
@@ -213,6 +235,106 @@ public class TweetUI extends JPanel implements ActionListener  {
 			public void actionPerformed(ActionEvent e) {
 				TweetUI.this.tweet.setValue(Tweet.GOOD);
 				TweetUI.this.addAnnotedTweet(TweetUI.this.tweet);
+				
+			}
+		};
+	}
+
+	/**
+	 * Initialise les listener pour la classification Bayesienne
+	 */
+	private void initializeBayesListener() {
+		this.bayesPresenceBigrammeAction = new ActionListener() {
+			//Presence-bigramme-avec mots courts
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				List<Tweet> listTweet= TweetUI.this.mainWindow().annotatedTweets;
+				TweetUI.this.tweet.setValue(ClassificationBaysienne.evaluateTweet(TweetUI.this.tweet,listTweet,false,false,true));
+				TweetUI.this.addAnnotedTweet(TweetUI.this.tweet);
+				JOptionPane.showMessageDialog(TweetUI.this.mainWindow(),"Le tweet a été annoté : "+tweet.getAnnotation(true));
+				
+			}
+		};
+		
+		this.bayesActionPresence = new ActionListener() {
+			//Présence-unigramme-avec mots courts
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				List<Tweet> listTweet= TweetUI.this.mainWindow().annotatedTweets;
+				TweetUI.this.tweet.setValue(ClassificationBaysienne.evaluateTweet(TweetUI.this.tweet,listTweet,false,false,false));
+				TweetUI.this.addAnnotedTweet(TweetUI.this.tweet);
+				JOptionPane.showMessageDialog(TweetUI.this.mainWindow(),"Le tweet a été annoté : "+tweet.getAnnotation(true));
+				
+			}
+		};
+		
+		this.bayesActionFrequence = new ActionListener() {
+			//frequence-unigramme,avec mots courts
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				List<Tweet> listTweet= TweetUI.this.mainWindow().annotatedTweets;
+				TweetUI.this.tweet.setValue(ClassificationBaysienne.evaluateTweet(TweetUI.this.tweet,listTweet,true,false,false));
+				TweetUI.this.addAnnotedTweet(TweetUI.this.tweet);
+				JOptionPane.showMessageDialog(TweetUI.this.mainWindow(),"Le tweet a été annoté : "+tweet.getAnnotation(true));
+				
+			}
+		};
+		
+		this.bayesFrequenceBigrammeAction = new ActionListener() {
+			//frequence-bigramme-avec les mots courts
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				List<Tweet> listTweet= TweetUI.this.mainWindow().annotatedTweets;
+				TweetUI.this.tweet.setValue(ClassificationBaysienne.evaluateTweet(TweetUI.this.tweet,listTweet,true,false,true));
+				TweetUI.this.addAnnotedTweet(TweetUI.this.tweet);
+				JOptionPane.showMessageDialog(TweetUI.this.mainWindow(),"Le tweet a été annoté : "+tweet.getAnnotation(true));
+				
+			}
+		};
+		
+		this.bayesPresenceUnigrammePasMotsAction = new ActionListener() {
+			//Présence-Pas tous les mots--Unigramme
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				List<Tweet> listTweet= TweetUI.this.mainWindow().annotatedTweets;
+				TweetUI.this.tweet.setValue(ClassificationBaysienne.evaluateTweet(TweetUI.this.tweet,listTweet,false,true,false));
+				TweetUI.this.addAnnotedTweet(TweetUI.this.tweet);
+				JOptionPane.showMessageDialog(TweetUI.this.mainWindow(),"Le tweet a été annoté : "+tweet.getAnnotation(true));
+				
+			}
+		};
+		
+		this.bayesPresenceBigrammePasMotsAction = new ActionListener() {
+			//Présence-Pas tous les mots - Bigrammes
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				List<Tweet> listTweet= TweetUI.this.mainWindow().annotatedTweets;
+				TweetUI.this.tweet.setValue(ClassificationBaysienne.evaluateTweet(TweetUI.this.tweet,listTweet,false,true,true));
+				TweetUI.this.addAnnotedTweet(TweetUI.this.tweet);
+				JOptionPane.showMessageDialog(TweetUI.this.mainWindow(),"Le tweet a été annoté : "+tweet.getAnnotation(true));
+			}
+		};
+		
+		this.bayesFrequenceUnigrammePasMotsAction =new ActionListener() {
+			//Frequence -Pas tous les mots - Unigramme
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				List<Tweet> listTweet= TweetUI.this.mainWindow().annotatedTweets;
+				TweetUI.this.tweet.setValue(ClassificationBaysienne.evaluateTweet(TweetUI.this.tweet,listTweet,true,true,false));
+				TweetUI.this.addAnnotedTweet(TweetUI.this.tweet);
+				JOptionPane.showMessageDialog(TweetUI.this.mainWindow(),"Le tweet a été annoté : "+tweet.getAnnotation(true));
+				
+			}
+		};
+		
+		this.bayesFrequenceBigrammePasMotsAction = new ActionListener() {
+			//Frequence - Pas tous les mots -bigramme
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				List<Tweet> listTweet= TweetUI.this.mainWindow().annotatedTweets;
+				TweetUI.this.tweet.setValue(ClassificationBaysienne.evaluateTweet(TweetUI.this.tweet,listTweet,true,true,true));
+				TweetUI.this.addAnnotedTweet(TweetUI.this.tweet);
+				JOptionPane.showMessageDialog(TweetUI.this.mainWindow(),"Le tweet a été annoté : "+tweet.getAnnotation(true));
 				
 			}
 		};
