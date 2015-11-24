@@ -29,6 +29,7 @@ import twitter4j.RateLimitStatus;
 import twitter4j.Status;
 import twitter4j.TwitterException;
 
+import currentmood.UI.chart.PieChart;
 import currentmood.util.CMTwitter;
 import currentmood.util.CSVFile;
 import currentmood.util.NotConnectedException;
@@ -45,7 +46,7 @@ public class Win extends JFrame {
 	
 	protected JMenuBar menu;
 	protected JMenu fileMenu, aboutMenu, annotation, optionMenu;
-	protected JMenuItem openCSVItem, createCSVItem, proxyItem,motcleItem ;
+	protected JMenuItem openCSVItem, createCSVItem, proxyItem,motcleItem,allMotsclesItem; ;
 	protected JPanel searchpanel, infopanel, tweetpanel;
 	//protected MoodPanel moodPanel;
 	protected JTextField search;
@@ -61,6 +62,7 @@ public class Win extends JFrame {
 	{
 		this.annotatedTweets = new ArrayList<Tweet>();
 		cmTwitter = new CMTwitter();
+		this.initializeListener();
 		//cmTwitter.setProxy(new Proxy("cache-etu.univ-lille1.fr", 3128));
 		System.out.println("1 " + (cmTwitter == null));
 		
@@ -120,6 +122,9 @@ public class Win extends JFrame {
 		});
 		
 		this.annotation = new JMenu("Annotation");
+		this.allMotsclesItem= new JMenuItem("Annotés résultats par mots-clés");
+		this.allMotsclesItem.addActionListener(searchMotsClesAction);
+		this.annotation.add(this.allMotsclesItem);
 		this.menu.add(this.annotation);
 		
 		
@@ -313,6 +318,7 @@ public class Win extends JFrame {
 					
 					
 				}
+				WinChart resultat = new WinChart(new PieChart(),30,50,20);
 			} 
 			catch (TwitterException e1)
 			{
