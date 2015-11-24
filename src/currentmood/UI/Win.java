@@ -34,6 +34,7 @@ import currentmood.util.CSVFile;
 import currentmood.util.NotConnectedException;
 import currentmood.util.Tweet;
 import currentmood.util.classifier.ClassificationBaysienne;
+import currentmood.util.classifier.ClassificationMotCle;
 
 public class Win extends JFrame {
 	
@@ -43,7 +44,7 @@ public class Win extends JFrame {
 	protected String cheminPositif, cheminNegatif;
 	
 	protected JMenuBar menu;
-	protected JMenu fileMenu, aboutMenu, optionMenu;
+	protected JMenu fileMenu, aboutMenu, annotation, optionMenu;
 	protected JMenuItem openCSVItem, createCSVItem, proxyItem,motcleItem ;
 	protected JPanel searchpanel, infopanel, tweetpanel;
 	//protected MoodPanel moodPanel;
@@ -54,6 +55,7 @@ public class Win extends JFrame {
 	protected JLabel lInfo, lInfoNb, lInfoTimeReload, lInfoTimeReloadNb;
 	protected JRadioButton JRNone, JRNeutral, JRBad, JRGood;
 	protected String lastSearch;
+	protected ActionListener searchMotsClesAction,searchKNNAction;
 	
 	public Win()
 	{
@@ -70,9 +72,9 @@ public class Win extends JFrame {
 		this.setTitle("#currentmood");
 		//paramétrage du menu
 		this.menu = new JMenuBar();
-		this.fileMenu = new JMenu("Fichier");
+		this.fileMenu = new JMenu("Base de données");
 		this.menu.add(this.fileMenu);
-		this.openCSVItem = new JMenuItem("Ouvrir un CSV", KeyEvent.VK_O);
+		this.openCSVItem = new JMenuItem("Charger la base de données", KeyEvent.VK_O);
 		this.openCSVItem.addActionListener(new ActionListener() {
 			
 			@Override
@@ -92,7 +94,7 @@ public class Win extends JFrame {
 			}
 		});
 		
-		this.createCSVItem = new JMenuItem("Créer un CSV", KeyEvent.VK_C);
+		this.createCSVItem = new JMenuItem("Sauvegarder la base de données", KeyEvent.VK_C);
 		this.createCSVItem.addActionListener(new ActionListener() {
 			
 			@Override
@@ -116,6 +118,9 @@ public class Win extends JFrame {
 				}
 			}
 		});
+		
+		this.annotation = new JMenu("Annotation");
+		this.menu.add(this.annotation);
 		
 		
 		this.fileMenu.add(this.openCSVItem);
@@ -178,9 +183,7 @@ public class Win extends JFrame {
 				Win.this.lastSearch = Win.this.search.getText();
 				
 				try{
-					Win.this.cmTwitter.connect();
-					List<Status> tweets = Win.this.cmTwitter.searchTweets(Win.this.lastSearch);
-					Win.this.refreshLimit(Win.this.cmTwitter.getRateLimit());
+					List<Status> tweets = getTweets(Win.this.lastSearch);
 					for(Status status : tweets)
 					{
 						TweetUI tw = new TweetUI(status, Win.this.lastSearch);
@@ -243,11 +246,11 @@ public class Win extends JFrame {
 	
 	private void readTweet()
 	{
-		for(Tweet tweet : this.annotatedTweets)
+		/*for(Tweet tweet : this.annotatedTweets)
 		{
 			this.tweetpanel.add(new TweetUI(tweet),BorderLayout.CENTER);
 		}
-		this.validate();
+		this.validate();*/
 		HashMap[] test= ClassificationBaysienne.getnDeCs(this.annotatedTweets);
 		int[] testt = ClassificationBaysienne.getnbMotClasse(this.annotatedTweets);
 		System.out.println("mauvais : " +test[0].size());
@@ -258,6 +261,70 @@ public class Win extends JFrame {
 		System.out.println("neutre : " +testt[1]);
 		System.out.println("bon : " +testt[2]);
 		
+	}
+	
+	private void initializeListener()
+	{
+		this.searchMotsClesAction = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				annoteAllTweetKey();
+				
+			}
+		};
+	}
+
+	private List<Status> getTweets(String searchWord) throws TwitterException,NotConnectedException 
+	{
+		Win.this.cmTwitter.connect();
+		List<Status> tweets = Win.this.cmTwitter.searchTweets(searchWord);
+		Win.this.refreshLimit(Win.this.cmTwitter.getRateLimit());
+		return tweets;
+	}
+
+	private void annoteAllTweetKey() {
+		if(Win.this.annotatedTweets==null)
+		{
+			JOptionPane.showMessageDialog(Win.this, "La base de tweets n'est pas chargée" , "Erreur lors de l'annotation", JOptionPane.ERROR_MESSAGE);
+		}
+		else if(Win.this.cheminNegatif== null ||Win.this.cheminPositif == null)
+		{
+			JOptionPane.showMessageDialog(Win.this, "Les fichiers de mots-clés ne sont pas chargés", "Erreur lors de l'annotation", JOptionPane.ERROR_MESSAGE);
+		}
+		else
+		{
+			String search = JOptionPane.showInputDialog(Win.this,"Quelle est votre recherche ?","Indiquez votre recherche",JOptionPane.QUESTION_MESSAGE);
+			int bad = 0,neutral = 0,good = 0;
+			try 
+			{
+				List<Status> tweets = Win.this.getTweets(search);
+				ClassificationMotCle classifier = new ClassificationMotCle(Win.this.cheminPositif, Win.this.cheminNegatif);
+				for(Status st : tweets)
+				{
+					Tweet tw = new Tweet(st, search);
+					tw = classifier.evaluateTweet(tw);
+					if(tw.getValue()==Tweet.BAD)
+						bad++;
+					else if(tw.getValue()==Tweet.NEUTRAL)
+						neutral++;
+					else
+						good++;
+					
+					
+				}
+			} 
+			catch (TwitterException e1)
+			{
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			catch (NotConnectedException e1) 
+			{
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
 	}
 
 }
