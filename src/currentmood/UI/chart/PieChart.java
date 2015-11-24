@@ -34,6 +34,8 @@ public class PieChart extends Chart {
 		
 		setPlot(jFreeChart);
 		
+		chartPanel.setVisible(true);
+		
 		return chartPanel;
 	}
 	
