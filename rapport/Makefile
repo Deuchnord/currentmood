@@ -1,0 +1,2 @@
+pdf:
+	pdflatex Currentmood.tex
