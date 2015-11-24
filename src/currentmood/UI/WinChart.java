@@ -26,6 +26,8 @@ public class WinChart extends JFrame {
 		this.setSize(new Dimension((int)screen.getWidth()/2,(int)screen.getHeight()/2));
 		this.add(chart.createChart(negatives, neutrals, positives));
 		this.setVisible(true);
+		 this.revalidate();
+	     this.repaint();
 	}
 
 }
