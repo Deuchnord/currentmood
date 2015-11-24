@@ -2,10 +2,13 @@ package currentmood.UI.chart;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.text.DecimalFormat;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.labels.PieSectionLabelGenerator;
+import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
 import org.jfree.chart.plot.PieLabelLinkStyle;
 import org.jfree.chart.plot.PiePlot;
 import org.jfree.chart.plot.Plot;
@@ -55,6 +58,9 @@ public class PieChart extends Chart {
         plot.setMaximumLabelWidth(0.20);
         plot.setLabelLinkStyle(PieLabelLinkStyle.CUBIC_CURVE);
         plot.setSimpleLabels(true);
+        
+        PieSectionLabelGenerator gen = new StandardPieSectionLabelGenerator("{0} ({2})", new DecimalFormat("0"), new DecimalFormat("0%"));
+        ((PiePlot)plot).setLabelGenerator(gen);
 		
 		return plot;
 	}
