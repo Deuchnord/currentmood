@@ -24,10 +24,12 @@ public class WinChart extends JFrame {
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 		//Paramétrage de la fenetre 
 		this.setSize(new Dimension((int)screen.getWidth()/2,(int)screen.getHeight()/2));
-		this.add(chart.createChart(negatives, neutrals, positives));
+		ChartPanel cp = chart.createChart(negatives, neutrals, positives);
+		this.add(cp);
 		this.setVisible(true);
-		 this.revalidate();
-	     this.repaint();
+		cp.validate();
+		
+		
 	}
 
 }

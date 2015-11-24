@@ -32,17 +32,17 @@ public class PieChart extends Chart {
 		defaultPieDataset.setValue("Neutre", neutralRatio);
 		defaultPieDataset.setValue("Positif", positiveRatio);
 		
-		JFreeChart jFreeChart = ChartFactory.createPieChart("Répartition", defaultPieDataset, true, false, false);
+		JFreeChart jFreeChart = ChartFactory.createPieChart("Répartition", defaultPieDataset, true, true, false);
 		ChartPanel chartPanel = new ChartPanel(jFreeChart);
 		
-		setPlot(jFreeChart);
+		//jFreeChart = setPlot(jFreeChart);
 		
 		chartPanel.setVisible(true);
 		
 		return chartPanel;
 	}
 	
-	protected Plot setPlot(JFreeChart jFreeChart)
+	protected JFreeChart setPlot(JFreeChart jFreeChart)
 	{
 		PiePlot plot = (PiePlot) jFreeChart.getPlot();
 		
@@ -62,7 +62,7 @@ public class PieChart extends Chart {
         PieSectionLabelGenerator gen = new StandardPieSectionLabelGenerator("{0} ({2})", new DecimalFormat("0"), new DecimalFormat("0%"));
         ((PiePlot)plot).setLabelGenerator(gen);
 		
-		return plot;
+		return jFreeChart;
 	}
 
 }
