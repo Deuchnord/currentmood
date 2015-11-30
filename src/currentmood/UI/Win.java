@@ -29,12 +29,15 @@ import twitter4j.RateLimitStatus;
 import twitter4j.Status;
 import twitter4j.TwitterException;
 
+import currentmood.UI.chart.PieChart;
 import currentmood.util.CMTwitter;
 import currentmood.util.CSVFile;
 import currentmood.util.NotConnectedException;
 import currentmood.util.Tweet;
 import currentmood.util.classifier.ClassificationBaysienne;
+import currentmood.util.classifier.ClassificationKNN;
 import currentmood.util.classifier.ClassificationMotCle;
+import currentmood.util.classifier.OutOfBoundsException;
 
 public class Win extends JFrame {
 	
@@ -45,7 +48,7 @@ public class Win extends JFrame {
 	
 	protected JMenuBar menu;
 	protected JMenu fileMenu, aboutMenu, annotation, optionMenu;
-	protected JMenuItem openCSVItem, createCSVItem, proxyItem,motcleItem ;
+	protected JMenuItem openCSVItem, createCSVItem, proxyItem,motcleItem,allMotsclesItem,allKNNItem ;
 	protected JPanel searchpanel, infopanel, tweetpanel;
 	//protected MoodPanel moodPanel;
 	protected JTextField search;
@@ -61,6 +64,7 @@ public class Win extends JFrame {
 	{
 		this.annotatedTweets = new ArrayList<Tweet>();
 		cmTwitter = new CMTwitter();
+		this.initializeListener();
 		//cmTwitter.setProxy(new Proxy("cache-etu.univ-lille1.fr", 3128));
 		System.out.println("1 " + (cmTwitter == null));
 		
@@ -120,7 +124,14 @@ public class Win extends JFrame {
 		});
 		
 		this.annotation = new JMenu("Annotation");
+		this.allMotsclesItem= new JMenuItem("Annotés résultats par mots-clés");
+		this.allMotsclesItem.addActionListener(searchMotsClesAction);
+		this.annotation.add(this.allMotsclesItem);
+		this.allKNNItem= new JMenuItem("Tout annoter par KNN");
+		this.allKNNItem.addActionListener(searchKNNAction);
+		this.annotation.add(this.allKNNItem);
 		this.menu.add(this.annotation);
+		;
 		
 		
 		this.fileMenu.add(this.openCSVItem);
@@ -273,6 +284,57 @@ public class Win extends JFrame {
 				
 			}
 		};
+		
+		this.searchKNNAction = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(Win.this.annotatedTweets==null)
+				{
+					JOptionPane.showMessageDialog(Win.this, "La base de tweets n'est pas chargée" , "Erreur lors de l'annotation", JOptionPane.ERROR_MESSAGE);
+				}
+				else
+				{
+					String search = JOptionPane.showInputDialog(Win.this,"Quelle est votre recherche ?","Indiquez votre recherche",JOptionPane.QUESTION_MESSAGE);
+					String choix = JOptionPane.showInputDialog(Win.this, "Indiquez un nombre de plus proches voisins :", "Choix du nombre des plus proches voisins", JOptionPane.QUESTION_MESSAGE);
+					int choixint= Integer.parseInt(choix);
+					int bad = 0,neutral = 0,good = 0;
+					List<Status> tweets;
+					try {
+						tweets = Win.this.getTweets(search);
+						for(Status st :tweets)
+						{
+							Tweet tw = new Tweet(st, search);
+							
+							try {
+								tw=ClassificationKNN.knnTweet(choixint, tw, Win.this.annotatedTweets);
+								if(tw.getValue()==Tweet.BAD)
+									bad++;
+								else if(tw.getValue()==Tweet.NEUTRAL)
+									neutral++;
+								else
+									good++;
+								
+								
+							} catch (OutOfBoundsException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+						}
+						WinChart resultat = new WinChart(new PieChart(),bad,neutral,good);
+					} catch (TwitterException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (NotConnectedException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
+				}
+				
+				
+			}
+		};
 	}
 
 	private List<Status> getTweets(String searchWord) throws TwitterException,NotConnectedException 
@@ -313,6 +375,7 @@ public class Win extends JFrame {
 					
 					
 				}
+				WinChart resultat = new WinChart(new PieChart(),bad,neutral,good);
 			} 
 			catch (TwitterException e1)
 			{
