@@ -47,8 +47,9 @@ public class Win extends JFrame {
 	protected String cheminPositif, cheminNegatif;
 	
 	protected JMenuBar menu;
-	protected JMenu fileMenu, aboutMenu, annotation, optionMenu;
-	protected JMenuItem openCSVItem, createCSVItem, proxyItem,motcleItem,allMotsclesItem,allKNNItem ;
+	protected JMenu fileMenu, aboutMenu, annotation, optionMenu,bayesMenu,bayesFreqMenu,bayesPresMenu, bayesfreqpasmot,bayesfreqavecmot;
+	protected JMenuItem openCSVItem, createCSVItem, proxyItem,motcleItem,allMotsclesItem,allKNNItem,bayesfreqpasmotunigramme,bayesfreqpasmotbigramme,
+	bayesfreqavecmotunigramme,bayesfreqavecmotbigramme;
 	protected JPanel searchpanel, infopanel, tweetpanel;
 	//protected MoodPanel moodPanel;
 	protected JTextField search;
@@ -129,9 +130,32 @@ public class Win extends JFrame {
 		this.annotation.add(this.allMotsclesItem);
 		this.allKNNItem= new JMenuItem("Tout annoter par KNN");
 		this.allKNNItem.addActionListener(searchKNNAction);
+		
+		this.bayesMenu = new JMenu("Tout annoter par la méthode Bayésienne");
+		this.bayesPresMenu = new JMenu("Par présence");
+		this.bayesFreqMenu = new JMenu("Par fréquence");
+		this.bayesfreqpasmot = new JMenu("Pas < 3");
+		this.bayesfreqavecmot = new JMenu("En utilisant tous les mots");
+		
+		this.bayesfreqavecmotunigramme = new JMenuItem("Unigramme");
+		this.bayesfreqavecmotbigramme = new JMenuItem("bigramme");
+		
+		this.bayesfreqpasmotunigramme = new JMenuItem("Unigramme");
+		this.bayesfreqpasmotbigramme = new JMenuItem("bigramme");
+		
+		this.bayesfreqavecmot.add(this.bayesfreqavecmotunigramme);
+		this.bayesfreqavecmot.add(this.bayesfreqavecmotbigramme);
+		
+		this.bayesFreqMenu.add(this.bayesfreqavecmot);
+		this.bayesFreqMenu.add(this.bayesfreqpasmot);
+		
+		this.bayesMenu.add(this.bayesPresMenu);
+		this.bayesMenu.add(this.bayesFreqMenu);
+		
 		this.annotation.add(this.allKNNItem);
+		this.annotation.add(bayesMenu);
 		this.menu.add(this.annotation);
-		;
+		
 		
 		
 		this.fileMenu.add(this.openCSVItem);
