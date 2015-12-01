@@ -6,12 +6,25 @@
 \usepackage{amssymb}
 \usepackage{hyperref}
 \usepackage{graphicx}
-\usepackage{lscape}
+\usepackage{titlesec}
 \usepackage[francais]{babel}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 
+% Personnalisation des chapitres
+\titleformat{\chapter}[hang]
+{\fontfamily{cmss}\bfseries\huge}{\Roman{chapter} -- }{0cm}{
+    \vspace{1ex}
+}
+
+% Personnalisation des sections
+\titleformat{\section}[hang]
+{\bfseries\Large}{\arabic{section} -- }{0cm}{
+    \vspace{1ex}
+}
+
 \title{PJE\\\#Currentmood}
 \author{Quentin Van de Kadsye \and Jérôme Tanghe}
+\date{Mardi 15 décembre 2015}
 
 \setlength{\parskip}{\baselineskip}
 
@@ -48,24 +61,79 @@ Twitter (\textit{tweet}), à l'aide d'une des trois méthodes proposées:
         appartiennent à cette humeur à partir de la base de données.
 \end{itemize}
 
+% TODO insérer capture d'écran
+
 % -----------------------------------------------------------------------------
 
 \chapter{L'API Twitter}
 
-Afin de communiquer avec Twitter, nous avons utilisé la librairie
+\section{La classe \texttt{CMTwitter}}
+
+Afin de communiquer avec l'API de Twitter, nous avons utilisé la librairie
 \textbf{Twitter4J}\footnote{\href{http://twitter4j.org}{twitter4j.org}} qui
 propose les fonctionnalités dont nous avons besoin pour mener à bien le projet.
 Pour faciliter son implémentation, nous avons également créé une classe,
 \texttt{CMTwitter}, s'interfaçant entre notre application et Twitter4J, comme le
-montre la figure \ref{uml_cmtwitter} (page \pageref{uml_cmtwitter}).
+montre la figure \ref{uml_cmtwitter}.
 
-\begin{landscape}
-    \begin{figure}
-        \includegraphics[width=25cm]{img/uml_cmtwitter.jpeg}
-        \caption{Diagramme de classe montrant la classe \texttt{CMTwitter}
-        permettant d'interfacer Twitter4J.}
-        \label{uml_cmtwitter}
-    \end{figure}
-\end{landscape}
+\begin{figure}[h]
+    \includegraphics[width=1\textwidth]{img/uml_cmtwitter.png}
+    \caption{Diagramme de classe montrant comment nous interfaçons Twitter4J}
+    \label{uml_cmtwitter}
+\end{figure}
+
+Cela nous permet d'utiliser l'API de Twitter à l'aide de trois méthodes
+principales seulement au lieu d'une dizaine:
+
+\begin{itemize}
+    \item
+        \texttt{setProxy()} afin de donner les paramètres proxy à Twitter4J;
+    \item
+        \texttt{connect()} afin d'établir la connexion avec l'API de Twitter;
+    \item
+        \texttt{searchTweets()} afin d'utiliser la fonction de recherche de
+        l'API de Twitter.
+\end{itemize}
+
+La méthode \texttt{reset()}, quant à elle, est utilisée par les méthodes
+précédentes afin de permettre d'effectuer plusieurs requêtes. En effet, nous
+avons pu remarquer que l'objet \texttt{ConfigurationBuilder} périme après chaque
+requête, nous obligeant à le recréer avant d'effectuer une nouvelle requête.
+
+L'utilisation de cette classe s'effectue en trois étapes principales.
+
+Tout d'abord, on configure si nécessaire les paramètres proxy à l'aide de la
+méthode \texttt{setProxy()}. Cette dernière donne lesdits paramètres à l'objet
+\texttt{ConfigurationBuilder}.
+
+Ensuite, on appelle la méthode \texttt{connect()} qui utilise l'objet
+\texttt{ConfigurationBuilder} pour obtenir une instance de \texttt{Twitter}.
+
+C'est cette instance qui est ensuite utilisée par \texttt{searchTweets()} qui
+instancie un objet de Twitter4J permettant d'obtenir des tweets correspondant
+à la recherche. Cette méthode retourne une liste d'objets \texttt{Status}
+provenant de la librairie Twitter4J.
+
+\section{La classe \texttt{Tweet}}
+
+Nous nous sommes rapidement rendus compte que Twitter4J ne proposait aucune
+classe implémentant l'interface \texttt{Status} que nous devons manipuler. De
+plus, les objets que nous en obtenons contient de nombreuses informations qui ne
+nous sont pas utiles, tandis que d'autres nous étaient nécessaires mais
+n'y étaient pas présents.
+
+Nous avons donc créé une classe indépendante de Twitter4J, \texttt{Tweet}, qui
+réponde à ce besoin. Elle est utilisée dans toute l'application afin de contenir
+chaque tweet.
+
+\begin{figure}[b]
+    \centering
+    \includegraphics[width=7cm]{img/uml_tweet.png}
+    \caption{La classe \texttt{Tweet}}
+    \label{uml_tweet}
+\end{figure}
+
+Cette classe est surtout composée d'accesseurs permettant d'accéderr à chaque
+propriété du tweet. Ses deux premiers constructeurs permettent de 
 
 \end{document}

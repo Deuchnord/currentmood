@@ -9,7 +9,7 @@ import currentmood.util.classifier.ClassificationBaysienne;
 
 public class saveTweetTest {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws Exception {
 		
 		Tweet t = new Tweet(1, "Deuchnord", "Bonjour :D\nCeci est un tweet\navec un retour à la ligne et un lien : http://korben.info/42", new Date(), "korben");
 		List<Tweet> lt = CSVFile.readTweetsInCSV("/home/m1/tanghe/workspace/currentmood/tweets.csv");

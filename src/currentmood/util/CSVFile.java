@@ -87,7 +87,7 @@ public class CSVFile {
 		bufferedWriter.close();
 	}
 	
-	public static List<Tweet> readTweetsInCSV(String fileName) throws IOException
+	public static List<Tweet> readTweetsInCSV(String fileName) throws Exception
 	{
 		List<List<String>> csvContent = readCSV(fileName);
 		
@@ -95,24 +95,43 @@ public class CSVFile {
 		
 		for(List<String> line : csvContent)
 		{
-			Tweet tweet = new Tweet(new Long(line.get(0)), line.get(1), line.get(2).replace("\n", " "), new Date(new Long(line.get(3))), line.get(4));
-			
-			Integer notation;
-			// If there is a notation, we give it to the HashMap,
-			// else we give it the default value -1.
-			if(line.size() == 6)
-				notation = new Integer(line.get(5));
-			else
-				notation = new Integer(-1);
-			
-			tweet.setValue(notation);
-			
-			hashTweets.add(tweet);
+			try {
+				Tweet tweet = new Tweet(new Long(line.get(0)), line.get(1), line.get(2).replace("\n", " "), new Date(new Long(line.get(3))), line.get(4));
+				
+				Integer notation;
+				// If there is a notation, we give it to the HashMap,
+				// else we give it the default value -1.
+				if(line.size() == 6)
+					notation = new Integer(line.get(5));
+				else
+					notation = new Integer(-1);
+				
+				tweet.setValue(notation);
+				
+				hashTweets.add(tweet);
+			} catch(NumberFormatException e) {
+				throw new Exception("Could not parse line "+lineAsString(line));
+			}
 		}
 		
 		return hashTweets;
 	}
 	
+	private static String lineAsString(List<String> line) {
+		
+		String stringToReturn = "";
+		
+		for(String s : line)
+		{
+			if(!stringToReturn.isEmpty())
+				stringToReturn += ",";
+			
+			stringToReturn += s;
+		}
+		
+		return stringToReturn;
+	}
+
 	public static void writeTweetsInCSV(String filename, List<Tweet> hashTweets) throws IOException
 	{
 		List<List<String>> csvContent = new ArrayList<List<String>>();
@@ -169,6 +188,7 @@ public class CSVFile {
 			text = text.replaceAll("@([a-zA-Z0-9_.-]+)", " @ "); // Suppression des usernames
 			text = text.replaceAll("#([a-zA-Z0-9_]+)", " # "); // Suppression des hashtags
 			text = text.replaceAll("( )*([?!,.:;\"])( )?", " "); // Suppression des espaces avant la ponctuation & le guillemet
+			text = text.replaceAll(",", "");
 			text = text.replaceAll("[$€£]([0-9.]+)(\\.)?", "\\$XX$2"); // Suppression des $, des € et des £
 			text = text.replaceAll("([0-9.]+)[$€£]", "\\$XX"); // Suppression des $, des € et des £
 			text = text.replaceAll("[0-9]{1,3}%", "XX%");
