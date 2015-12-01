@@ -47,9 +47,9 @@ public class Win extends JFrame {
 	protected String cheminPositif, cheminNegatif;
 	
 	protected JMenuBar menu;
-	protected JMenu fileMenu, aboutMenu, annotation, optionMenu,bayesMenu,bayesFreqMenu,bayesPresMenu, bayesfreqpasmot,bayesfreqavecmot;
+	protected JMenu fileMenu, aboutMenu, annotation, optionMenu,bayesMenu,bayesFreqMenu,bayesPresMenu, bayesfreqpasmot,bayesfreqavecmot,bayesprespasmot,bayespresavecmot;
 	protected JMenuItem openCSVItem, createCSVItem, proxyItem,motcleItem,allMotsclesItem,allKNNItem,bayesfreqpasmotunigramme,bayesfreqpasmotbigramme,
-	bayesfreqavecmotunigramme,bayesfreqavecmotbigramme;
+	bayesfreqavecmotunigramme,bayesfreqavecmotbigramme,bayespresavecmotunigramme,bayespresavecmotbigramme,bayesprespasmotunigramme,bayesprespasmotbigramme;
 	protected JPanel searchpanel, infopanel, tweetpanel;
 	//protected MoodPanel moodPanel;
 	protected JTextField search;
@@ -59,7 +59,8 @@ public class Win extends JFrame {
 	protected JLabel lInfo, lInfoNb, lInfoTimeReload, lInfoTimeReloadNb;
 	protected JRadioButton JRNone, JRNeutral, JRBad, JRGood;
 	protected String lastSearch;
-	protected ActionListener searchMotsClesAction,searchKNNAction;
+	protected ActionListener searchMotsClesAction,searchKNNAction, searchBayesTTT,searchBayesFFF,searchBayesFFT,searchBayesFTF,searchBayesFTT,searchBayesTFF,
+	searchBayesTFT,searchBayesTTF;
 	
 	public Win()
 	{
@@ -131,26 +132,7 @@ public class Win extends JFrame {
 		this.allKNNItem= new JMenuItem("Tout annoter par KNN");
 		this.allKNNItem.addActionListener(searchKNNAction);
 		
-		this.bayesMenu = new JMenu("Tout annoter par la méthode Bayésienne");
-		this.bayesPresMenu = new JMenu("Par présence");
-		this.bayesFreqMenu = new JMenu("Par fréquence");
-		this.bayesfreqpasmot = new JMenu("Pas < 3");
-		this.bayesfreqavecmot = new JMenu("En utilisant tous les mots");
-		
-		this.bayesfreqavecmotunigramme = new JMenuItem("Unigramme");
-		this.bayesfreqavecmotbigramme = new JMenuItem("bigramme");
-		
-		this.bayesfreqpasmotunigramme = new JMenuItem("Unigramme");
-		this.bayesfreqpasmotbigramme = new JMenuItem("bigramme");
-		
-		this.bayesfreqavecmot.add(this.bayesfreqavecmotunigramme);
-		this.bayesfreqavecmot.add(this.bayesfreqavecmotbigramme);
-		
-		this.bayesFreqMenu.add(this.bayesfreqavecmot);
-		this.bayesFreqMenu.add(this.bayesfreqpasmot);
-		
-		this.bayesMenu.add(this.bayesPresMenu);
-		this.bayesMenu.add(this.bayesFreqMenu);
+		generateAllBayesMenu();
 		
 		this.annotation.add(this.allKNNItem);
 		this.annotation.add(bayesMenu);
@@ -271,6 +253,65 @@ public class Win extends JFrame {
 		
 		
 	}
+
+	private void generateAllBayesMenu() {
+		this.bayesMenu = new JMenu("Tout annoter par la méthode Bayésienne");
+		this.bayesPresMenu = new JMenu("Par présence");
+		this.bayesFreqMenu = new JMenu("Par fréquence");
+		
+		
+		this.bayespresavecmot = new JMenu("En utilisant tous les mots");
+		this.bayesprespasmot = new JMenu("Pas < 3");
+		
+		this.bayespresavecmotunigramme = new JMenuItem("Unigramme");
+		this.bayespresavecmotunigramme.addActionListener(searchBayesFFF);
+		
+		this.bayespresavecmotbigramme = new JMenuItem("Bigramme");
+		this.bayespresavecmotbigramme.addActionListener(this.searchBayesFFT);
+		
+		this.bayesprespasmotunigramme = new JMenuItem("Unigramme");
+		this.bayesprespasmotunigramme.addActionListener(searchBayesFTF);
+		
+		this.bayesprespasmotbigramme = new JMenuItem("Bigramme");
+		this.bayesprespasmotbigramme.addActionListener(searchBayesFTT);
+		
+		this.bayespresavecmot.add(this.bayespresavecmotunigramme);
+		this.bayespresavecmot.add(this.bayespresavecmotbigramme);
+		
+		this.bayesprespasmot.add(this.bayesprespasmotunigramme);
+		this.bayesprespasmot.add(this.bayesprespasmotbigramme);
+		
+		
+		this.bayesPresMenu.add(this.bayespresavecmot);
+		this.bayesPresMenu.add(this.bayesprespasmot);
+		
+		this.bayesfreqpasmot = new JMenu("Pas < 3");
+		this.bayesfreqavecmot = new JMenu("En utilisant tous les mots");
+		
+		this.bayesfreqavecmotunigramme = new JMenuItem("Unigramme");
+		this.bayesfreqavecmotunigramme.addActionListener(searchBayesTFF);
+		
+		this.bayesfreqavecmotbigramme = new JMenuItem("bigramme");
+		this.bayesfreqavecmotbigramme.addActionListener(searchBayesTFT);
+		
+		this.bayesfreqpasmotunigramme = new JMenuItem("Unigramme");
+		this.bayesfreqpasmotunigramme.addActionListener(searchBayesTTF);
+		
+		this.bayesfreqpasmotbigramme = new JMenuItem("bigramme");
+		this.bayesfreqpasmotbigramme.addActionListener(searchBayesTTT);
+		
+		this.bayesfreqavecmot.add(this.bayesfreqavecmotunigramme);
+		this.bayesfreqavecmot.add(this.bayesfreqavecmotbigramme);
+		
+		this.bayesfreqpasmot.add(this.bayesfreqpasmotunigramme);
+		this.bayesfreqpasmot.add(this.bayesfreqpasmotbigramme);
+		
+		this.bayesFreqMenu.add(this.bayesfreqavecmot);
+		this.bayesFreqMenu.add(this.bayesfreqpasmot);
+		
+		this.bayesMenu.add(this.bayesPresMenu);
+		this.bayesMenu.add(this.bayesFreqMenu);
+	}
 	
 	private void refreshLimit(RateLimitStatus rl)
 	{
@@ -313,52 +354,84 @@ public class Win extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(Win.this.annotatedTweets==null)
-				{
-					JOptionPane.showMessageDialog(Win.this, "La base de tweets n'est pas chargée" , "Erreur lors de l'annotation", JOptionPane.ERROR_MESSAGE);
-				}
-				else
-				{
-					String search = JOptionPane.showInputDialog(Win.this,"Quelle est votre recherche ?","Indiquez votre recherche",JOptionPane.QUESTION_MESSAGE);
-					String choix = JOptionPane.showInputDialog(Win.this, "Indiquez un nombre de plus proches voisins :", "Choix du nombre des plus proches voisins", JOptionPane.QUESTION_MESSAGE);
-					int choixint= Integer.parseInt(choix);
-					int bad = 0,neutral = 0,good = 0;
-					List<Status> tweets;
-					try {
-						tweets = Win.this.getTweets(search);
-						for(Status st :tweets)
-						{
-							Tweet tw = new Tweet(st, search);
-							
-							try {
-								tw=ClassificationKNN.knnTweet(choixint, tw, Win.this.annotatedTweets);
-								if(tw.getValue()==Tweet.BAD)
-									bad++;
-								else if(tw.getValue()==Tweet.NEUTRAL)
-									neutral++;
-								else
-									good++;
-								
-								
-							} catch (OutOfBoundsException e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
-						}
-						WinChart resultat = new WinChart(new PieChart(),bad,neutral,good);
-					} catch (TwitterException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					} catch (NotConnectedException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-					
-				}
+				annoteAllTweetKnn();
 				
 				
 			}
 		};
+		//sectionBayes
+		this.searchBayesTTT = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Win.this.annoteallTweetBayes(true, true, true);
+				
+			}
+		};
+		
+		this.searchBayesTTF = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Win.this.annoteallTweetBayes(true, true, false);
+				
+			}
+		};
+		
+		this.searchBayesFFF = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Win.this.annoteallTweetBayes(false, false, false);
+				
+			}
+		};
+		
+		this.searchBayesFFT =new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Win.this.annoteallTweetBayes(false, false, true);
+				
+			}
+		};
+		
+		this.searchBayesFTF = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Win.this.annoteallTweetBayes(false, true, false);
+				
+			}
+		};
+		
+		this.searchBayesFTT = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Win.this.annoteallTweetBayes(false, true, true);
+				
+			}
+		};
+		
+		this.searchBayesTFF = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Win.this.annoteallTweetBayes(true, false, false);
+				
+			}
+		};
+		
+		this.searchBayesTFT = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Win.this.annoteallTweetBayes(true, false, true);
+				
+			}
+		};
+		//fin section bayes
 	}
 
 	private List<Status> getTweets(String searchWord) throws TwitterException,NotConnectedException 
@@ -411,6 +484,93 @@ public class Win extends JFrame {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+		}
+	}
+
+	private void annoteAllTweetKnn() {
+		if(Win.this.annotatedTweets==null)
+		{
+			JOptionPane.showMessageDialog(Win.this, "La base de tweets n'est pas chargée" , "Erreur lors de l'annotation", JOptionPane.ERROR_MESSAGE);
+		}
+		else
+		{
+			String search = JOptionPane.showInputDialog(Win.this,"Quelle est votre recherche ?","Indiquez votre recherche",JOptionPane.QUESTION_MESSAGE);
+			String choix = JOptionPane.showInputDialog(Win.this, "Indiquez un nombre de plus proches voisins :", "Choix du nombre des plus proches voisins", JOptionPane.QUESTION_MESSAGE);
+			int choixint= Integer.parseInt(choix);
+			int bad = 0,neutral = 0,good = 0;
+			List<Status> tweets;
+			try {
+				tweets = Win.this.getTweets(search);
+				for(Status st :tweets)
+				{
+					Tweet tw = new Tweet(st, search);
+					
+					try {
+						tw=ClassificationKNN.knnTweet(choixint, tw, Win.this.annotatedTweets);
+						if(tw.getValue()==Tweet.BAD)
+							bad++;
+						else if(tw.getValue()==Tweet.NEUTRAL)
+							neutral++;
+						else
+							good++;
+						
+						
+					} catch (OutOfBoundsException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+				WinChart resultat = new WinChart(new PieChart(),bad,neutral,good);
+			} catch (TwitterException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (NotConnectedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+		}
+	}
+	
+	private void annoteallTweetBayes(boolean frequence,boolean sansMotsCourts, boolean bigrammes)
+	{
+		if(Win.this.annotatedTweets==null)
+		{
+			JOptionPane.showMessageDialog(Win.this, "La base de tweets n'est pas chargée" , "Erreur lors de l'annotation", JOptionPane.ERROR_MESSAGE);
+		}
+		else
+		{
+			String search = JOptionPane.showInputDialog(Win.this,"Quelle est votre recherche ?","Indiquez votre recherche",JOptionPane.QUESTION_MESSAGE);
+			int bad = 0,neutral = 0,good = 0;
+			int res=0;
+			List<Status> tweets;
+			try
+			{
+				tweets=Win.this.getTweets(search);
+				for(Status st : tweets)
+				{
+					Tweet tw = new Tweet(st, search);
+					res = ClassificationBaysienne.evaluateTweet(tw, Win.this.annotatedTweets, frequence, sansMotsCourts, bigrammes);
+					
+					if(res==Tweet.BAD)
+						bad++;
+					else if(res==Tweet.NEUTRAL)
+						neutral++;
+					else
+						good++;
+				}
+				WinChart resultat = new WinChart(new PieChart(),bad,neutral,good);
+			}
+			catch (TwitterException e1) 
+			{
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (NotConnectedException e1) 
+			{
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
 		}
 	}
 
