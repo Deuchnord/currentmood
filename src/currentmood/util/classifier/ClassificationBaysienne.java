@@ -240,7 +240,7 @@ public class ClassificationBaysienne
 			res= Tweet.GOOD;
 		}
 		
-		//System.out.println("evaluateTweet : " + res);
+		System.out.println("evaluateTweet : " + res);
 		
 		return res;
 		
