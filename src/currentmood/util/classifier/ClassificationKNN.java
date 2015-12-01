@@ -41,14 +41,14 @@ public class ClassificationKNN {
 	
 	public static Tweet knnTweet(int k, Tweet tweetAAnnonter, List<Tweet> tweetsAComparer) throws OutOfBoundsException
 	{
-		float tempScore = 1.0f;
+		float tempScore = -1.0f;
 		Tweet tempTweet = null;
 		if(k == 1)
 		{
 			for(Tweet tweetAComparer : tweetsAComparer )
 			{
 				float distance = distanceTweet(tweetAComparer,tweetAAnnonter);
-				if(distance<tempScore)
+				if(distance<tempScore ||tempScore==-1)
 				{
 					tempScore=distance;
 					tempTweet = tweetAComparer;
