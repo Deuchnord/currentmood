@@ -159,6 +159,52 @@ Nous avons également surchargé la méthode \texttt{equals()} de la super-class
 autre objet \texttt{Tweet}. Cela nous sera nécessaire pour certaines actions par
 la suite.
 
+
+
+% -----------------------------------------------------------------------------
+\chapter{La base d'apprentissage}
+
+\section{Le nettoyage des tweets}
+
+L'annotation automatique se basant sur une base d'apprentissage construite
+manuellement, il est primordial d'avoir une base de données saine pour éviter
+les erreurs d'interprétation. Cela passe par un nettoyage des tweets afin de
+limiter le «~bruit~».
+
+Lors de la sauvegarde des tweets annotés manuellement dans un fichier CSV, nous
+passons par une étape consistant à supprimer tout ce qui peut gêner
+l'interprétation du tweet ou la lecture du fichier CSV.
+
+Ainsi, nous supprimons:
+
+\begin{itemize}
+	\item
+		Les retours à la ligne (pour respecter le format CSV)
+	\item
+		Les smileys \texttt{:)}, \texttt{:(}, \texttt{:D}, \texttt{:')},
+		\texttt{:'(} et \texttt{:'D}
+	\item
+		Les liens hypertextes
+	\item
+		Les \texttt{@usernames}
+	\item
+		Les hashtags
+	\item
+		La ponctuation
+	\item
+		Les symboles monnétaires principaux (\euro, \$, £)
+	\item
+		Les pourcentages
+\end{itemize}
+
+Une fois ce nettoyage effectué, nous pouvons alors utiliser cette base de tweets
+pour annoter automatiquement d'autres tweets selon quatre méthodes qui seront
+traitées dans la
+partie~\ref{chapter-classifications}~(page~\pageref{chapter-classifications}).
+Ce nettoyage permet également d'enregistrer les tweets dans un fichier CSV sans
+casser son format (en supprimant notamment les retours à la ligne et les
+virgules).
+
 \section{Le fichier CSV}
 
 Pour gérer la base de données, il a été décidé de sauvegarder les messages
@@ -205,39 +251,54 @@ est précisé par le tableau~\ref{tableau-valeurs-annotation}.
 	\label{tableau-valeurs-annotation}
 \end{table}
 
+\section{Classifier manuellement un tweet dans \CMName}
+Après avoir chargé des tweets provenant de Twitter dans \CMName, il suffit de
+cliquer droit sur un tweet et, dans le menu contextuel, de choisir
+\textit{Annoter à la main} et l'annotation que l'on souhaite ajouter au tweet
+(figure~\ref{capture-annoter-a-la-main}).
+
+\begin{figure}
+    \centering
+    \includegraphics{img/capture-annoter-a-la-main.png}
+    \caption{Menu contextuel permettant d'annoter un tweet à la main}
+    \label{capture-annoter-a-la-main}
+\end{figure}
 
 % -----------------------------------------------------------------------------
-\chapter{La base d'apprentissage}
+\chapter{Classification automatique des tweets}
+\label{chapter-classifications}
 
-L'annotation automatique se basant sur une base d'apprentissage construite
-manuellement, il est primordial d'avoir une base de données saine pour éviter
-les erreurs d'interprétation. Cela passe par un nettoyage des tweets afin de
-limiter le «~bruit~».
+\section{Classification par mots-clés}
+La classification par mots-clés est la plus simple des méthodes de
+classification. Elle consiste à se baser sur une liste de mots définis dans un
+fichier pour déterminer l'humeur d'un tweet.
 
-Lors de la sauvegarde des tweets annotés manuellement dans un fichiers CSV, nous
-passons par une étape consistant à supprimer tout ce qui peut gêner
-l'interprétation du tweet ou la lecture du fichier CSV.
+Sa stratégie est des plus simples: pour un tweet donné, on recherche
+chacun de ses mots dans un dictionnaire définissant des mots positifs et des
+mots négatifs. Leur nombre respectifs déterminera alors l'humeur du tweet. Par
+exemple, un tweet contenant 3 mots considérés positifs et 5 mots considérés
+négatifs sera annoté négatif. Un tweet qui contiendrait un même nombre de mots
+positifs et négatifs est considéré comme étant neutre.
 
-Ainsi, nous supprimons:
+Cette méthode a pour principaux avantages d'être très simples à mettre en œuvre
+et de ne pas nécessiter de base d'apprentissage de tweets. Seul un dictionnaire
+de mots positifs et de mots négatifs est nécessaire pour pouvoir annoter un
+tweet.
 
-\begin{itemize}
-	\item
-		Les retours à la ligne (pour respecter le format CSV)
-	\item
-		Les smileys \texttt{:)}, \texttt{:(}, \texttt{:D}, \texttt{:')},
-		\texttt{:'(} et \texttt{:'D}
-	\item
-		Les liens hypertextes
-	\item
-		Les \texttt{@usernames}
-	\item
-		Les hashtags
-	\item
-		La ponctuation
-	\item
-		Les symboles monnétaires principaux (\euro, \$, £)
-	\item
-		Les pourcentages
-\end{itemize}
+Son inconvénient majeur est que le dictionnaire doit être particulièrement
+fourni en mots positifs et négatifs pour être efficace. De plus, réduire une
+phrase complète à de simples mots-clés ne permet pas de prendre en compte le
+sens général de la carte. Prenons par exemple le tweet suivant :
+
+Génial, ma banque m'a refusé mon crédit…
+
+On remarque bien que ce tweet est plutôt négatif. Cependant, il contient le mot
+\textit{génial}, qui peut donc influencer la classification finale.
+
+\section{Classification par la méthode KNN}
+
+
+\section{Classification par la méthode bayésienne}
+
 
 \end{document}
