@@ -10,19 +10,21 @@
 \usepackage[francais]{babel}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 
+\newcommand{\CMName}{\#currentmood}
+
 % Personnalisation des chapitres
 \titleformat{\chapter}[hang]
-{\fontfamily{cmss}\bfseries\huge}{\Roman{chapter} -- }{0cm}{
+{\fontfamily{cmss}\bfseries\huge}{\Roman{chapter} -- }{0cm}{%
     \vspace{1ex}
 }
 
 % Personnalisation des sections
 \titleformat{\section}[hang]
-{\bfseries\Large}{\arabic{section} -- }{0cm}{
+{\bfseries\Large}{\arabic{section} -- }{0cm}{%
     \vspace{1ex}
 }
 
-\title{PJE\\\#Currentmood}
+\title{PJE\\\CMName}
 \author{Quentin Van de Kadsye \and Jérôme Tanghe}
 \date{Mardi 15 décembre 2015}
 
@@ -43,7 +45,7 @@ s'exprimer librement, c'est donc un emplacement de choix pour récolter ce type
 d'information. Se pose alors le problème suivant : comment connaître rapidement
 l'humeur des personnes sur un sujet donné?
 
-\textbf{\#Currentmood} est un programme tentant de répondre à ce besoin. Écrit
+\textbf{\CMName} est un programme tentant de répondre à ce besoin. Écrit
 en Java, il permet d'estimer l'humeur d'un ou plusieurs messages publiés sur
 Twitter (\textit{tweet}), à l'aide d'une des trois méthodes proposées:
 
@@ -61,7 +63,11 @@ Twitter (\textit{tweet}), à l'aide d'une des trois méthodes proposées:
         appartiennent à cette humeur à partir de la base de données.
 \end{itemize}
 
-% TODO insérer capture d'écran
+\begin{figure}[h]
+	\includegraphics[width=\textwidth]{img/capture-currentmood-ui.png}
+	\caption{Interface utilisateur générale de \CMName}
+	\label{cm_ui}
+\end{figure}
 
 % -----------------------------------------------------------------------------
 
@@ -74,7 +80,7 @@ Afin de communiquer avec l'API de Twitter, nous avons utilisé la librairie
 propose les fonctionnalités dont nous avons besoin pour mener à bien le projet.
 Pour faciliter son implémentation, nous avons également créé une classe,
 \texttt{CMTwitter}, s'interfaçant entre notre application et Twitter4J, comme le
-montre la figure \ref{uml_cmtwitter}.
+montre la figure~\ref{uml_cmtwitter}.
 
 \begin{figure}[h]
     \includegraphics[width=1\textwidth]{img/uml_cmtwitter.png}
