@@ -1,3 +1,3 @@
 pdf:
-	pdflatex Currentmood.tex
-	pdflatex Currentmood.tex
+	pdflatex currentmood.tex
+	pdflatex currentmood.tex
