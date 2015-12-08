@@ -15,13 +15,13 @@
 % Personnalisation des chapitres
 \titleformat{\chapter}[hang]
 {\fontfamily{cmss}\bfseries\huge}{\Roman{chapter} -- }{0cm}{%
-    \vspace{1ex}
+	\vspace{1ex}
 }
 
 % Personnalisation des sections
 \titleformat{\section}[hang]
 {\bfseries\Large}{\arabic{section} -- }{0cm}{%
-    \vspace{1ex}
+	\vspace{1ex}
 }
 
 \title{PJE\\\CMName}
@@ -50,17 +50,17 @@ en Java, il permet d'estimer l'humeur d'un ou plusieurs messages publiés sur
 Twitter (\textit{tweet}), à l'aide d'une des trois méthodes proposées:
 
 \begin{itemize}
-    \item
-        \textbf{Mots-clés:} utilise une liste de mots prédéfinis dans des
-        fichiers pour déterminer l'humeur du tweet.
-    \item
-        \textbf{KNN:} évalue l'humeur d'un tweet en fonction de l'humeur de $k$
-        autres tweets, en recherchant dans une base de données de tweets dont on
-        connaît déjà l'humeur ceux qui contiennent les mêmes mots.
-    \item
-        \textbf{Classification bayésienne:} évalue la probabilité d'humeur d'un
-        tweet en calculant la probabilité que les mots qu'il contient
-        appartiennent à cette humeur à partir de la base de données.
+	\item
+		\textbf{Mots-clés:} utilise une liste de mots prédéfinis dans des
+		fichiers pour déterminer l'humeur du tweet.
+	\item
+		\textbf{KNN:} évalue l'humeur d'un tweet en fonction de l'humeur de $k$
+		autres tweets, en recherchant dans une base de données de tweets dont on
+		connaît déjà l'humeur ceux qui contiennent les mêmes mots.
+	\item
+		\textbf{Classification bayésienne:} évalue la probabilité d'humeur d'un
+		tweet en calculant la probabilité que les mots qu'il contient
+		appartiennent à cette humeur à partir de la base de données.
 \end{itemize}
 
 \begin{figure}[h]
@@ -83,22 +83,22 @@ Pour faciliter son implémentation, nous avons également créé une classe,
 montre la figure~\ref{uml_cmtwitter}.
 
 \begin{figure}[h]
-    \includegraphics[width=1\textwidth]{img/uml_cmtwitter.png}
-    \caption{Diagramme de classe montrant comment nous interfaçons Twitter4J}
-    \label{uml_cmtwitter}
+	\includegraphics[width=1\textwidth]{img/uml_cmtwitter.png}
+	\caption{Diagramme de classe montrant comment nous interfaçons Twitter4J}
+	\label{uml_cmtwitter}
 \end{figure}
 
 Cela nous permet d'utiliser l'API de Twitter à l'aide de trois méthodes
 principales seulement au lieu d'une dizaine:
 
 \begin{itemize}
-    \item
-        \texttt{setProxy()} afin de donner les paramètres proxy à Twitter4J;
-    \item
-        \texttt{connect()} afin d'établir la connexion avec l'API de Twitter;
-    \item
-        \texttt{searchTweets()} afin d'utiliser la fonction de recherche de
-        l'API de Twitter.
+	\item
+		\texttt{setProxy()} afin de donner les paramètres proxy à Twitter4J;
+	\item
+		\texttt{connect()} afin d'établir la connexion avec l'API de Twitter;
+	\item
+		\texttt{searchTweets()} afin d'utiliser la fonction de recherche de
+		l'API de Twitter.
 \end{itemize}
 
 La méthode \texttt{reset()}, quant à elle, est utilisée par les méthodes
@@ -133,10 +133,10 @@ réponde à ce besoin. Elle est utilisée dans toute l'application afin de conte
 chaque tweet.
 
 \begin{figure}[h]
-    \centering
-    \includegraphics[width=7cm]{img/uml_tweet.png}
-    \caption{La classe \texttt{Tweet}}
-    \label{uml_tweet}
+	\centering
+	\includegraphics[width=7cm]{img/uml_tweet.png}
+	\caption{La classe \texttt{Tweet}}
+	\label{uml_tweet}
 \end{figure}
 
 Cette classe est surtout composée d'accesseurs permettant d'accéder à chaque
@@ -161,18 +161,32 @@ Les données à sauvegarder étant globalement celles contenues dans les objets
 \texttt{Tweet}, l'ordre de sauvegarde sera donc le suivant:
 
 \begin{enumerate}
-    \item
-        Le numéro d'identification du tweet
-    \item
-        Le nom de l'auteur du tweet
-    \item
-        Le contenu du tweet
-    \item
-        La date et l'heure du tweet
-    \item
-        La recherche qui a permi de trouver le tweet
-    \item
-        L'annotation du tweet
+	\item
+		Le numéro d'identification du tweet
+	\item
+		Le nom de l'auteur du tweet
+	\item
+		Le contenu du tweet
+	\item
+		La date et l'heure du tweet, sous la forme d'un
+		\textit{timestamp}\footnote{Nombre de secondes depuis le 
+		1\ier{} janvier 1970, 0 h 00 min 00 s GMT}. S'il est nul, il est
+		ignoré.
+	\item
+		La recherche qui a permis de trouver le tweet
+	\item
+		L'annotation du tweet
 \end{enumerate}
+
+L'annotation du tweet est enregistré sous la forme d'un nombre dont la 
+
+\begin{itemize}
+	\item
+		\texttt{0} si l'humeur du tweet est mauvaise
+	\item
+		\texttt{2} si l'humeur du tweet est neutre
+	\item
+		\texttt{4} si l'humeur du tweet est bonne
+\end{itemize}
 
 \end{document}
