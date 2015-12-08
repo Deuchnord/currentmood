@@ -28,12 +28,19 @@ public class WinChart extends JFrame {
 	
 	
 	public WinChart(PieChart panel ,int negatives, int neutrals, int positives)
+	
 	{
+		double somme = negatives+neutrals+positives;
+		double neg,pos,neu;
+		neg = (negatives/somme)*100;
+		neu = (neutrals/somme)*100;
+		pos = (positives/somme)*100;
 		panelw = new JPanel();
-		
-		dataset.setValue("Mauvais", negatives);
-		dataset.setValue("Neutre", neutrals);
-		dataset.setValue("Bon", positives);
+		System.out.println(negatives/somme);
+		System.out.println(neg+","+neu+","+pos);
+		dataset.setValue("Mauvais",(int)neg );
+		dataset.setValue("Neutre",(int)neu);
+		dataset.setValue("Bon",(int)pos );
 		chart = ChartFactory.createPieChart(
 				"Répartion des sentiments", 
 				dataset,
@@ -48,6 +55,7 @@ public class WinChart extends JFrame {
 		//Paramétrage de la fenetre 
 		this.setSize(new Dimension((int)screen.getWidth()/2,(int)screen.getHeight()/2));
 		this.setVisible(true);
+		cp.repaint();
 		
 		
 		

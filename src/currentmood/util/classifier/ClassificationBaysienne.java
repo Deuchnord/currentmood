@@ -226,14 +226,14 @@ public class ClassificationBaysienne
 		
 		if(probabad > probaneutre && probabad > probagood)
 		{
-			temp=probabad;
+		
 			res = Tweet.BAD;
 			
 		}
 		
 		else if(probaneutre > probabad && probaneutre > probagood)
 		{
-			temp=probaneutre;
+			
 			res= Tweet.NEUTRAL;
 		}
 		
