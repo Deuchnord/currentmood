@@ -7,6 +7,9 @@
 \usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage{titlesec}
+\usepackage{booktabs}
+\usepackage{eurosym}
+\usepackage[table]{xcolor}
 \usepackage[francais]{babel}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 
@@ -23,6 +26,9 @@
 {\bfseries\Large}{\arabic{section} -- }{0cm}{%
 	\vspace{1ex}
 }
+
+% Personnalisation des tableaux
+\arrayrulecolor{lightgray}
 
 \title{PJE\\\CMName}
 \author{Quentin Van de Kadsye \and Jérôme Tanghe}
@@ -68,6 +74,9 @@ Twitter (\textit{tweet}), à l'aide d'une des trois méthodes proposées:
 	\caption{Interface utilisateur générale de \CMName}
 	\label{cm_ui}
 \end{figure}
+
+Le code source du logiciel est disponible sur
+\href{http://github.com/Deuchnord/currentmood}{github.com/Deuchnord/currentmood}.
 
 % -----------------------------------------------------------------------------
 
@@ -178,15 +187,57 @@ Les données à sauvegarder étant globalement celles contenues dans les objets
 		L'annotation du tweet
 \end{enumerate}
 
-L'annotation du tweet est enregistré sous la forme d'un nombre dont la 
+L'annotation du tweet est enregistré sous la forme d'un nombre dont la valeur
+est précisé par le tableau~\ref{tableau-valeurs-annotation}.
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{c c}
+		\textbf{Valeur de l'annotation}	& \textbf{Humeur du tweet}\\
+		\midrule
+		$0$				& Mauvais\\
+		\midrule
+		$2$				& Neutre\\
+		\midrule
+		$4$				& Bon
+	\end{tabular}
+	\caption{Valeur de l'annotation selon l'humeur du tweet}
+	\label{tableau-valeurs-annotation}
+\end{table}
+
+
+% -----------------------------------------------------------------------------
+\chapter{La base d'apprentissage}
+
+L'annotation automatique se basant sur une base d'apprentissage construite
+manuellement, il est primordial d'avoir une base de données saine pour éviter
+les erreurs d'interprétation. Cela passe par un nettoyage des tweets afin de
+limiter le «~bruit~».
+
+Lors de la sauvegarde des tweets annotés manuellement dans un fichiers CSV, nous
+passons par une étape consistant à supprimer tout ce qui peut gêner
+l'interprétation du tweet ou la lecture du fichier CSV.
+
+Ainsi, nous supprimons:
 
 \begin{itemize}
 	\item
-		\texttt{0} si l'humeur du tweet est mauvaise
+		Les retours à la ligne (pour respecter le format CSV)
 	\item
-		\texttt{2} si l'humeur du tweet est neutre
+		Les smileys \texttt{:)}, \texttt{:(}, \texttt{:D}, \texttt{:')},
+		\texttt{:'(} et \texttt{:'D}
 	\item
-		\texttt{4} si l'humeur du tweet est bonne
+		Les liens hypertextes
+	\item
+		Les \texttt{@usernames}
+	\item
+		Les hashtags
+	\item
+		La ponctuation
+	\item
+		Les symboles monnétaires principaux (\euro, \$, £)
+	\item
+		Les pourcentages
 \end{itemize}
 
 \end{document}

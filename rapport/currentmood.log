@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Arch Linux) (preloaded format=pdflatex 2015.11.16)  8 DEC 2015 09:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Arch Linux) (preloaded format=pdflatex 2015.11.16)  8 DEC 2015 11:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -483,6 +483,63 @@ Package: titlesec 2011/12/15 v2.10.0 Sectioning titles
 \titlewidthlast=\dimen121
 \titlewidthfirst=\dimen122
 )
+(/usr/share/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2005/04/14 v1.61803 publication quality tables
+\heavyrulewidth=\dimen123
+\lightrulewidth=\dimen124
+\cmidrulewidth=\dimen125
+\belowrulesep=\dimen126
+\belowbottomsep=\dimen127
+\aboverulesep=\dimen128
+\abovetopsep=\dimen129
+\cmidrulesep=\dimen130
+\cmidrulekern=\dimen131
+\defaultaddspace=\dimen132
+\@cmidla=\count111
+\@cmidlb=\count112
+\@aboverulesep=\dimen133
+\@belowrulesep=\dimen134
+\@thisruleclass=\count113
+\@lastruleclass=\count114
+\@thisrulewidth=\dimen135
+)
+(/usr/share/texmf-dist/tex/latex/eurosym/eurosym.sty
+Package: eurosym 1998/08/06 v1.1 European currency symbol ``Euro''
+\@eurobox=\box29
+)
+(/usr/share/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
+
+(/usr/share/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+
+(/usr/share/texmf-dist/tex/latex/colortbl/colortbl.sty
+Package: colortbl 2012/02/13 v1.0a Color table columns (DPC)
+
+(/usr/share/texmf-dist/tex/latex/tools/array.sty
+Package: array 2014/10/28 v2.4c Tabular extension package (FMi)
+\col@sep=\dimen136
+\extrarowheight=\dimen137
+\NC@list=\toks23
+\extratabsurround=\skip49
+\backup@length=\skip50
+)
+\everycr=\toks24
+\minrowclearance=\skip51
+)
+\rownum=\count115
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
+Package xcolor Info: Model `RGB' extended on input line 1353.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
+)
 (/usr/share/texmf-dist/tex/generic/babel/babel.sty
 Package: babel 2015/08/03 3.9m The Babel package
 
@@ -491,62 +548,62 @@ Language: frenchb 2015/10/04 v3.1i French support from the babel system
 
 (/usr/share/texmf-dist/tex/generic/babel/babel.def
 File: babel.def 2015/08/03 3.9m Babel common definitions
-\babel@savecnt=\count111
-\U@D=\dimen123
+\babel@savecnt=\count116
+\U@D=\dimen138
 )
 \l@acadian = a dialect from \language\l@french 
 \l@canadien = a dialect from \language\l@french 
-\FBcolonskip=\skip49
-\FBthinskip=\skip50
-\FB@interchartokenstateORI=\count112
+\FBcolonskip=\skip52
+\FBthinskip=\skip53
+\FB@interchartokenstateORI=\count117
 Package babel Info: Making : an active character on input line 356.
 Package babel Info: Making ; an active character on input line 357.
 Package babel Info: Making ! an active character on input line 358.
 Package babel Info: Making ? an active character on input line 359.
-\FBguillskip=\skip51
-\FBguill@level=\count113
-\FB@Mht=\dimen124
-\std@mcc=\count114
-\dec@mcc=\count115
-\listindentFB=\skip52
-\labelwidthFB=\skip53
-\leftmarginFB=\skip54
-\parindentFFN=\dimen125
+\FBguillskip=\skip54
+\FBguill@level=\count118
+\FB@Mht=\dimen139
+\std@mcc=\count119
+\dec@mcc=\count120
+\listindentFB=\skip55
+\labelwidthFB=\skip56
+\leftmarginFB=\skip57
+\parindentFFN=\dimen140
 ))
 (/usr/share/texmf-dist/tex/latex/carlisle/scalefnt.sty)
 (/usr/share/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2010/09/12 v5.6 Page Geometry
-\Gm@cnth=\count116
-\Gm@cntv=\count117
-\c@Gm@tempcnt=\count118
-\Gm@bindingoffset=\dimen126
-\Gm@wd@mp=\dimen127
-\Gm@odd@mp=\dimen128
-\Gm@even@mp=\dimen129
-\Gm@layoutwidth=\dimen130
-\Gm@layoutheight=\dimen131
-\Gm@layouthoffset=\dimen132
-\Gm@layoutvoffset=\dimen133
-\Gm@dimlist=\toks23
+\Gm@cnth=\count121
+\Gm@cntv=\count122
+\c@Gm@tempcnt=\count123
+\Gm@bindingoffset=\dimen141
+\Gm@wd@mp=\dimen142
+\Gm@odd@mp=\dimen143
+\Gm@even@mp=\dimen144
+\Gm@layoutwidth=\dimen145
+\Gm@layoutheight=\dimen146
+\Gm@layouthoffset=\dimen147
+\Gm@layoutvoffset=\dimen148
+\Gm@dimlist=\toks25
 ) (./currentmood.aux)
 \openout1 = `currentmood.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-\AtBeginShipoutBox=\box29
-Package hyperref Info: Link coloring OFF on input line 33.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+\AtBeginShipoutBox=\box30
+Package hyperref Info: Link coloring OFF on input line 39.
 
 (/usr/share/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -554,11 +611,11 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/share/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count119
+\c@section@level=\count124
 )
-LaTeX Info: Redefining \ref on input line 33.
-LaTeX Info: Redefining \pageref on input line 33.
-LaTeX Info: Redefining \nameref on input line 33.
+LaTeX Info: Redefining \ref on input line 39.
+LaTeX Info: Redefining \pageref on input line 39.
+LaTeX Info: Redefining \nameref on input line 39.
 
 (./currentmood.out) (./currentmood.out)
 \@outlinefile=\write3
@@ -567,17 +624,17 @@ LaTeX Info: Redefining \nameref on input line 33.
 
 (/usr/share/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count120
-\scratchdimen=\dimen134
-\scratchbox=\box30
-\nofMPsegments=\count121
-\nofMParguments=\count122
-\everyMPshowfont=\toks24
-\MPscratchCnt=\count123
-\MPscratchDim=\dimen135
-\MPnumerator=\count124
-\makeMPintoPDFobject=\count125
-\everyMPtoPDFconversion=\toks25
+\scratchcounter=\count125
+\scratchdimen=\dimen149
+\scratchbox=\box31
+\nofMPsegments=\count126
+\nofMParguments=\count127
+\everyMPshowfont=\toks26
+\MPscratchCnt=\count128
+\MPscratchDim=\dimen150
+\MPnumerator=\count129
+\makeMPintoPDFobject=\count130
+\everyMPtoPDFconversion=\toks27
 ) (/usr/share/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
@@ -593,14 +650,14 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Info: Redefining \degres on input line 33.
-LaTeX Info: Redefining \dots on input line 33.
-LaTeX Info: Redefining \up on input line 33.
+LaTeX Info: Redefining \degres on input line 39.
+LaTeX Info: Redefining \dots on input line 39.
+LaTeX Info: Redefining \up on input line 39.
 
 
 Package frenchb.ldf Warning: OT1 encoding should not be used for French.
 (frenchb.ldf)                Add \usepackage[T1]{fontenc} to the preamble
-(frenchb.ldf)                of your document, on input line 33.
+(frenchb.ldf)                of your document, on input line 39.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -636,11 +693,11 @@ Package frenchb.ldf Warning: OT1 encoding should not be used for French.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 35.
+LaTeX Font Info:    Try loading font information for U+msa on input line 41.
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 35.
+LaTeX Font Info:    Try loading font information for U+msb on input line 41.
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -654,37 +711,37 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.40 \chapter
+l.46 \chapter
              {Le projet} [1
 
 ]
 Chapitre 1.
-<img/capture-currentmood-ui.png, id=43, 1138.2525pt x 575.14874pt>
+<img/capture-currentmood-ui.png, id=48, 1138.2525pt x 575.14874pt>
 File: img/capture-currentmood-ui.png Graphic file (type png)
 
 <use img/capture-currentmood-ui.png>
-Package pdftex.def Info: img/capture-currentmood-ui.png used on input line 67.
+Package pdftex.def Info: img/capture-currentmood-ui.png used on input line 73.
 (pdftex.def)             Requested size: 483.69687pt x 244.41304pt.
  [2
 
  <./img/capture-currentmood-ui.png>]
 Chapitre 2.
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <17.28> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 76.
-<img/uml_cmtwitter.png, id=57, 1247.66125pt x 364.36125pt>
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 85.
+<img/uml_cmtwitter.png, id=63, 1247.66125pt x 364.36125pt>
 File: img/uml_cmtwitter.png Graphic file (type png)
 
 <use img/uml_cmtwitter.png>
-Package pdftex.def Info: img/uml_cmtwitter.png used on input line 86.
+Package pdftex.def Info: img/uml_cmtwitter.png used on input line 95.
 (pdftex.def)             Requested size: 483.69687pt x 141.25523pt.
 
-Overfull \hbox (20.53891pt too wide) in paragraph at lines 104--108
+Overfull \hbox (20.53891pt too wide) in paragraph at lines 113--117
 \OT1/cmr/m/n/12 d'ef-fec-tuer plu-sieurs requ^etes. En ef-fet, nous avons pu re
 -mar-quer que l'ob-jet \OT1/cmtt/m/n/12 ConfigurationBuilder
  []
 
 
-Overfull \hbox (17.04297pt too wide) in paragraph at lines 111--114
+Overfull \hbox (17.04297pt too wide) in paragraph at lines 120--123
 []\OT1/cmr/m/n/12 Tout d'abord, on confi-gure si n^^Secessaire les pa-ram^^Retr
 es proxy ^^Ra l'aide de la m^^Sethode \OT1/cmtt/m/n/12 setProxy()\OT1/cmr/m/n/1
 2 .
@@ -693,40 +750,44 @@ es proxy ^^Ra l'aide de la m^^Sethode \OT1/cmtt/m/n/12 setProxy()\OT1/cmr/m/n/1
 [3
 
  <./img/uml_cmtwitter.png>]
-<img/uml_tweet.png, id=66, 464.73625pt x 344.28625pt>
+<img/uml_tweet.png, id=72, 464.73625pt x 344.28625pt>
 File: img/uml_tweet.png Graphic file (type png)
  <use img/uml_tweet.png>
-Package pdftex.def Info: img/uml_tweet.png used on input line 137.
+Package pdftex.def Info: img/uml_tweet.png used on input line 146.
 (pdftex.def)             Requested size: 199.16928pt x 147.54637pt.
 
 [4 <./img/uml_tweet.png>]
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <6.49994> not available
-(Font)              size <6> substituted on input line 173.
+(Font)              size <6> substituted on input line 182.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 192.
 [5]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 192.
+Chapitre 3.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 245.
+[6
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 245.
  (./currentmood.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 192.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 192.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 245.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 245.
 Package rerunfilecheck Info: File `currentmood.out' has not changed.
-(rerunfilecheck)             Checksum: 3E70AFD9BBD5CA78506AC1BA76DB2B80;298.
+(rerunfilecheck)             Checksum: 20763BE533F710EFBCA395BB57C4B0C5;356.
 
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.49994pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 192.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 245.
  ) 
 Here is how much of TeX's memory you used:
- 7959 strings out of 493054
- 111610 string characters out of 6140585
- 213605 words of memory out of 5000000
- 11363 multiletter control sequences out of 15000+600000
- 13717 words of font info for 53 fonts, out of 8000000 for 9000
+ 8612 strings out of 493054
+ 119349 string characters out of 6140585
+ 227103 words of memory out of 5000000
+ 11990 multiletter control sequences out of 15000+600000
+ 14129 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 29i,7n,31p,228b,439s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,10n,35p,228b,439s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texmf-dist/fo
 nts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/publ
@@ -735,12 +796,15 @@ cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr
 /share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmssbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmti10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pf
-b></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on currentmood.pdf (6 pages, 219740 bytes).
+s/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb
+></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texmf-dist/font
+s/type1/public/amsfonts/cm/cmu10.pfb></usr/share/texmf-dist/fonts/type1/public/
+eurosym/feymr10.pfb>
+Output written on currentmood.pdf (7 pages, 245707 bytes).
 PDF statistics:
- 134 PDF objects out of 1000 (max. 8388607)
- 108 compressed objects within 2 object streams
- 24 named destinations out of 1000 (max. 500000)
- 56 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 161 PDF objects out of 1000 (max. 8388607)
+ 131 compressed objects within 2 object streams
+ 27 named destinations out of 1000 (max. 500000)
+ 64 words of extra memory for PDF output out of 10000 (max. 10000000)
 
