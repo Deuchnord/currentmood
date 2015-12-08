@@ -224,23 +224,25 @@ public class ClassificationBaysienne
 		double temp;
 		 int res;
 		
-		if(probabad>probaneutre)
+		if(probabad > probaneutre && probabad > probagood)
 		{
 			temp=probabad;
 			res = Tweet.BAD;
 			
 		}
-		else
+		
+		else if(probaneutre > probabad && probaneutre > probagood)
 		{
 			temp=probaneutre;
 			res= Tweet.NEUTRAL;
 		}
-		if(temp<probagood)
+		
+		else
 		{
 			res= Tweet.GOOD;
 		}
 		
-		System.out.println("evaluateTweet : " + res);
+		System.out.println("evaluateTweet : " + res + "(B = "+probabad+" ; N = "+probaneutre+" ; G = "+probagood+")");
 		
 		return res;
 		
