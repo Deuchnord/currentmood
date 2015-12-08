@@ -65,7 +65,7 @@ Twitter (\textit{tweet}), à l'aide d'une des trois méthodes proposées:
 
 % -----------------------------------------------------------------------------
 
-\chapter{L'API Twitter}
+\chapter{API Twitter et gestion des tweets}
 
 \section{La classe \texttt{CMTwitter}}
 
@@ -126,14 +126,47 @@ Nous avons donc créé une classe indépendante de Twitter4J, \texttt{Tweet}, qu
 réponde à ce besoin. Elle est utilisée dans toute l'application afin de contenir
 chaque tweet.
 
-\begin{figure}[b]
+\begin{figure}[h]
     \centering
     \includegraphics[width=7cm]{img/uml_tweet.png}
     \caption{La classe \texttt{Tweet}}
     \label{uml_tweet}
 \end{figure}
 
-Cette classe est surtout composée d'accesseurs permettant d'accéderr à chaque
-propriété du tweet. Ses deux premiers constructeurs permettent de 
+Cette classe est surtout composée d'accesseurs permettant d'accéder à chaque
+propriété du tweet. Ses deux premiers constructeurs permettent de créer un objet
+à partir de données déjà connues (typiquement lors de l'ouverture d'un fichier
+CSV), tandis que le troisième permet d'obtenir un objet \texttt{Tweet} à partir
+d'un objet \texttt{Status} généré par Twitter4J.
+
+Nous avons également surchargé la méthode \texttt{equals()} de la super-classe
+\texttt{Object} afin de permettre la comparaison de l'objet courant avec un
+autre objet \texttt{Tweet}. Cela nous sera nécessaire pour certaines actions par
+la suite.
+
+\section{Le fichier CSV}
+
+Pour gérer la base de données, il a été décidé de sauvegarder les messages
+annotés dans un fichier CSV\footnote{\textit{Comma-separated values}}. Ce type
+de fichier a pour principal avantage d'être relativement léger et facile à lire
+par programmation.
+
+Les données à sauvegarder étant globalement celles contenues dans les objets
+\texttt{Tweet}, l'ordre de sauvegarde sera donc le suivant:
+
+\begin{enumerate}
+    \item
+        Le numéro d'identification du tweet
+    \item
+        Le nom de l'auteur du tweet
+    \item
+        Le contenu du tweet
+    \item
+        La date et l'heure du tweet
+    \item
+        La recherche qui a permi de trouver le tweet
+    \item
+        L'annotation du tweet
+\end{enumerate}
 
 \end{document}
