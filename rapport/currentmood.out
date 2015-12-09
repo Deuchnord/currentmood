@@ -1,12 +1,13 @@
 \BOOKMARK [0][-]{chapter.1}{Le projet}{}% 1
-\BOOKMARK [0][-]{chapter.2}{API Twitter et gestion des tweets}{}% 2
-\BOOKMARK [1][-]{section.2.1}{La classe CMTwitter}{chapter.2}% 3
-\BOOKMARK [1][-]{section.2.2}{La classe Tweet}{chapter.2}% 4
-\BOOKMARK [0][-]{chapter.3}{La base d'apprentissage}{}% 5
-\BOOKMARK [1][-]{section.3.1}{Le nettoyage des tweets}{chapter.3}% 6
-\BOOKMARK [1][-]{section.3.2}{Le fichier CSV}{chapter.3}% 7
-\BOOKMARK [1][-]{section.3.3}{Classifier manuellement un tweet dans \043currentmood}{chapter.3}% 8
-\BOOKMARK [0][-]{chapter.4}{Classification automatique des tweets}{}% 9
-\BOOKMARK [1][-]{section.4.1}{Classification par mots-cl\351s}{chapter.4}% 10
-\BOOKMARK [1][-]{section.4.2}{Classification par la m\351thode KNN}{chapter.4}% 11
-\BOOKMARK [1][-]{section.4.3}{Classification par la m\351thode bay\351sienne}{chapter.4}% 12
+\BOOKMARK [0][-]{chapter.2}{L'interface de \043currentmood}{}% 2
+\BOOKMARK [0][-]{chapter.3}{API Twitter et gestion des tweets}{}% 3
+\BOOKMARK [1][-]{section.3.1}{La classe CMTwitter}{chapter.3}% 4
+\BOOKMARK [1][-]{section.3.2}{La classe Tweet}{chapter.3}% 5
+\BOOKMARK [0][-]{chapter.4}{La base d'apprentissage}{}% 6
+\BOOKMARK [1][-]{section.4.1}{Le nettoyage des tweets}{chapter.4}% 7
+\BOOKMARK [1][-]{section.4.2}{Le fichier CSV}{chapter.4}% 8
+\BOOKMARK [1][-]{section.4.3}{Classifier manuellement un tweet dans \043currentmood}{chapter.4}% 9
+\BOOKMARK [0][-]{chapter.5}{Classification automatique des tweets}{}% 10
+\BOOKMARK [1][-]{section.5.1}{Classification par mots-cl\351s}{chapter.5}% 11
+\BOOKMARK [1][-]{section.5.2}{Classification par la m\351thode KNN}{chapter.5}% 12
+\BOOKMARK [1][-]{section.5.3}{Classification par la m\351thode bay\351sienne}{chapter.5}% 13

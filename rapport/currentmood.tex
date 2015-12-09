@@ -69,14 +69,19 @@ Twitter (\textit{tweet}), à l'aide d'une des trois méthodes proposées:
 		appartiennent à cette humeur à partir de la base de données.
 \end{itemize}
 
-\begin{figure}[h]
+Le code source du logiciel est disponible sur GitHub:
+\href{http://github.com/Deuchnord/currentmood}{github.com/Deuchnord/currentmood}.
+
+\begin{figure}
 	\includegraphics[width=\textwidth]{img/capture-currentmood-ui.png}
 	\caption{Interface utilisateur générale de \CMName}
 	\label{cm_ui}
 \end{figure}
 
-Le code source du logiciel est disponible sur
-\href{http://github.com/Deuchnord/currentmood}{github.com/Deuchnord/currentmood}.
+
+% -----------------------------------------------------------------------------
+\chapter{L'interface de \CMName}
+
 
 % -----------------------------------------------------------------------------
 
@@ -89,10 +94,10 @@ Afin de communiquer avec l'API de Twitter, nous avons utilisé la librairie
 propose les fonctionnalités dont nous avons besoin pour mener à bien le projet.
 Pour faciliter son implémentation, nous avons également créé une classe,
 \texttt{CMTwitter}, s'interfaçant entre notre application et Twitter4J, comme le
-montre la figure~\ref{uml_cmtwitter}.
+montre la figure~\ref{uml_cmtwitter} (page~\pageref{uml_cmtwitter}).
 
-\begin{figure}[h]
-	\includegraphics[width=1\textwidth]{img/uml_cmtwitter.png}
+\begin{figure}%[h]
+	\includegraphics[width=\textwidth]{img/uml_cmtwitter.eps}
 	\caption{Diagramme de classe montrant comment nous interfaçons Twitter4J}
 	\label{uml_cmtwitter}
 \end{figure}
@@ -129,6 +134,7 @@ instancie un objet de Twitter4J permettant d'obtenir des tweets correspondant
 à la recherche. Cette méthode retourne une liste d'objets \texttt{Status}
 provenant de la librairie Twitter4J.
 
+\newpage
 \section{La classe \texttt{Tweet}}
 
 Nous nous sommes rapidement rendus compte que Twitter4J ne proposait aucune
@@ -138,12 +144,12 @@ nous sont pas utiles, tandis que d'autres nous étaient nécessaires mais
 n'y étaient pas présents.
 
 Nous avons donc créé une classe indépendante de Twitter4J, \texttt{Tweet}, qui
-réponde à ce besoin. Elle est utilisée dans toute l'application afin de contenir
+réponde à ce besoin (figure~\ref{uml_tweet}). Elle est utilisée dans toute l'application afin de contenir
 chaque tweet.
 
-\begin{figure}[h]
+\begin{figure}
 	\centering
-	\includegraphics[width=7cm]{img/uml_tweet.png}
+	\includegraphics[width=9cm]{img/uml_tweet.eps}
 	\caption{La classe \texttt{Tweet}}
 	\label{uml_tweet}
 \end{figure}
@@ -158,8 +164,6 @@ Nous avons également surchargé la méthode \texttt{equals()} de la super-class
 \texttt{Object} afin de permettre la comparaison de l'objet courant avec un
 autre objet \texttt{Tweet}. Cela nous sera nécessaire pour certaines actions par
 la suite.
-
-
 
 % -----------------------------------------------------------------------------
 \chapter{La base d'apprentissage}
@@ -290,15 +294,44 @@ fourni en mots positifs et négatifs pour être efficace. De plus, réduire une
 phrase complète à de simples mots-clés ne permet pas de prendre en compte le
 sens général de la carte. Prenons par exemple le tweet suivant :
 
-Génial, ma banque m'a refusé mon crédit…
+\begin{quote}
+    Génial, ma banque m'a refusé mon crédit…
+\end{quote}
 
-On remarque bien que ce tweet est plutôt négatif. Cependant, il contient le mot
-\textit{génial}, qui peut donc influencer la classification finale.
+On remarque bien que ce tweet est plutôt négatif. Cependant, la présence du mot
+\textit{génial} peut influencer la classification finale, ce qui peut déboucher,
+ici, à un faux positif.
 
 \section{Classification par la méthode KNN}
+La méthode des $k$ plus proches voisins, ou KNN\footnote{$k$-nearest neighbor},
+est une méthode consistant à exploiter la base d'apprentissage en comptant le
+nombre de mots en commun entre un tweet à annoter et chaque tweet de la base.
 
+L'humeur du tweet est alors déterminée selon l'humeur des $k$ tweets
+avec lesquels il a le plus de mots en commun.
+
+Pour ce faire, l'algorithme calcule la distance entre le tweet à annoter (que
+l'on nommera $A$ par la suite) et chaque tweet de la base de données
+en conservant les $k$ tweets les plus proches ($k$ étant un nombre
+choisi par l'utilisateur). Il en déduit alors l'humeur du tweet $A$ en comparant
+simplement le nombre de tweets positifs, neutres et négatifs parmi les $k$ plus
+proches.
+
+L'intérêt d'utiliser un nombre $k$ est que l'on utilise alors un nombre réduit
+de tweets parmi ceux les plus proches, ce qui permet d'influer sur la précision
+de l'algorithme.
+
+Cette méthode a pour principal avantage d'être simple à mettre en œuvre.
+Cependant, il peut être délicat de choisir une valeur pour $k$, qui peut
+grandement influer sur le résultat. De plus, comme pour la méthode de
+classification par mots-clés, le sens de la phrase n'est pas pris en compte.
+Pis, il peut aussi être perturbé par certains mots n'apportant pas de sens
+supplémentaire au message phrase et propres à la langue (articles, conjonctions
+de coordination, prépositions...).
 
 \section{Classification par la méthode bayésienne}
 
+
+% -----------------------------------------------------------------------------
 
 \end{document}
