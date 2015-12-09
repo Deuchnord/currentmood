@@ -182,6 +182,7 @@ public class TweetUI extends JPanel implements ActionListener  {
 				}
 				TweetUI.this.addAnnotedTweet(TweetUI.this.tweet);
 				JOptionPane.showMessageDialog(TweetUI.this,"Le tweet a été annoté : "+tweet.getAnnotation(true));
+				TweetUI.this.refresh();
 				
 			}
 		};
@@ -198,7 +199,7 @@ public class TweetUI extends JPanel implements ActionListener  {
 				TweetUI.this.tweet = classifier.evaluateTweet(TweetUI.this.tweet);
 				TweetUI.this.addAnnotedTweet(TweetUI.this.tweet);
 				JOptionPane.showMessageDialog(TweetUI.this.mainWindow(),"Le tweet a été annoté : "+tweet.getAnnotation(true));
-				
+				TweetUI.this.refresh();
 			}
 		};
 		
@@ -252,7 +253,7 @@ public class TweetUI extends JPanel implements ActionListener  {
 				TweetUI.this.tweet.setValue(ClassificationBaysienne.evaluateTweet(TweetUI.this.tweet,listTweet,false,false,true));
 				TweetUI.this.addAnnotedTweet(TweetUI.this.tweet);
 				JOptionPane.showMessageDialog(TweetUI.this.mainWindow(),"Le tweet a été annoté : "+tweet.getAnnotation(true));
-				
+				TweetUI.this.refresh();
 			}
 		};
 		
@@ -264,7 +265,7 @@ public class TweetUI extends JPanel implements ActionListener  {
 				TweetUI.this.tweet.setValue(ClassificationBaysienne.evaluateTweet(TweetUI.this.tweet,listTweet,false,false,false));
 				TweetUI.this.addAnnotedTweet(TweetUI.this.tweet);
 				JOptionPane.showMessageDialog(TweetUI.this.mainWindow(),"Le tweet a été annoté : "+tweet.getAnnotation(true));
-				
+				TweetUI.this.refresh();
 			}
 		};
 		
@@ -276,7 +277,7 @@ public class TweetUI extends JPanel implements ActionListener  {
 				TweetUI.this.tweet.setValue(ClassificationBaysienne.evaluateTweet(TweetUI.this.tweet,listTweet,true,false,false));
 				TweetUI.this.addAnnotedTweet(TweetUI.this.tweet);
 				JOptionPane.showMessageDialog(TweetUI.this.mainWindow(),"Le tweet a été annoté : "+tweet.getAnnotation(true));
-				
+				TweetUI.this.refresh();
 			}
 		};
 		
@@ -288,7 +289,7 @@ public class TweetUI extends JPanel implements ActionListener  {
 				TweetUI.this.tweet.setValue(ClassificationBaysienne.evaluateTweet(TweetUI.this.tweet,listTweet,true,false,true));
 				TweetUI.this.addAnnotedTweet(TweetUI.this.tweet);
 				JOptionPane.showMessageDialog(TweetUI.this.mainWindow(),"Le tweet a été annoté : "+tweet.getAnnotation(true));
-				
+				TweetUI.this.refresh();
 			}
 		};
 		
@@ -312,6 +313,7 @@ public class TweetUI extends JPanel implements ActionListener  {
 				TweetUI.this.tweet.setValue(ClassificationBaysienne.evaluateTweet(TweetUI.this.tweet,listTweet,false,true,true));
 				TweetUI.this.addAnnotedTweet(TweetUI.this.tweet);
 				JOptionPane.showMessageDialog(TweetUI.this.mainWindow(),"Le tweet a été annoté : "+tweet.getAnnotation(true));
+				TweetUI.this.refresh();
 			}
 		};
 		
@@ -323,6 +325,7 @@ public class TweetUI extends JPanel implements ActionListener  {
 				TweetUI.this.tweet.setValue(ClassificationBaysienne.evaluateTweet(TweetUI.this.tweet,listTweet,true,true,false));
 				TweetUI.this.addAnnotedTweet(TweetUI.this.tweet);
 				JOptionPane.showMessageDialog(TweetUI.this.mainWindow(),"Le tweet a été annoté : "+tweet.getAnnotation(true));
+				TweetUI.this.refresh();
 				
 			}
 		};
@@ -335,7 +338,7 @@ public class TweetUI extends JPanel implements ActionListener  {
 				TweetUI.this.tweet.setValue(ClassificationBaysienne.evaluateTweet(TweetUI.this.tweet,listTweet,true,true,true));
 				TweetUI.this.addAnnotedTweet(TweetUI.this.tweet);
 				JOptionPane.showMessageDialog(TweetUI.this.mainWindow(),"Le tweet a été annoté : "+tweet.getAnnotation(true));
-				
+				TweetUI.this.refresh();
 			}
 		};
 	}
@@ -344,6 +347,7 @@ public class TweetUI extends JPanel implements ActionListener  {
 	{
 		
 		mainWindow().annotatedTweets.add(tweet);
+		this.refresh();
 	}
 	
 	private int displayK()

@@ -91,6 +91,7 @@ public class Win extends JFrame {
 					try {
 						Win.this.annotatedTweets = CSVFile.readTweetsInCSV(jfc.getSelectedFile().getAbsolutePath());
 						Win.this.readTweet();
+						Win.this.getStat();
 					} catch (IOException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -575,6 +576,22 @@ public class Win extends JFrame {
 			}
 			
 		}
+	}
+	
+	private void getStat()
+	{
+		int bad = 0,neutral = 0,good = 0;
+		for(Tweet tw: this.annotatedTweets)
+		{
+			if(tw.getValue()==Tweet.BAD)
+				bad++;
+			else if(tw.getValue()==Tweet.NEUTRAL)
+				neutral++;
+			else
+				good++;
+		}
+		WinChart resultat = new WinChart(new PieChart(),bad,neutral,good,"Proportion des sentiments dans la base");
+			
 	}
 
 }
