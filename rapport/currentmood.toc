@@ -10,5 +10,8 @@
 \contentsline {section}{\numberline {4.3}Classifier manuellement un tweet dans \#currentmood}{9}{section.4.3}
 \contentsline {chapter}{\numberline {5}Classification automatique des tweets}{10}{chapter.5}
 \contentsline {section}{\numberline {5.1}Classification par mots-cl\IeC {\'e}s}{10}{section.5.1}
-\contentsline {section}{\numberline {5.2}Classification par la m\IeC {\'e}thode KNN}{10}{section.5.2}
+\contentsline {subsection}{\numberline {5.1.1}R\IeC {\'e}sultats de la classification}{10}{subsection.5.1.1}
+\contentsline {section}{\numberline {5.2}Classification par la m\IeC {\'e}thode KNN}{11}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}R\IeC {\'e}sultats de la classification}{11}{subsection.5.2.1}
 \contentsline {section}{\numberline {5.3}Classification par la m\IeC {\'e}thode bay\IeC {\'e}sienne}{11}{section.5.3}
+\contentsline {chapter}{\numberline {6}Conclusion}{12}{chapter.6}

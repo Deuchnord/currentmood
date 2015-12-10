@@ -23,8 +23,14 @@
 
 % Personnalisation des sections
 \titleformat{\section}[hang]
-{\bfseries\Large}{\arabic{section} -- }{0cm}{%
+{\bfseries\LARGE}{\arabic{section} -- }{0cm}{%
 	\vspace{1ex}
+}
+
+% Personnalisation des sous-sections
+\titleformat{\subsection}[hang]
+{\bfseries\large}{}{0cm}{%
+	\vspace{-2ex}
 }
 
 % Personnalisation des tableaux
@@ -261,9 +267,9 @@ cliquer droit sur un tweet et, dans le menu contextuel, de choisir
 \textit{Annoter à la main} et l'annotation que l'on souhaite ajouter au tweet
 (figure~\ref{capture-annoter-a-la-main}).
 
-\begin{figure}
+\begin{figure}[h]
 	\centering
-	\includegraphics{img/capture-annoter-a-la-main.png}
+    \includegraphics[width=8cm]{img/capture-annoter-a-la-main.eps}
 	\caption{Menu contextuel permettant d'annoter un tweet à la main}
 	\label{capture-annoter-a-la-main}
 \end{figure}
@@ -284,23 +290,31 @@ exemple, un tweet contenant 3 mots considérés positifs et 5 mots considérés
 négatifs sera annoté négatif. Un tweet qui contiendrait un même nombre de mots
 positifs et négatifs est considéré comme étant neutre.
 
-Cette méthode a pour principaux avantages d'être très simples à mettre en œuvre
-et de ne pas nécessiter de base d'apprentissage de tweets. Seul un dictionnaire
-de mots positifs et de mots négatifs est nécessaire pour pouvoir annoter un
-tweet.
-
-Son inconvénient majeur est que le dictionnaire doit être particulièrement
-fourni en mots positifs et négatifs pour être efficace. De plus, réduire une
-phrase complète à de simples mots-clés ne permet pas de prendre en compte le
-sens général de la carte. Prenons par exemple le tweet suivant :
+\subsection{Résultats de la classification}
+Cet algorithme s'est révélé peu efficace du fait qu'il se contente de réduire
+une phrase complète à de simples mots auquel il donne un sens \textit{a priori}.
+Il ne prend de ce fait pas compte du sens général du tweet. Prenons par exemple
+le tweet suivant :
 
 \begin{quote}
-	Génial, ma banque m'a refusé mon crédit…
+    \textit{Génial, ma banque m'a refusé mon crédit…}
 \end{quote}
 
 On remarque bien que ce tweet est plutôt négatif. Cependant, la présence du mot
 \textit{génial} peut influencer la classification finale, ce qui peut déboucher,
 ici, à un faux positif.
+
+Cet algorithme nécessite également que le dictionnaire utilisé contienne
+suffisamment de mots: en effet, un dictionnaire pas assez fourni signifierait
+que de nombreux tweets seraient soit mal annotés (en raison de la présence
+d'autres mots connus) ou annotés neutre.
+
+Il est à ce titre intéressant de remarquer que le terme \textit{neutre} n'a ici
+pas le même sens que dans les autres classifications. En effet, ici,
+\textit{neutre} signifie que le tweet n'a pas pu être annoté soit parce qu'il ne
+contenait aucun mot connu du dictionnaire, soit parce qu'il contenait autant de
+mots positifs que de mots négatifs.qu'il contenait autant de mots positifs que
+de mots négatifs.
 
 \section{Classification par la méthode KNN}
 La méthode des $k$ plus proches voisins, ou KNN\footnote{$k$-nearest neighbor},
@@ -329,9 +343,35 @@ Pis, il peut aussi être perturbé par certains mots n'apportant pas de sens
 supplémentaire au message phrase et propres à la langue (articles, conjonctions
 de coordination, prépositions...).
 
+\subsection{Résultats de la classification}
+De part sa conception, cette méthode est plutôt sensible à la répartition des
+tweets enregistrés dans la base de données. En effet, si une des humeurs y est
+majoritaire par rapport aux autres, elle influencera grandement le résultat.
+
+Ainsi, nous avons pu constater qu'avec une base de données contenant environ
+80\% de tweets positifs, quasimment tous les tweets annotés par la méthode KNN
+seront considérés positifs.
+
+Pour que la méthode soit efficace, nous avons fait des tests avec plusieurs
+valeurs de $k$, et nous avons pu remarquer que, pour une base de $n$ tweets:
+
+\begin{itemize}
+    \item si $k=1$, la méthode est peu efficace, car elle n'utilise que
+        \textit{le} plus proche voisin. L'humeur de ce voisin est donc
+        toujours le résultat, qui peut être faux;
+    \item si $k=n$, on utilise toute la base de données et cela revient presque
+        à utiliser la méthode par mots-clés, puisque l'on prend la majorité de
+        tous les tweets présents dans la base;
+    \item si $1 < k < n$, on utilisera un nombre plus ou moins conséquents de
+        voisins, ce qui permet d'avoir une plus grande variété pour déterminer
+        l'humeur du tweet.
+\end{itemize}
+
 \section{Classification par la méthode bayésienne}
 
-
 % -----------------------------------------------------------------------------
+
+\chapter{Conclusion}
+
 
 \end{document}
