@@ -74,12 +74,12 @@ public class ClassificationKNN {
 		{
 			//k = 2n+1;
 			HashMap<Tweet, Float> donneesVoisin = new HashMap<Tweet,Float>();
-			for(int i =0;i<7;i++)
+			for(int i =0;i < k;i++)
 			{
 				Tweet twTemp =tweetsAComparer.get(i);
 				donneesVoisin.put(twTemp,distanceTweet(tweetAAnnonter, twTemp));
 			}
-			for(int i = 7; i<tweetsAComparer.size();i++)
+			for(int i = k; i<tweetsAComparer.size();i++)
 			{
 				Tweet twTemp=tweetsAComparer.get(i);
 				float currentdistance = distanceTweet(tweetAAnnonter, twTemp);

@@ -153,7 +153,6 @@ public class Win extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				WinProxy wProxy = new WinProxy(Win.this);
-				
 			}
 		});
 		this.optionMenu.add(this.proxyItem);
@@ -476,7 +475,7 @@ public class Win extends JFrame {
 					
 					
 				}
-				WinChart resultat = new WinChart(new PieChart(),bad,neutral,good);
+				WinChart resultat = new WinChart(new PieChart(),bad,neutral,good, "Répartition des sentiments par la méthode des mots-clés pour le mot \""+ search +"\"");
 			} 
 			catch (TwitterException e1)
 			{
@@ -524,7 +523,7 @@ public class Win extends JFrame {
 						e1.printStackTrace();
 					}
 				}
-				WinChart resultat = new WinChart(new PieChart(),bad,neutral,good);
+				WinChart resultat = new WinChart(new PieChart(),bad,neutral,good, "Répartition des tweets par la méthode " + choixint + "-NN pour le mot-clé \"" + search + "\"");
 			} catch (TwitterException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -563,7 +562,7 @@ public class Win extends JFrame {
 					else
 						good++;
 				}
-				WinChart resultat = new WinChart(new PieChart(),bad,neutral,good);
+				WinChart resultat = new WinChart(new PieChart(),bad,neutral,good, "Répartition des tweets par la méthode Bayésienne pour le mot-clé \"" + search + "\"");
 			}
 			catch (TwitterException e1) 
 			{
