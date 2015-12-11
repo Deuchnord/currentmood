@@ -45,6 +45,7 @@
 \begin{document}
 \maketitle
 
+\setcounter{tocdepth}{1}
 \tableofcontents
 
 % -----------------------------------------------------------------------------
@@ -316,6 +317,7 @@ contenait aucun mot connu du dictionnaire, soit parce qu'il contenait autant de
 mots positifs que de mots négatifs.qu'il contenait autant de mots positifs que
 de mots négatifs.
 
+\newpage
 \section{Classification par la méthode KNN}
 La méthode des $k$ plus proches voisins, ou KNN\footnote{$k$-nearest neighbor},
 est une méthode consistant à exploiter la base d'apprentissage en comptant le
@@ -343,7 +345,7 @@ Pis, il peut aussi être perturbé par certains mots n'apportant pas de sens
 supplémentaire au message phrase et propres à la langue (articles, conjonctions
 de coordination, prépositions...).
 
-\subsection{Résultats de la classification}
+\subsection{Observations}
 De part sa conception, cette méthode est plutôt sensible à la répartition des
 tweets enregistrés dans la base de données. En effet, si une des humeurs y est
 majoritaire par rapport aux autres, elle influencera grandement le résultat.
@@ -367,7 +369,93 @@ valeurs de $k$, et nous avons pu remarquer que, pour une base de $n$ tweets:
         l'humeur du tweet.
 \end{itemize}
 
+\newpage
 \section{Classification par la méthode bayésienne}
+La méthode de classification bayésienne est une méthode de classification
+probabiliste. Dans le cas de notre application, elle servira à déterminer la
+probabilité qu'un tweet appartienne à l'une des classes établies précédemment,
+c'est-à-dire : mauvais, neutre ou bon.
+
+Afin de pouvoir évaluer un tweet, il faut d'abord calculer P(c) : la probabilité
+d'appartenance à une classe (P(M), P(N), P(B)).
+Un tweet étant un ensemble de mots, il a fallu déterminer l'appartenance d'un
+mot à une classe. Pour cela il a été nécessaire de répertorier la classe de
+chaque mot de chaque tweet se trouvant dans la base de données pour chaque
+classe.
+
+Ensuite avec une formule mathématique, on calcule la probabilité que le tweet
+appartienne à la classe mauvais, neutre ou bon.
+
+\begin{itemize}
+    \item
+        La méthode par présence ou fréquence en se servant de tous les mots et
+        par unigramme.
+    \item
+        La méthode par présence ou fréquence en servant de tous les mots et par
+        bigramme.
+    \item
+        La méthode par présence ou fréquence en enlevant tous les mots de moins
+        de trois lettres (à, de...) et par unigramme.
+    \item
+        La méthode par présence ou fréquence en enlevant tous les mots de moins
+        de trois lettres (à, de...) et par bigramme.
+\end{itemize}
+
+\subsection{Que sont les unigrammes et les bigrammes ?}
+Les unigrammes et les bigrammes sont en réalité des ensembles de mots, un
+unigramme est donc un ensemble composé d'un seul et unique mot. Un bigramme est
+un ensemble composé de deux mots, Ainsi « Chef-d'œuvre » peut être considéré
+comme un bigramme.
+
+Le fait d'enlever les mots de moins de trois lettres, comme les prépositions,
+permet d'avoir des probabilités plus fines : En effet, les probabilités étant
+calculées en fonction de la probabilité d'appartenance à une classe pour chaque
+mot, et qu'il est difficile d'attribuer une classe à un mot comme une
+préposition, le résultat peut être faussé.
+
+Concernant la variante « fréquence » de la classification bayésienne, la
+différence réside dans le fait que la probabilité qu'un mot appartienne à une
+classe particulière est multiplié par le nombre de fois où le mot apparaît dans
+le tweet.
+
+\subsection{Observations}
+La méthode de classification bayésienne est en général une bonne méthode
+d'annotation et elle ne dépend que d'un seul paramètre : la base de données de
+Tweet (dans notre cas), contrairement à KNN qui dépend de $k$ et de la base de
+données ou de la méthode par mot-clés qui ne dépend pas de la base, mais de deux
+listes de mots arbitraires.
+
+Cependant, au cours de nos tests, nous avons pu constater quelques faiblesses
+pour cette méthode.
+
+Comme on peut le voir sur la figure \ref{capture_repartition_tweetsv7}, cette
+base n'est pas équilibrée, puisqu'elle comporte trop de tweets « bons » par
+rapport aux autres classes.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.75\textwidth]{img/resultats_classification_tweetsv7.eps}
+    \caption{Répartition des tweets dans une de nos bases de données}
+    \label{capture_repartition_tweetsv7}
+\end{figure}
+
+Ainsi, pour le mot-clé « mort », on obtient les résultats représentés par la
+figure \ref{capture_classification_mort_tweetsv7}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.75\textwidth]{img/bayes_annotation_mort_tweetsv7.eps}
+    \caption{Annotation automatique pour le mot-clé « mort »}
+    \label{capture_classification_mort_tweetsv7}
+\end{figure}
+
+On pourrait très bien penser que le mot « mort » n'a pas forcément une
+connotation négative, prenons l'expression « Mort de rire ». Toutefois, le fait
+que algorithme retourne 100\% de bon est clairement un problème.
+
+Cela s'explique par le fait que la proportion de tweets Bon dans la base est
+trop grande, ainsi la probabilité qu'un mot soit « Bon » est affecté
+proportionnellement.
 
 % -----------------------------------------------------------------------------
 

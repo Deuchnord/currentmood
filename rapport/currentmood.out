@@ -9,8 +9,6 @@
 \BOOKMARK [1][-]{section.4.3}{Classifier manuellement un tweet dans \043currentmood}{chapter.4}% 9
 \BOOKMARK [0][-]{chapter.5}{Classification automatique des tweets}{}% 10
 \BOOKMARK [1][-]{section.5.1}{Classification par mots-cl\351s}{chapter.5}% 11
-\BOOKMARK [2][-]{subsection.5.1.1}{R\351sultats de la classification}{section.5.1}% 12
-\BOOKMARK [1][-]{section.5.2}{Classification par la m\351thode KNN}{chapter.5}% 13
-\BOOKMARK [2][-]{subsection.5.2.1}{R\351sultats de la classification}{section.5.2}% 14
-\BOOKMARK [1][-]{section.5.3}{Classification par la m\351thode bay\351sienne}{chapter.5}% 15
-\BOOKMARK [0][-]{chapter.6}{Conclusion}{}% 16
+\BOOKMARK [1][-]{section.5.2}{Classification par la m\351thode KNN}{chapter.5}% 12
+\BOOKMARK [1][-]{section.5.3}{Classification par la m\351thode bay\351sienne}{chapter.5}% 13
+\BOOKMARK [0][-]{chapter.6}{Conclusion}{}% 14
