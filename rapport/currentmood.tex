@@ -30,7 +30,7 @@
 % Personnalisation des sous-sections
 \titleformat{\subsection}[hang]
 {\bfseries\large}{}{0cm}{%
-	\vspace{-2ex}
+	\vspace{0ex}
 }
 
 % Personnalisation des tableaux
@@ -88,7 +88,92 @@ Le code source du logiciel est disponible sur GitHub:
 
 % -----------------------------------------------------------------------------
 \chapter{L'interface de \CMName}
+Ayant fait le choix de développer l'application grâce au langage Java, nous
+avons choisi d'utiliser la bibliothèque graphique Swing, avec laquelle nous
+avons le plus d’expérience.
 
+\section{Utilisation d'un serveur proxy}
+Si, pour une raison quelconque, vous devez utiliser un serveur proxy, alors il
+faut préciser les paramètres proxy à l'application. Pour ce faire, ouvrez le
+menu \textit{Options} et choisissez \textit{Paramètres proxy}
+(figure~\ref{capture_menuproxy}).
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.75\textwidth]{img/capture_menuproxy.eps}
+	\caption{Accès aux paramètres Proxy}
+	\label{capture_menuproxy}
+\end{figure}
+
+La fenêtre de configuration du Proxy s'affiche alors
+(figure~\ref{capture_fenproxy} page~\pageref{capture_fenproxy}), il suffit de
+remplir les paramètres nécessaires et de valider. Nous avons également
+implémenté un bouton afin de régler en un clic les paramètres pour le Proxy de
+l'Université de Lille 1: il suffit de cliquer dessus pour remplir les champs
+adéquats, et enfin de valider.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.75\textwidth]{img/capture_fenproxy.eps}
+	\caption{Fenêtre de configuration du Proxy}
+	\label{capture_fenproxy}
+\end{figure}
+
+\newpage
+\section{Effectuer une recherche  et annoter manuellement}
+Pour rechercher un tweet, il suffit de taper ses mots-clés dans la zone de
+saisie en haut de la fenêtre et de cliquer sur le bouton \textit{Rechercher}
+(figure~\ref{capture_recherchertweet}).
+On peut alors annoter un tweet à la main \textit{via} son menu contextuel
+(figure~\ref{capture_annotertweet} page~\pageref{capture_annotertweet}).
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{img/chercheruntweet.png}
+	\caption{Zone de recherche de \CMName}
+	\label{capture_recherchertweet}
+\end{figure}
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{img/capture_annotertweet1.eps}
+	\includegraphics[width=\textwidth]{img/capture_annotertweet2.eps}
+	\caption{Annoter un Tweet}
+	\label{capture_annotertweet}
+\end{figure}
+
+Ce même menu permet par ailleurs d'annoter un Tweet automatiquement par les
+méthodes des mots-clés, KNN ou bayésienne.
+
+\section{Annoter automatiquement}
+Pour annoter tous les tweets automatiquement selon une des méthodes
+implémentées, il faut, si la méthode l'exige, charger la base de données
+(figure~\ref{capture_ouvrir_base_de_donnees}). Une fenêtre s'ouvrira pour
+montrer la répartition des humeurs (figure~\ref{capture_repartition_tweetsv6}).
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\textwidth]{img/chargerbdd.png}
+	\caption{Menu d'ouverture de la base de données}
+	\label{capture_ouvrir_base_de_donnees}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{img/resultats_classification_tweetsv6.eps}
+	\caption{Fenêtre affichant la répartition des tweets dans une base de
+	données}
+	\label{capture_repartition_tweetsv6}
+\end{figure}
+
+
+Pour annoter un tweet automatiquement, deux stratégies sont possibles.
+La première consiste à annoter automatiquement un seul tweet par le biais de son
+menu contextuel (figure~\ref{capture_annotertweet}
+page~\pageref{capture_annotertweet}), la deuxième à annoter la
+totalité des tweets correspondant à une recherche, \textit{via} le menu
+\textit{Annoter}.
 
 % -----------------------------------------------------------------------------
 
@@ -270,7 +355,7 @@ cliquer droit sur un tweet et, dans le menu contextuel, de choisir
 
 \begin{figure}[h]
 	\centering
-    \includegraphics[width=8cm]{img/capture-annoter-a-la-main.eps}
+	\includegraphics[width=8cm]{img/capture-annoter-a-la-main.eps}
 	\caption{Menu contextuel permettant d'annoter un tweet à la main}
 	\label{capture-annoter-a-la-main}
 \end{figure}
@@ -291,6 +376,29 @@ exemple, un tweet contenant 3 mots considérés positifs et 5 mots considérés
 négatifs sera annoté négatif. Un tweet qui contiendrait un même nombre de mots
 positifs et négatifs est considéré comme étant neutre.
 
+\subsection{Annoter par mots-clés dans \CMName}
+Avant toute chose, il est nécessaire de charger le dictionnaire de mots positifs
+et de mots négatifs. Pour ce faire, dans le menu \textit{Options}, cliquez sur
+\textit{Annotation mots clés}:
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\textwidth]{img/capture_menumotcle.png}
+\end{figure}
+
+Le programme demande alors de sélectionner le fichier contenant les mots
+positifs, puis les mots négatifs (figure~\ref{ouvrir_dictionnaire}
+page~\pageref{ouvrir_dictionnaire}).
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.4\textwidth]{img/capture_ouvrir-mots-positifs.png}
+	\includegraphics[width=0.4\textwidth]{img/capture_ouvrir-mots-negatifs.png}
+	\caption{Ouverture du dictionnaire de mots positifs et négatifs}
+	\label{ouvrir_dictionnaire}
+\end{figure}
+
+\newpage
 \subsection{Résultats de la classification}
 Cet algorithme s'est révélé peu efficace du fait qu'il se contente de réduire
 une phrase complète à de simples mots auquel il donne un sens \textit{a priori}.
@@ -298,7 +406,7 @@ Il ne prend de ce fait pas compte du sens général du tweet. Prenons par exempl
 le tweet suivant :
 
 \begin{quote}
-    \textit{Génial, ma banque m'a refusé mon crédit…}
+	\textit{Génial, ma banque m'a refusé mon crédit…}
 \end{quote}
 
 On remarque bien que ce tweet est plutôt négatif. Cependant, la présence du mot
@@ -317,7 +425,6 @@ contenait aucun mot connu du dictionnaire, soit parce qu'il contenait autant de
 mots positifs que de mots négatifs.qu'il contenait autant de mots positifs que
 de mots négatifs.
 
-\newpage
 \section{Classification par la méthode KNN}
 La méthode des $k$ plus proches voisins, ou KNN\footnote{$k$-nearest neighbor},
 est une méthode consistant à exploiter la base d'apprentissage en comptant le
@@ -337,14 +444,6 @@ L'intérêt d'utiliser un nombre $k$ est que l'on utilise alors un nombre rédui
 de tweets parmi ceux les plus proches, ce qui permet d'influer sur la précision
 de l'algorithme.
 
-Cette méthode a pour principal avantage d'être simple à mettre en œuvre.
-Cependant, il peut être délicat de choisir une valeur pour $k$, qui peut
-grandement influer sur le résultat. De plus, comme pour la méthode de
-classification par mots-clés, le sens de la phrase n'est pas pris en compte.
-Pis, il peut aussi être perturbé par certains mots n'apportant pas de sens
-supplémentaire au message phrase et propres à la langue (articles, conjonctions
-de coordination, prépositions...).
-
 \subsection{Observations}
 De part sa conception, cette méthode est plutôt sensible à la répartition des
 tweets enregistrés dans la base de données. En effet, si une des humeurs y est
@@ -358,18 +457,17 @@ Pour que la méthode soit efficace, nous avons fait des tests avec plusieurs
 valeurs de $k$, et nous avons pu remarquer que, pour une base de $n$ tweets:
 
 \begin{itemize}
-    \item si $k=1$, la méthode est peu efficace, car elle n'utilise que
-        \textit{le} plus proche voisin. L'humeur de ce voisin est donc
-        toujours le résultat, qui peut être faux;
-    \item si $k=n$, on utilise toute la base de données et cela revient presque
-        à utiliser la méthode par mots-clés, puisque l'on prend la majorité de
-        tous les tweets présents dans la base;
-    \item si $1 < k < n$, on utilisera un nombre plus ou moins conséquents de
-        voisins, ce qui permet d'avoir une plus grande variété pour déterminer
-        l'humeur du tweet.
+	\item si $k=1$, la méthode est peu efficace, car elle n'utilise que
+		\textit{le} plus proche voisin. L'humeur de ce voisin est donc
+		toujours le résultat, qui peut être faux;
+	\item si $k=n$, on utilise toute la base de données et cela revient presque
+		à utiliser la méthode par mots-clés, puisque l'on prend la majorité de
+		tous les tweets présents dans la base;
+	\item si $1 < k < n$, on utilisera un nombre plus ou moins conséquents de
+		voisins, ce qui permet d'avoir une plus grande variété pour déterminer
+		l'humeur du tweet.
 \end{itemize}
 
-\newpage
 \section{Classification par la méthode bayésienne}
 La méthode de classification bayésienne est une méthode de classification
 probabiliste. Dans le cas de notre application, elle servira à déterminer la
@@ -387,21 +485,21 @@ Ensuite avec une formule mathématique, on calcule la probabilité que le tweet
 appartienne à la classe mauvais, neutre ou bon.
 
 \begin{itemize}
-    \item
-        La méthode par présence ou fréquence en se servant de tous les mots et
-        par unigramme.
-    \item
-        La méthode par présence ou fréquence en servant de tous les mots et par
-        bigramme.
-    \item
-        La méthode par présence ou fréquence en enlevant tous les mots de moins
-        de trois lettres (à, de...) et par unigramme.
-    \item
-        La méthode par présence ou fréquence en enlevant tous les mots de moins
-        de trois lettres (à, de...) et par bigramme.
+	\item
+		La méthode par présence ou fréquence en se servant de tous les mots et
+		par unigramme.
+	\item
+		La méthode par présence ou fréquence en servant de tous les mots et par
+		bigramme.
+	\item
+		La méthode par présence ou fréquence en enlevant tous les mots de moins
+		de trois lettres (à, de…) et par unigramme.
+	\item
+		La méthode par présence ou fréquence en enlevant tous les mots de moins
+		de trois lettres (à, de…) et par bigramme.
 \end{itemize}
 
-\subsection{Que sont les unigrammes et les bigrammes ?}
+\subsection{Que sont les unigrammes et les bigrammes?}
 Les unigrammes et les bigrammes sont en réalité des ensembles de mots, un
 unigramme est donc un ensemble composé d'un seul et unique mot. Un bigramme est
 un ensemble composé de deux mots, Ainsi « Chef-d'œuvre » peut être considéré
@@ -428,25 +526,27 @@ listes de mots arbitraires.
 Cependant, au cours de nos tests, nous avons pu constater quelques faiblesses
 pour cette méthode.
 
-Comme on peut le voir sur la figure \ref{capture_repartition_tweetsv7}, cette
+Comme on peut le voir sur la figure~\ref{capture_repartition_tweetsv7}
+(page~\pageref{capture_repartition_tweetsv7}), cette
 base n'est pas équilibrée, puisqu'elle comporte trop de tweets « bons » par
 rapport aux autres classes.
 
 \begin{figure}
-    \centering
-    \includegraphics[width=0.75\textwidth]{img/resultats_classification_tweetsv7.eps}
-    \caption{Répartition des tweets dans une de nos bases de données}
-    \label{capture_repartition_tweetsv7}
+	\centering
+	\includegraphics[width=0.75\textwidth]{img/resultats_classification_tweetsv7.eps}
+	\caption{Répartition des tweets dans une de nos bases de données}
+	\label{capture_repartition_tweetsv7}
 \end{figure}
 
 Ainsi, pour le mot-clé « mort », on obtient les résultats représentés par la
-figure \ref{capture_classification_mort_tweetsv7}.
+figure~\ref{capture_classification_mort_tweetsv7}
+(page~\pageref{capture_classification_mort_tweetsv7}).
 
 \begin{figure}
-    \centering
-    \includegraphics[width=0.75\textwidth]{img/bayes_annotation_mort_tweetsv7.eps}
-    \caption{Annotation automatique pour le mot-clé « mort »}
-    \label{capture_classification_mort_tweetsv7}
+	\centering
+	\includegraphics[width=0.75\textwidth]{img/bayes_annotation_mort_tweetsv7.eps}
+	\caption{Annotation automatique pour le mot-clé « mort »}
+	\label{capture_classification_mort_tweetsv7}
 \end{figure}
 
 On pourrait très bien penser que le mot « mort » n'a pas forcément une
