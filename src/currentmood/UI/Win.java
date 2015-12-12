@@ -165,14 +165,14 @@ public class Win extends JFrame {
 				JFileChooser jfc = new JFileChooser();
 				jfc.setDialogTitle("Choisissez le fichier des mots positifs");
 				
-				if(jfc.showSaveDialog((Component) e.getSource()) == JFileChooser.APPROVE_OPTION)
+				if(jfc.showOpenDialog((Component) e.getSource()) == JFileChooser.APPROVE_OPTION)
 				{
 					Win.this.cheminPositif=jfc.getSelectedFile().getAbsolutePath();
 				}
 				
 				jfc.setDialogTitle("Choisissez le fichier des mots negatifs");
 				
-				if(jfc.showSaveDialog((Component) e.getSource()) == JFileChooser.APPROVE_OPTION)
+				if(jfc.showOpenDialog((Component) e.getSource()) == JFileChooser.APPROVE_OPTION)
 				{
 					Win.this.cheminNegatif=jfc.getSelectedFile().getAbsolutePath();
 				}
