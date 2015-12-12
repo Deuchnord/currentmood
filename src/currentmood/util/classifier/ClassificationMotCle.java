@@ -13,10 +13,9 @@ import currentmood.util.Tweet;
 public class ClassificationMotCle {
 	protected String[] positifs,negatifs;
 	
-	public ClassificationMotCle(String cheminPositif, String cheminNegatif)
+	public ClassificationMotCle(String cheminPositif, String cheminNegatif) throws IOException 
 	{
 		byte[] fichier;
-		try {
 			fichier = Files.readAllBytes(Paths.get(cheminPositif));
 			  String textpositif = new String(fichier);
 			  System.out.println(textpositif);
@@ -25,10 +24,7 @@ public class ClassificationMotCle {
 			  String textnegatif = new String(fichier);
 			  System.out.println(textnegatif);
 			  this.negatifs = textnegatif.split(", ");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	
 		
 	}
 	

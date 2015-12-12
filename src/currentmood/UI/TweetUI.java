@@ -3,6 +3,7 @@ package currentmood.UI;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.List;
 
 import javax.swing.BorderFactory;
@@ -193,13 +194,20 @@ public class TweetUI extends JPanel implements ActionListener  {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				try {
 				String cp = mainWindow().cheminPositif;
 				String cn = mainWindow().cheminNegatif;
-				ClassificationMotCle classifier = new ClassificationMotCle(cp, cn);
+				ClassificationMotCle classifier;
+				
+					classifier = new ClassificationMotCle(cp, cn);
+				
 				TweetUI.this.tweet = classifier.evaluateTweet(TweetUI.this.tweet);
 				TweetUI.this.addAnnotedTweet(TweetUI.this.tweet);
 				JOptionPane.showMessageDialog(TweetUI.this.mainWindow(),"Le tweet a été annoté : "+tweet.getAnnotation(true));
 				TweetUI.this.refresh();
+				} catch (IOException e1) {
+					JOptionPane.showMessageDialog(TweetUI.this.mainWindow(), "Erreur lors de la lecture ou de l'écriture", "I/O Erreur",JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		};
 		

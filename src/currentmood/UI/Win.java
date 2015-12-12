@@ -219,7 +219,9 @@ public class Win extends JFrame {
 				}
 				catch (TwitterException ex) {
 					System.out.println("Cannot connect: " + ex.getMessage());
+					JOptionPane.showMessageDialog(Win.this, "Impossible de se connecter : " +ex.getMessage(),"Erreur lors de la récupération des tweets",JOptionPane.ERROR_MESSAGE);
 				} catch (NotConnectedException ex) {
+					JOptionPane.showMessageDialog(Win.this, "Erreur lors de la récupération des tweets", "Vous devez être connecté(e) pour récupérer les tweets",JOptionPane.ERROR_MESSAGE);
 					System.out.println("You must be connected to perform this action!");
 				}
 				
@@ -446,11 +448,8 @@ public class Win extends JFrame {
 	}
 
 	private void annoteAllTweetKey() {
-		if(Win.this.annotatedTweets==null)
-		{
-			JOptionPane.showMessageDialog(Win.this, "La base de tweets n'est pas chargée" , "Erreur lors de l'annotation", JOptionPane.ERROR_MESSAGE);
-		}
-		else if(Win.this.cheminNegatif== null ||Win.this.cheminPositif == null)
+		
+		if(Win.this.cheminNegatif== null ||Win.this.cheminPositif == null)
 		{
 			JOptionPane.showMessageDialog(Win.this, "Les fichiers de mots-clés ne sont pas chargés", "Erreur lors de l'annotation", JOptionPane.ERROR_MESSAGE);
 		}
@@ -477,15 +476,14 @@ public class Win extends JFrame {
 				}
 				WinChart resultat = new WinChart(new PieChart(),bad,neutral,good, "Répartition des sentiments par la méthode des mots-clés pour le mot \""+ search +"\"");
 			} 
-			catch (TwitterException e1)
-			{
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			catch (NotConnectedException e1) 
-			{
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+			catch (TwitterException ex) {
+				System.out.println("Cannot connect: " + ex.getMessage());
+				JOptionPane.showMessageDialog(Win.this, "Impossible de se connecter : " +ex.getMessage(),"Erreur lors de la récupération des tweets",JOptionPane.ERROR_MESSAGE);
+			} catch (NotConnectedException ex) {
+				JOptionPane.showMessageDialog(Win.this, "Vous devez être connecté(e) pour récupérer les tweets", "Erreur lors de la récupération des tweets",JOptionPane.ERROR_MESSAGE);
+				System.out.println("You must be connected to perform this action!");
+			} catch (IOException e) {
+				JOptionPane.showMessageDialog(Win.this, "Erreur lors de la lecture ou de l'écriture", "I/O Erreur",JOptionPane.ERROR_MESSAGE);
 			}
 		}
 	}
@@ -519,17 +517,16 @@ public class Win extends JFrame {
 						
 						
 					} catch (OutOfBoundsException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
+						JOptionPane.showMessageDialog(Win.this, "Erreur lors du parcours","Erreur pendant le processus",JOptionPane.ERROR_MESSAGE);
 					}
 				}
 				WinChart resultat = new WinChart(new PieChart(),bad,neutral,good, "Répartition des tweets par la méthode " + choixint + "-NN pour le mot-clé \"" + search + "\"");
-			} catch (TwitterException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (NotConnectedException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+			} catch (TwitterException ex) {
+				System.out.println("Cannot connect: " + ex.getMessage());
+				JOptionPane.showMessageDialog(Win.this, "Impossible de se connecter : " +ex.getMessage(),"Erreur lors de la récupération des tweets",JOptionPane.ERROR_MESSAGE);
+			} catch (NotConnectedException ex) {
+				JOptionPane.showMessageDialog(Win.this, "Erreur lors de la récupération des tweets", "Vous devez être connecté(e) pour récupérer les tweets",JOptionPane.ERROR_MESSAGE);
+				System.out.println("You must be connected to perform this action!");
 			}
 			
 		}
@@ -564,14 +561,12 @@ public class Win extends JFrame {
 				}
 				WinChart resultat = new WinChart(new PieChart(),bad,neutral,good, "Répartition des tweets par la méthode Bayésienne pour le mot-clé \"" + search + "\"");
 			}
-			catch (TwitterException e1) 
-			{
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (NotConnectedException e1) 
-			{
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+			catch (TwitterException ex) {
+				System.out.println("Cannot connect: " + ex.getMessage());
+				JOptionPane.showMessageDialog(Win.this, "Impossible de se connecter : " +ex.getMessage(),"Erreur lors de la récupération des tweets",JOptionPane.ERROR_MESSAGE);
+			} catch (NotConnectedException ex) {
+				JOptionPane.showMessageDialog(Win.this, "Erreur lors de la récupération des tweets", "Vous devez être connecté(e) pour récupérer les tweets",JOptionPane.ERROR_MESSAGE);
+				System.out.println("You must be connected to perform this action!");
 			}
 			
 		}
