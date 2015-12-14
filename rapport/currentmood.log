@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Arch Linux) (preloaded format=pdflatex 2015.11.15)  12 DEC 2015 17:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Arch Linux) (preloaded format=pdflatex 2015.11.15)  14 DEC 2015 11:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -507,6 +507,23 @@ Package: booktabs 2005/04/14 v1.61803 publication quality tables
 Package: eurosym 1998/08/06 v1.1 European currency symbol ``Euro''
 \@eurobox=\box29
 )
+(/usr/share/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2015/09/17 v3.3-111 Customizing captions (AR)
+
+(/usr/share/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2015/09/20 v1.7-115 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 57.
+\captionmargin=\dimen136
+\captionmargin@=\dimen137
+\captionwidth=\dimen138
+\caption@tempdima=\dimen139
+\caption@indent=\dimen140
+\caption@parindent=\dimen141
+\caption@hangindent=\dimen142
+)
+\c@ContinuedFloat=\count115
+Package caption Info: hyperref package is loaded.
+)
 (/usr/share/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
 
@@ -520,8 +537,8 @@ Package: colortbl 2012/02/13 v1.0a Color table columns (DPC)
 
 (/usr/share/texmf-dist/tex/latex/tools/array.sty
 Package: array 2014/10/28 v2.4c Tabular extension package (FMi)
-\col@sep=\dimen136
-\extrarowheight=\dimen137
+\col@sep=\dimen143
+\extrarowheight=\dimen144
 \NC@list=\toks23
 \extratabsurround=\skip49
 \backup@length=\skip50
@@ -529,7 +546,7 @@ Package: array 2014/10/28 v2.4c Tabular extension package (FMi)
 \everycr=\toks24
 \minrowclearance=\skip51
 )
-\rownum=\count115
+\rownum=\count116
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
 Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
 Package xcolor Info: Model `RGB' extended on input line 1353.
@@ -548,62 +565,66 @@ Language: frenchb 2015/10/04 v3.1i French support from the babel system
 
 (/usr/share/texmf-dist/tex/generic/babel/babel.def
 File: babel.def 2015/08/03 3.9m Babel common definitions
-\babel@savecnt=\count116
-\U@D=\dimen138
+\babel@savecnt=\count117
+\U@D=\dimen145
 )
 \l@acadian = a dialect from \language\l@french 
 \l@canadien = a dialect from \language\l@french 
 \FBcolonskip=\skip52
 \FBthinskip=\skip53
-\FB@interchartokenstateORI=\count117
+\FB@interchartokenstateORI=\count118
 Package babel Info: Making : an active character on input line 356.
 Package babel Info: Making ; an active character on input line 357.
 Package babel Info: Making ! an active character on input line 358.
 Package babel Info: Making ? an active character on input line 359.
 \FBguillskip=\skip54
-\FBguill@level=\count118
-\FB@Mht=\dimen139
-\std@mcc=\count119
-\dec@mcc=\count120
+\FBguill@level=\count119
+\FB@Mht=\dimen146
+\std@mcc=\count120
+\dec@mcc=\count121
+
+
+Package frenchb.ldf Warning: Please load the "caption" package
+(frenchb.ldf)                AFTER babel/frenchb; reported on input line 905.
+
 \listindentFB=\skip55
 \labelwidthFB=\skip56
 \leftmarginFB=\skip57
-\parindentFFN=\dimen140
-))
-(/usr/share/texmf-dist/tex/latex/carlisle/scalefnt.sty)
+\parindentFFN=\dimen147
+)) (/usr/share/texmf-dist/tex/latex/carlisle/scalefnt.sty)
 (/usr/share/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2010/09/12 v5.6 Page Geometry
-\Gm@cnth=\count121
-\Gm@cntv=\count122
-\c@Gm@tempcnt=\count123
-\Gm@bindingoffset=\dimen141
-\Gm@wd@mp=\dimen142
-\Gm@odd@mp=\dimen143
-\Gm@even@mp=\dimen144
-\Gm@layoutwidth=\dimen145
-\Gm@layoutheight=\dimen146
-\Gm@layouthoffset=\dimen147
-\Gm@layoutvoffset=\dimen148
+\Gm@cnth=\count122
+\Gm@cntv=\count123
+\c@Gm@tempcnt=\count124
+\Gm@bindingoffset=\dimen148
+\Gm@wd@mp=\dimen149
+\Gm@odd@mp=\dimen150
+\Gm@even@mp=\dimen151
+\Gm@layoutwidth=\dimen152
+\Gm@layoutheight=\dimen153
+\Gm@layouthoffset=\dimen154
+\Gm@layoutvoffset=\dimen155
 \Gm@dimlist=\toks25
 ) (./currentmood.aux)
 \openout1 = `currentmood.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
 \AtBeginShipoutBox=\box30
-Package hyperref Info: Link coloring OFF on input line 45.
+Package hyperref Info: Link coloring OFF on input line 53.
 
 (/usr/share/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -611,11 +632,11 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/share/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count124
+\c@section@level=\count125
 )
-LaTeX Info: Redefining \ref on input line 45.
-LaTeX Info: Redefining \pageref on input line 45.
-LaTeX Info: Redefining \nameref on input line 45.
+LaTeX Info: Redefining \ref on input line 53.
+LaTeX Info: Redefining \pageref on input line 53.
+LaTeX Info: Redefining \nameref on input line 53.
 
 (./currentmood.out) (./currentmood.out)
 \@outlinefile=\write3
@@ -624,16 +645,16 @@ LaTeX Info: Redefining \nameref on input line 45.
 
 (/usr/share/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count125
-\scratchdimen=\dimen149
+\scratchcounter=\count126
+\scratchdimen=\dimen156
 \scratchbox=\box31
-\nofMPsegments=\count126
-\nofMParguments=\count127
+\nofMPsegments=\count127
+\nofMParguments=\count128
 \everyMPshowfont=\toks26
-\MPscratchCnt=\count128
-\MPscratchDim=\dimen150
-\MPnumerator=\count129
-\makeMPintoPDFobject=\count130
+\MPscratchCnt=\count129
+\MPscratchDim=\dimen157
+\MPnumerator=\count130
+\makeMPintoPDFobject=\count131
 \everyMPtoPDFconversion=\toks27
 ) (/usr/share/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
@@ -650,14 +671,16 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Info: Redefining \degres on input line 45.
-LaTeX Info: Redefining \dots on input line 45.
-LaTeX Info: Redefining \up on input line 45.
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+LaTeX Info: Redefining \degres on input line 53.
+LaTeX Info: Redefining \dots on input line 53.
+LaTeX Info: Redefining \up on input line 53.
 
 
 Package frenchb.ldf Warning: OT1 encoding should not be used for French.
 (frenchb.ldf)                Add \usepackage[T1]{fontenc} to the preamble
-(frenchb.ldf)                of your document, on input line 45.
+(frenchb.ldf)                of your document, on input line 53.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -693,17 +716,103 @@ Package frenchb.ldf Warning: OT1 encoding should not be used for French.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 47.
+*geometry* verbose mode - [ newgeometry ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(0.0pt, 597.50787pt, 0.0pt)
+* v-part:(T,H,B)=(142.26378pt, 560.51929pt, 142.26378pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=597.50787pt
+* \textheight=560.51929pt
+* \oddsidemargin=-72.26999pt
+* \evensidemargin=-72.26999pt
+* \topmargin=32.99379pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=35.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+Package epstopdf Info: Source file: <img/TwitterLogo.eps>
+(epstopdf)                    date: 2014-12-04 13:59:20
+(epstopdf)                    size: 584386 bytes
+(epstopdf)             Output file: <img/TwitterLogo-eps-converted-to.pdf>
+(epstopdf)                    date: 2015-12-14 09:43:33
+(epstopdf)                    size: 12863 bytes
+(epstopdf)             Command: <repstopdf --outfile=img/TwitterLogo-eps-conver
+ted-to.pdf img/TwitterLogo.eps>
+(epstopdf)             \includegraphics on input line 68.
+Package epstopdf Info: Output file is already uptodate.
+<img/TwitterLogo-eps-converted-to.pdf, id=68, 275.0275pt x 223.83624pt>
+File: img/TwitterLogo-eps-converted-to.pdf Graphic file (type pdf)
+
+<use img/TwitterLogo-eps-converted-to.pdf>
+Package pdftex.def Info: img/TwitterLogo-eps-converted-to.pdf used on input lin
+e 68.
+(pdftex.def)             Requested size: 149.37697pt x 121.57677pt.
+ [1
+
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./img/TwitterLogo-eps-conv
+erted-to.pdf>]
+*geometry* verbose mode - [ newgeometry ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(56.9055pt, 483.69687pt, 56.9055pt)
+* v-part:(T,H,B)=(56.9055pt, 731.23584pt, 56.9055pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=483.69687pt
+* \textheight=731.23584pt
+* \oddsidemargin=-15.36449pt
+* \evensidemargin=-15.36449pt
+* \topmargin=-52.36449pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=35.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+ (./currentmood.toc
+LaTeX Font Info:    Try loading font information for U+msa on input line 4.
+
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 47.
+LaTeX Font Info:    Try loading font information for U+msb on input line 4.
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./currentmood.toc)
+))
 \tf@toc=\write4
 \openout4 = `currentmood.toc'.
 
@@ -711,18 +820,31 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.53 \chapter
+l.89 \chapter
              {Le projet} [1
+
 
 ]
 Chapitre 1.
+
+Overfull \hbox (1.29861pt too wide) in paragraph at lines 115--117
+[]\OT1/cmr/m/n/12 Le code source du lo-gi-ciel est dis-po-nible sur Gi-tHub : [
+]\OT1/cmtt/m/n/12 github.com/Deuchnord/currentmood[]\OT1/cmr/m/n/12 . 
+ []
+
 <img/capture-currentmood-ui.png, id=104, 1138.2525pt x 575.14874pt>
 File: img/capture-currentmood-ui.png Graphic file (type png)
 
 <use img/capture-currentmood-ui.png>
-Package pdftex.def Info: img/capture-currentmood-ui.png used on input line 83.
+Package pdftex.def Info: img/capture-currentmood-ui.png used on input line 119.
+
 (pdftex.def)             Requested size: 483.69687pt x 244.41304pt.
- [2
+
+
+LaTeX Font Warning: Font shape `OT1/cmss/bx/sc' undefined
+(Font)              using `OT1/cmss/bx/n' instead on input line 120.
+
+[2
 
 ] [3 <./img/capture-currentmood-ui.png>]
 Chapitre 2.
@@ -735,14 +857,14 @@ Package epstopdf Info: Source file: <img/capture_menuproxy.eps>
 (epstopdf)                    size: 16307 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/capture_menuproxy-eps-
 converted-to.pdf img/capture_menuproxy.eps>
-(epstopdf)             \includegraphics on input line 103.
+(epstopdf)             \includegraphics on input line 139.
 Package epstopdf Info: Output file is already uptodate.
 
 <img/capture_menuproxy-eps-converted-to.pdf, id=120, 482.80376pt x 175.65625pt>
 File: img/capture_menuproxy-eps-converted-to.pdf Graphic file (type pdf)
 <use img/capture_menuproxy-eps-converted-to.pdf>
 Package pdftex.def Info: img/capture_menuproxy-eps-converted-to.pdf used on inp
-ut line 103.
+ut line 139.
 (pdftex.def)             Requested size: 362.77264pt x 131.99112pt.
 Package epstopdf Info: Source file: <img/capture_fenproxy.eps>
 (epstopdf)                    date: 2015-12-12 16:06:38
@@ -753,7 +875,7 @@ Package epstopdf Info: Source file: <img/capture_fenproxy.eps>
 (epstopdf)                    size: 24712 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/capture_fenproxy-eps-c
 onverted-to.pdf img/capture_fenproxy.eps>
-(epstopdf)             \includegraphics on input line 117.
+(epstopdf)             \includegraphics on input line 153.
 Package epstopdf Info: Output file is already uptodate.
 
 <img/capture_fenproxy-eps-converted-to.pdf, id=123, 502.87875pt x 302.12875pt>
@@ -761,7 +883,7 @@ File: img/capture_fenproxy-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/capture_fenproxy-eps-converted-to.pdf>
 Package pdftex.def Info: img/capture_fenproxy-eps-converted-to.pdf used on inpu
-t line 117.
+t line 153.
 (pdftex.def)             Requested size: 362.77264pt x 217.95204pt.
  [4
 
@@ -770,7 +892,7 @@ t line 117.
 File: img/chercheruntweet.png Graphic file (type png)
 
 <use img/chercheruntweet.png>
-Package pdftex.def Info: img/chercheruntweet.png used on input line 132.
+Package pdftex.def Info: img/chercheruntweet.png used on input line 168.
 (pdftex.def)             Requested size: 483.69687pt x 16.72859pt.
 Package epstopdf Info: Source file: <img/capture_annotertweet1.eps>
 (epstopdf)                    date: 2015-12-12 16:37:12
@@ -781,7 +903,7 @@ Package epstopdf Info: Source file: <img/capture_annotertweet1.eps>
 (epstopdf)                    size: 12558 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/capture_annotertweet1-
 eps-converted-to.pdf img/capture_annotertweet1.eps>
-(epstopdf)             \includegraphics on input line 140.
+(epstopdf)             \includegraphics on input line 176.
 Package epstopdf Info: Output file is already uptodate.
 
 <img/capture_annotertweet1-eps-converted-to.pdf, id=137, 500.87125pt x 123.4612
@@ -789,7 +911,7 @@ Package epstopdf Info: Output file is already uptodate.
 File: img/capture_annotertweet1-eps-converted-to.pdf Graphic file (type pdf)
  <use img/capture_annotertweet1-eps-converted-to.pdf>
 Package pdftex.def Info: img/capture_annotertweet1-eps-converted-to.pdf used on
- input line 140.
+ input line 176.
 (pdftex.def)             Requested size: 483.69687pt x 119.23352pt.
 Package epstopdf Info: Source file: <img/capture_annotertweet2.eps>
 (epstopdf)                    date: 2015-12-12 16:37:27
@@ -800,7 +922,7 @@ Package epstopdf Info: Source file: <img/capture_annotertweet2.eps>
 (epstopdf)                    size: 16662 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/capture_annotertweet2-
 eps-converted-to.pdf img/capture_annotertweet2.eps>
-(epstopdf)             \includegraphics on input line 141.
+(epstopdf)             \includegraphics on input line 177.
 Package epstopdf Info: Output file is already uptodate.
 
 <img/capture_annotertweet2-eps-converted-to.pdf, id=138, 568.1225pt x 123.46124
@@ -808,13 +930,13 @@ pt>
 File: img/capture_annotertweet2-eps-converted-to.pdf Graphic file (type pdf)
  <use img/capture_annotertweet2-eps-converted-to.pdf>
 Package pdftex.def Info: img/capture_annotertweet2-eps-converted-to.pdf used on
- input line 141.
+ input line 177.
 (pdftex.def)             Requested size: 483.69687pt x 105.11774pt.
 
 <img/chargerbdd.png, id=141, 281.05pt x 94.3525pt>
 File: img/chargerbdd.png Graphic file (type png)
  <use img/chargerbdd.png>
-Package pdftex.def Info: img/chargerbdd.png used on input line 157.
+Package pdftex.def Info: img/chargerbdd.png used on input line 193.
 (pdftex.def)             Requested size: 241.84843pt x 81.19194pt.
 Package epstopdf Info: Source file: <img/resultats_classification_tweetsv6.eps>
 
@@ -826,7 +948,7 @@ converted-to.pdf>
 (epstopdf)                    size: 26262 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/resultats_classificati
 on_tweetsv6-eps-converted-to.pdf img/resultats_classification_tweetsv6.eps>
-(epstopdf)             \includegraphics on input line 164.
+(epstopdf)             \includegraphics on input line 200.
 Package epstopdf Info: Output file is already uptodate.
 
 <img/resultats_classification_tweetsv6-eps-converted-to.pdf, id=142, 685.56125p
@@ -835,11 +957,11 @@ File: img/resultats_classification_tweetsv6-eps-converted-to.pdf Graphic file (
 type pdf)
  <use img/resultats_classification_tweetsv6-eps-converted-to.pdf>
 Package pdftex.def Info: img/resultats_classification_tweetsv6-eps-converted-to
-.pdf used on input line 164.
+.pdf used on input line 200.
 (pdftex.def)             Requested size: 483.69687pt x 271.95284pt.
 
-Overfull \hbox (0.20723pt too wide) in paragraph at lines 171--177
-[]\OT1/cmr/m/n/12 Pour an-no-ter un tweet au-to-ma-ti-que-ment, deux strat^^Seg
+Overfull \hbox (4.45024pt too wide) in paragraph at lines 207--213
+[]\OT1/cmr/m/n/12 Pour an-no-ter un Tweet au-to-ma-ti-que-ment, deux strat^^Seg
 ies sont pos-sibles. La premi^^Rere consiste
  []
 
@@ -849,7 +971,7 @@ et2-eps-converted-to.pdf> <./img/chargerbdd.png> <./img/resultats_classificatio
 n_tweetsv6-eps-converted-to.pdf>]
 Chapitre 3.
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <20.74> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 182.
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 218.
 Package epstopdf Info: Source file: <img/uml_cmtwitter.eps>
 (epstopdf)                    date: 2015-12-12 15:26:18
 (epstopdf)                    size: 182111 bytes
@@ -858,23 +980,23 @@ Package epstopdf Info: Source file: <img/uml_cmtwitter.eps>
 (epstopdf)                    size: 76181 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/uml_cmtwitter-eps-conv
 erted-to.pdf img/uml_cmtwitter.eps>
-(epstopdf)             \includegraphics on input line 192.
+(epstopdf)             \includegraphics on input line 228.
 Package epstopdf Info: Output file is already uptodate.
 <img/uml_cmtwitter-eps-converted-to.pdf, id=176, 1087.06125pt x 922.44624pt>
 File: img/uml_cmtwitter-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/uml_cmtwitter-eps-converted-to.pdf>
 Package pdftex.def Info: img/uml_cmtwitter-eps-converted-to.pdf used on input l
-ine 192.
+ine 228.
 (pdftex.def)             Requested size: 483.69687pt x 410.4521pt.
 
-Overfull \hbox (20.53891pt too wide) in paragraph at lines 210--214
+Overfull \hbox (20.53891pt too wide) in paragraph at lines 246--250
 \OT1/cmr/m/n/12 d'ef-fec-tuer plu-sieurs requ^etes. En ef-fet, nous avons pu re
 -mar-quer que l'ob-jet \OT1/cmtt/m/n/12 ConfigurationBuilder
  []
 
 
-Overfull \hbox (17.04297pt too wide) in paragraph at lines 217--220
+Overfull \hbox (17.04297pt too wide) in paragraph at lines 253--256
 []\OT1/cmr/m/n/12 Tout d'abord, on confi-gure si n^^Secessaire les pa-ram^^Retr
 es proxy ^^Ra l'aide de la m^^Sethode \OT1/cmtt/m/n/12 setProxy()\OT1/cmr/m/n/1
 2 .
@@ -891,7 +1013,7 @@ Package epstopdf Info: Source file: <img/uml_tweet.eps>
 (epstopdf)                    size: 73160 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/uml_tweet-eps-converte
 d-to.pdf img/uml_tweet.eps>
-(epstopdf)             \includegraphics on input line 244.
+(epstopdf)             \includegraphics on input line 280.
 Package epstopdf Info: Output file is already uptodate.
 
 <img/uml_tweet-eps-converted-to.pdf, id=192, 657.45625pt x 486.81876pt>
@@ -899,7 +1021,7 @@ File: img/uml_tweet-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/uml_tweet-eps-converted-to.pdf>
 Package pdftex.def Info: img/uml_tweet-eps-converted-to.pdf used on input line 
-244.
+280.
 (pdftex.def)             Requested size: 256.0748pt x 189.61342pt.
  [9 <./img/uml_tweet-eps-converted-to.pdf>]
 Chapitre 4.
@@ -908,56 +1030,36 @@ Chapitre 4.
 ]
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <6.49994> not available
-(Font)              size <6> substituted on input line 324.
+(Font)              size <6> substituted on input line 360.
 
+[11]
+Chapitre 5.
 
-Overfull \hbox (8.2707pt too wide) in paragraph at lines 350--350
- |[] \OT1/cmr/bx/n/20.74 Clas-si-fier ma-nuel-le-ment un tweet dans #cur-
+Overfull \hbox (14.19608pt too wide) in paragraph at lines 387--387
+ |[] \OT1/cmss/bx/n/24.88 Clas-si-fi-ca-tion au-to-ma-tique des Tweets| 
  []
 
-Package epstopdf Info: Source file: <img/capture-annoter-a-la-main.eps>
-(epstopdf)                    date: 2015-12-12 15:26:18
-(epstopdf)                    size: 340922 bytes
-(epstopdf)             Output file: <img/capture-annoter-a-la-main-eps-converte
-d-to.pdf>
-(epstopdf)                    date: 2015-12-12 15:26:18
-(epstopdf)                    size: 13074 bytes
-(epstopdf)             Command: <repstopdf --outfile=img/capture-annoter-a-la-m
-ain-eps-converted-to.pdf img/capture-annoter-a-la-main.eps>
-(epstopdf)             \includegraphics on input line 358.
-Package epstopdf Info: Output file is already uptodate.
-
-<img/capture-annoter-a-la-main-eps-converted-to.pdf, id=215, 422.57875pt x 131.
-49126pt>
-File: img/capture-annoter-a-la-main-eps-converted-to.pdf Graphic file (type pdf
-)
- <use img/capture-annoter-a-la-main-eps-converted-to.pdf>
-Package pdftex.def Info: img/capture-annoter-a-la-main-eps-converted-to.pdf use
-d on input line 358.
-(pdftex.def)             Requested size: 227.62204pt x 70.82965pt.
- [11 <./img/capture-annoter-a-la-main-eps-converted-to.pdf>]
-Chapitre 5.
-<img/capture_menumotcle.png, id=233, 286.06876pt x 109.40875pt>
+<img/capture_menumotcle.png, id=228, 286.06876pt x 109.40875pt>
 File: img/capture_menumotcle.png Graphic file (type png)
 
 <use img/capture_menumotcle.png>
-Package pdftex.def Info: img/capture_menumotcle.png used on input line 386.
+Package pdftex.def Info: img/capture_menumotcle.png used on input line 409.
 (pdftex.def)             Requested size: 241.84843pt x 92.49702pt.
 
-<img/capture_ouvrir-mots-positifs.png, id=236, 540.0175pt x 356.33125pt>
+<img/capture_ouvrir-mots-positifs.png, id=231, 540.0175pt x 356.33125pt>
 File: img/capture_ouvrir-mots-positifs.png Graphic file (type png)
 
 <use img/capture_ouvrir-mots-positifs.png>
 Package pdftex.def Info: img/capture_ouvrir-mots-positifs.png used on input lin
-e 395.
+e 418.
 (pdftex.def)             Requested size: 193.47578pt x 127.66475pt.
 
-<img/capture_ouvrir-mots-negatifs.png, id=237, 540.0175pt x 356.33125pt>
+<img/capture_ouvrir-mots-negatifs.png, id=232, 540.0175pt x 356.33125pt>
 File: img/capture_ouvrir-mots-negatifs.png Graphic file (type png)
 
 <use img/capture_ouvrir-mots-negatifs.png>
 Package pdftex.def Info: img/capture_ouvrir-mots-negatifs.png used on input lin
-e 396.
+e 419.
 (pdftex.def)             Requested size: 193.47578pt x 127.66475pt.
 
 
@@ -967,6 +1069,45 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
  <./img/capture_menumotcle.png>] [13 <./img/capture_ouvrir-mots-positifs.png> <
 ./img/capture_ouvrir-mots-negatifs.png>] [14]
+<img/classificationMortBayesTouslesMots.png, id=259, 685.56125pt x 385.44pt>
+File: img/classificationMortBayesTouslesMots.png Graphic file (type png)
+
+<use img/classificationMortBayesTouslesMots.png>
+Package pdftex.def Info: img/classificationMortBayesTouslesMots.png used on inp
+ut line 541.
+(pdftex.def)             Requested size: 217.66211pt x 122.3729pt.
+
+<img/classificationtouslesmotsnoel.png, id=260, 685.56125pt x 385.44pt>
+File: img/classificationtouslesmotsnoel.png Graphic file (type png)
+
+<use img/classificationtouslesmotsnoel.png>
+Package pdftex.def Info: img/classificationtouslesmotsnoel.png used on input li
+ne 542.
+(pdftex.def)             Requested size: 217.66211pt x 122.3729pt.
+
+
+LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <10.95> not available
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 544.
+
+
+<img/classificationMortpastouslesMots.png, id=261, 685.56125pt x 385.44pt>
+File: img/classificationMortpastouslesMots.png Graphic file (type png)
+
+<use img/classificationMortpastouslesMots.png>
+Package pdftex.def Info: img/classificationMortpastouslesMots.png used on input
+ line 550.
+(pdftex.def)             Requested size: 217.66211pt x 122.3729pt.
+
+<img/classificationpastouslesmotsnoel.png, id=262, 685.56125pt x 385.44pt>
+File: img/classificationpastouslesmotsnoel.png Graphic file (type png)
+
+<use img/classificationpastouslesmotsnoel.png>
+Package pdftex.def Info: img/classificationpastouslesmotsnoel.png used on input
+ line 551.
+(pdftex.def)             Requested size: 217.66211pt x 122.3729pt.
+ [15 <./img/classificationMortBayesTouslesMots.png> <./img/classificationtousle
+smotsnoel.png> <./img/classificationMortpastouslesMots.png> <./img/classificati
+onpastouslesmotsnoel.png>]
 Package epstopdf Info: Source file: <img/resultats_classification_tweetsv7.eps>
 
 (epstopdf)                    date: 2015-12-12 15:26:18
@@ -977,17 +1118,24 @@ converted-to.pdf>
 (epstopdf)                    size: 46670 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/resultats_classificati
 on_tweetsv7-eps-converted-to.pdf img/resultats_classification_tweetsv7.eps>
-(epstopdf)             \includegraphics on input line 536.
+(epstopdf)             \includegraphics on input line 579.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/resultats_classification_tweetsv7-eps-converted-to.pdf, id=264, 655.44875p
+<img/resultats_classification_tweetsv7-eps-converted-to.pdf, id=278, 655.44875p
 t x 481.8pt>
 File: img/resultats_classification_tweetsv7-eps-converted-to.pdf Graphic file (
 type pdf)
  <use img/resultats_classification_tweetsv7-eps-converted-to.pdf>
 Package pdftex.def Info: img/resultats_classification_tweetsv7-eps-converted-to
-.pdf used on input line 536.
-(pdftex.def)             Requested size: 362.77264pt x 266.65964pt.
+.pdf used on input line 579.
+(pdftex.def)             Requested size: 217.66211pt x 159.99431pt.
+
+<img/classificationV8.png, id=279, 685.56125pt x 385.44pt>
+File: img/classificationV8.png Graphic file (type png)
+
+<use img/classificationV8.png>
+Package pdftex.def Info: img/classificationV8.png used on input line 580.
+(pdftex.def)             Requested size: 217.66211pt x 122.3729pt.
 Package epstopdf Info: Source file: <img/bayes_annotation_mort_tweetsv7.eps>
 (epstopdf)                    date: 2015-12-12 15:26:18
 (epstopdf)                    size: 113695 bytes
@@ -997,64 +1145,68 @@ verted-to.pdf>
 (epstopdf)                    size: 29725 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/bayes_annotation_mort_
 tweetsv7-eps-converted-to.pdf img/bayes_annotation_mort_tweetsv7.eps>
-(epstopdf)             \includegraphics on input line 547.
+(epstopdf)             \includegraphics on input line 592.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/bayes_annotation_mort_tweetsv7-eps-converted-to.pdf, id=267, 693.59125pt x
+<img/bayes_annotation_mort_tweetsv7-eps-converted-to.pdf, id=282, 693.59125pt x
  544.0325pt>
 File: img/bayes_annotation_mort_tweetsv7-eps-converted-to.pdf Graphic file (typ
 e pdf)
  <use img/bayes_annotation_mort_tweetsv7-eps-converted-to.pdf>
 Package pdftex.def Info: img/bayes_annotation_mort_tweetsv7-eps-converted-to.pd
-f used on input line 547.
-(pdftex.def)             Requested size: 362.77264pt x 284.55878pt.
+f used on input line 592.
+(pdftex.def)             Requested size: 217.66211pt x 170.72365pt.
 
-[15] [16 <./img/resultats_classification_tweetsv7-eps-converted-to.pdf> <./img/
-bayes_annotation_mort_tweetsv7-eps-converted-to.pdf>]
+[16 <./img/resultats_classification_tweetsv7-eps-converted-to.pdf> <./img/class
+ificationV8.png> <./img/bayes_annotation_mort_tweetsv7-eps-converted-to.pdf>]
 Chapitre 6.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 565.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 631.
 [17
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 565.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 631.
  (./currentmood.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 565.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 565.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 631.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 631.
 Package rerunfilecheck Info: File `currentmood.out' has not changed.
-(rerunfilecheck)             Checksum: 0625B9F5EA1B90E70EBC13E425D2CB16;1203.
+(rerunfilecheck)             Checksum: 04D700CB3242FE9313A6CAC136335C64;1103.
 
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.49994pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 565.
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 631.
  ) 
 Here is how much of TeX's memory you used:
- 8752 strings out of 493054
- 123214 string characters out of 6140585
- 229829 words of memory out of 5000000
- 12076 multiletter control sequences out of 15000+600000
- 15081 words of font info for 59 fonts, out of 8000000 for 9000
+ 9798 strings out of 493054
+ 142930 string characters out of 6140585
+ 246566 words of memory out of 5000000
+ 13107 multiletter control sequences out of 15000+600000
+ 16520 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,10n,35p,230b,463s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,10n,38p,288b,462s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></us
-r/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmssbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb
-></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-dist/font
-s/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmu10.pfb></usr/share/texmf-dist/fonts/type1/public/eurosym/feymr1
-0.pfb>
-Output written on currentmood.pdf (18 pages, 617622 bytes).
+texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/s
+hare/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmss17.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmssbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.p
+fb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmtt10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmtt12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmu10.pfb></us
+r/share/texmf-dist/fonts/type1/public/eurosym/feymr10.pfb>
+Output written on currentmood.pdf (18 pages, 739869 bytes).
 PDF statistics:
- 357 PDF objects out of 1000 (max. 8388607)
- 289 compressed objects within 3 object streams
- 65 named destinations out of 1000 (max. 500000)
- 217 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 375 PDF objects out of 1000 (max. 8388607)
+ 295 compressed objects within 3 object streams
+ 66 named destinations out of 1000 (max. 500000)
+ 234 words of extra memory for PDF output out of 10000 (max. 10000000)
 
