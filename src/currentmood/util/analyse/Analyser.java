@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.util.List;
 
 import currentmood.util.Tweet;
+import currentmood.util.classifier.ClassificationKNN;
 import currentmood.util.classifier.ClassificationMotCle;
+import currentmood.util.classifier.OutOfBoundsException;
 
 public class Analyser {
 	protected List<Tweet> database;
@@ -45,6 +47,31 @@ public class Analyser {
 		int errortrois=this.motclesAnalyserPart(this.part3, this.part2, this.part1, pos, neg);
 		return((errorun+errordeux+errortrois)/3);
 	}
+	
+	public int knnAnalyserpart(List<Tweet> emptyBase, List<Tweet> learningBaseOne,List<Tweet>learningBaseTwo,int k) throws OutOfBoundsException
+	{
+		int error=0;
+		List<Tweet> temp = emptyBase;
+		List<Tweet> base = learningBaseOne;
+		base.addAll(learningBaseTwo);
+		for(Tweet tw : temp)
+			tw.setValue(-1);
+		for(int i=0; i<temp.size(); i++)
+		{
+			Tweet evaluate =ClassificationKNN.knnTweet(k, temp.get(i), base);
+			if(evaluate.getValue()!=temp.get(i).getValue())
+				error++;
+		}
+		return error;
+	}
+	
+	public int knnAnalyser(int k) throws OutOfBoundsException
+	{
+		int errorun =this.knnAnalyserpart(this.part1, this.part2, this.part3, k);
+		int errordeux= this.knnAnalyserpart(this.part2, this.part1, this.part3, k);
+		int errortrois=this.knnAnalyserpart(this.part3, this.part1, this.part2, k);
+		return((errorun+errordeux+errortrois)/3);
+	}	
 	
 	
 	
