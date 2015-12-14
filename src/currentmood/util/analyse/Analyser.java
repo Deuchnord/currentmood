@@ -1,6 +1,7 @@
 package currentmood.util.analyse;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import currentmood.util.Tweet;
@@ -56,15 +57,16 @@ public class Analyser {
 		List<Tweet> base = learningBaseOne;
 		List<Tweet> basetwo = learningBaseTwo;
 		//base.addAll(basetwo);
-		this.concate(base, learningBaseTwo);
+		List<Tweet>fusion=this.concate(base, learningBaseTwo);
 		//for(int i =0; i<temp.size(); i++)
 			//temp.get(i).setValue(-1);
-		/*for(int i=0; i<temp.size(); i++)
+		for(int i=0; i<temp.size(); i++)
 		{
-			Tweet evaluate =ClassificationKNN.knnTweet(k, temp.get(i), base);
+			Tweet evaluate =ClassificationKNN.knnTweet(k, temp.get(i), fusion);
+			System.out.println("Témoin = "+temp.get(i).getValue()+"\t Test : " +evaluate.getValue());
 			if(evaluate.getValue()!=temp.get(i).getValue())
 				error++;
-		}*/
+		}
 		return error;
 	}
 	
@@ -81,7 +83,8 @@ public class Analyser {
 		int error=0;
 		List<Tweet> temp = emptyBase;
 		List<Tweet> base = learningBaseOne;
-		this.concate(base, learningBaseTwo);
+		
+		
 		//base.addAll(learningBaseTwo);
 		for(Tweet tw : temp)
 			tw.setValue(-1);
@@ -102,10 +105,18 @@ public class Analyser {
 		return((errorun+errordeux+errortrois)/3);
 	}
 	
-	private void concate(List<Tweet> o, List<Tweet> t)
+	private List<Tweet> concate(List<Tweet> o, List<Tweet> t)
 	{
-		for(Tweet tw : t )
-			o.add(tw);
+		List<Tweet>toret= new ArrayList<Tweet>();
+		for(Tweet tw:o)
+		{
+			toret.add(tw);
+		}
+		for(Tweet tw:t)
+		{
+			toret.add(tw);
+		}
+		return toret;
 	}
 	
 	
