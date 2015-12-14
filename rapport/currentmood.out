@@ -3,15 +3,14 @@
 \BOOKMARK [1][-]{section.2.1}{Utilisation d'un serveur proxy}{chapter.2}% 3
 \BOOKMARK [1][-]{section.2.2}{Effectuer une recherche et annoter manuellement}{chapter.2}% 4
 \BOOKMARK [1][-]{section.2.3}{Annoter automatiquement}{chapter.2}% 5
-\BOOKMARK [0][-]{chapter.3}{API Twitter et gestion des tweets}{}% 6
+\BOOKMARK [0][-]{chapter.3}{API Twitter et gestion des Tweets}{}% 6
 \BOOKMARK [1][-]{section.3.1}{La classe CMTwitter}{chapter.3}% 7
 \BOOKMARK [1][-]{section.3.2}{La classe Tweet}{chapter.3}% 8
 \BOOKMARK [0][-]{chapter.4}{La base d'apprentissage}{}% 9
-\BOOKMARK [1][-]{section.4.1}{Le nettoyage des tweets}{chapter.4}% 10
+\BOOKMARK [1][-]{section.4.1}{Le nettoyage des Tweets}{chapter.4}% 10
 \BOOKMARK [1][-]{section.4.2}{Le fichier CSV}{chapter.4}% 11
-\BOOKMARK [1][-]{section.4.3}{Classifier manuellement un tweet dans \043currentmood}{chapter.4}% 12
-\BOOKMARK [0][-]{chapter.5}{Classification automatique des tweets}{}% 13
-\BOOKMARK [1][-]{section.5.1}{Classification par mots-cl\351s}{chapter.5}% 14
-\BOOKMARK [1][-]{section.5.2}{Classification par la m\351thode KNN}{chapter.5}% 15
-\BOOKMARK [1][-]{section.5.3}{Classification par la m\351thode bay\351sienne}{chapter.5}% 16
-\BOOKMARK [0][-]{chapter.6}{Conclusion}{}% 17
+\BOOKMARK [0][-]{chapter.5}{Classification automatique des Tweets}{}% 12
+\BOOKMARK [1][-]{section.5.1}{Classification par mots-cl\351s}{chapter.5}% 13
+\BOOKMARK [1][-]{section.5.2}{Classification par la m\351thode KNN}{chapter.5}% 14
+\BOOKMARK [1][-]{section.5.3}{Classification par la m\351thode bay\351sienne}{chapter.5}% 15
+\BOOKMARK [0][-]{chapter.6}{Conclusion}{}% 16
