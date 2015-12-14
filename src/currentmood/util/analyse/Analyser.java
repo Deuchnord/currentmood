@@ -29,9 +29,11 @@ public class Analyser {
 		int error=0;
 		List<Tweet> temp = emptyBase;
 		List<Tweet> base = learningBaseOne;
-		base.addAll(learningBaseTwo);
-		for(Tweet tw : temp)
-			tw.setValue(-1);
+		List<Tweet> basetwo = learningBaseTwo;
+		//base.addAll(basetwo);
+		List<Tweet>fusion=this.concate(base, learningBaseTwo);
+		//for(Tweet tw : temp)
+			//tw.setValue(-1);
 		ClassificationMotCle classifier = new ClassificationMotCle(pos, neg);
 		for(int i=0; i<temp.size(); i++)
 		{
