@@ -48,12 +48,12 @@ public class Win extends JFrame {
 	protected String cheminPositif, cheminNegatif;
 	
 	protected JMenuBar menu;
-	protected JMenu fileMenu, expMenu, annotation, optionMenu,bayesMenu,bayesFreqMenu,bayesPresMenu, bayesfreqpasmot,bayesfreqavecmot,bayesprespasmot,bayespresavecmot;
+	protected JMenu fileMenu, expMenu, expBayesMenu, expBayesFreqMenu, expBayesPresenceMenu, annotation, optionMenu,bayesMenu,bayesFreqMenu,bayesPresMenu, bayesfreqpasmot,bayesfreqavecmot,bayesprespasmot,bayespresavecmot;
 	protected JMenuItem openCSVItem, createCSVItem, proxyItem,motcleItem,allMotsclesItem,allKNNItem,bayesfreqpasmotunigramme,bayesfreqpasmotbigramme,
 	bayesfreqavecmotunigramme,bayesfreqavecmotbigramme,bayespresavecmotunigramme,bayespresavecmotbigramme,bayesprespasmotunigramme,bayesprespasmotbigramme;
 	protected JPanel searchpanel, infopanel, tweetpanel;
 	
-	protected JMenuItem expMot,expknn,expBayesTTT,expBayesFFF,expBayesFFT,expBayesFTF,expBayesFTT,expBayesTFF;
+	protected JMenuItem expMot,expknn,expBayesFFF,expBayesFFT,expBayesFTF,expBayesFTT,expBayesTFF, expBayesTFT, expBayesTTF,expBayesTTT;
 	
 	//protected MoodPanel moodPanel;
 	protected JTextField search;
@@ -189,7 +189,55 @@ public class Win extends JFrame {
 		});
 		this.optionMenu.add(motcleItem);
 		this.menu.add(optionMenu);
+		
 		this.expMenu = new JMenu("Analyse expérimentale");
+		
+		expMot = new JMenuItem("Mots-clés");
+		expMot.addActionListener(motcleexpaction);
+		expknn = new JMenuItem("Méthode KNN");
+		expknn.addActionListener(knnexpaction);
+		
+		this.expBayesMenu = new JMenu("Classification bayésienne");
+		this.expBayesPresenceMenu = new JMenu("Par présence");
+		this.expBayesFreqMenu = new JMenu("Par fréquence");
+		
+		this.expBayesMenu.add(expBayesPresenceMenu);
+		this.expBayesMenu.add(expBayesFreqMenu);
+		
+		this.expMenu.add(expMot);
+		this.expMenu.add(expknn);
+		this.expMenu.add(expBayesMenu);
+		this.expBayesMenu.add(expBayesMenu);
+		
+		expBayesFFF = new JMenuItem("Unigrammes, avec mots courts");
+		expBayesFFF.addActionListener(expFFF);
+		expBayesFFT = new JMenuItem("Unigrammes, sans mots courts");
+		expBayesFFT.addActionListener(expFFT);
+		expBayesFTF = new JMenuItem("Bigrammes, avec mots courts");
+		expBayesFTF.addActionListener(expFTF);
+		expBayesFTT = new JMenuItem("Bigrammes, sans mots courts");
+		expBayesFTT.addActionListener(expFTT);
+		
+		expBayesPresenceMenu.add(expBayesFFF);
+		expBayesPresenceMenu.add(expBayesFFT);
+		expBayesPresenceMenu.add(expBayesFTF);
+		expBayesPresenceMenu.add(expBayesFTT);
+		
+		expBayesTFF = new JMenuItem("Unigrammes, avec mots courts");
+		expBayesTFF.addActionListener(expTFF);
+		expBayesTFT = new JMenuItem("Unigrammes, sans mots courts");
+		expBayesTFT.addActionListener(expTFT);
+		expBayesTTF = new JMenuItem("Bigrammes, avec mots courts");
+		expBayesTTF.addActionListener(expTTF);
+		expBayesTTT = new JMenuItem("Bigrammes, sans mots courts");
+		expBayesTTT.addActionListener(expTTT);
+		
+		expBayesPresenceMenu.add(expBayesTFF);
+		expBayesPresenceMenu.add(expBayesTFT);
+		expBayesPresenceMenu.add(expBayesTTF);
+		expBayesPresenceMenu.add(expBayesTTT);
+		
+		expMenu.add(expBayesMenu);
 		
 		this.menu.add(this.expMenu);
 		

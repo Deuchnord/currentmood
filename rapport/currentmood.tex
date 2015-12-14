@@ -44,7 +44,7 @@
 % Personnalisation des tableaux
 \arrayrulecolor{lightgray}
 
-\title{PJE\\\CMName}
+\title{Projet encadré\\\CMName}
 \author{Quentin Van de Kadsye \and Jérôme Tanghe}
 \date{Mardi 15 décembre 2015}
 
@@ -59,7 +59,7 @@
 		\fontfamily{cmss}
 		\Huge
 
-		\textbf{PJE}
+		\textbf{Projet encadré}
 
 		\CMName%
 
@@ -366,7 +366,7 @@ Les données à sauvegarder étant globalement celles contenues dans les objets
 \end{enumerate}
 
 L'annotation du Tweet est enregistrée sous la forme d'un nombre dont la valeur
-est précisé par le tableau~\ref{tableau-valeurs-annotation}.
+est précisée par le tableau~\ref{tableau-valeurs-annotation}.
 
 \begin{table}[h]
 	\centering
@@ -390,7 +390,7 @@ est précisé par le tableau~\ref{tableau-valeurs-annotation}.
 \section{Classification par mots-clés}
 La classification par mots-clés est la plus simple des méthodes de
 classification. Elle consiste à se baser sur une liste de mots définis dans un
-fichier pour déterminer l'humeur d'un Tweet.
+dictionnaire pour déterminer l'humeur d'un Tweet.
 
 Sa stratégie est des plus simples: pour un Tweet donné, on recherche
 chacun de ses mots dans un dictionnaire définissant des mots positifs et des
@@ -422,7 +422,7 @@ page~\pageref{ouvrir_dictionnaire}).
 \end{figure}
 
 \newpage
-\subsection{Résultats de la classification}
+\subsection{Observations}
 Cet algorithme s'est révélé peu efficace du fait qu'il se contente de réduire
 une phrase complète à de simples mots auquel il donne un sens \textit{a priori}.
 Il ne prend de ce fait pas compte du sens général du Tweet. Prenons par exemple
@@ -445,8 +445,7 @@ Il est à ce titre intéressant de remarquer que le terme \textit{neutre} n'a ic
 pas le même sens que dans les autres classifications. En effet, ici,
 \textit{neutre} signifie que le Tweet n'a pas pu être annoté soit parce qu'il ne
 contenait aucun mot connu du dictionnaire, soit parce qu'il contenait autant de
-mots positifs que de mots négatifs.qu'il contenait autant de mots positifs que
-de mots négatifs.
+mots positifs que de mots négatifs.
 
 \section{Classification par la méthode KNN}
 La méthode des $k$ plus proches voisins, ou KNN\footnote{$k$-nearest neighbor},
@@ -496,10 +495,10 @@ valeurs de $k$, et nous avons pu remarquer que, pour une base de $n$ Tweets:
 La méthode de classification bayésienne est une méthode de classification
 probabiliste. Dans le cas de notre application, elle servira à déterminer la
 probabilité qu'un Tweet appartienne à l'une des classes établies précédemment,
-c'est-à-dire : mauvais, neutre ou bon.
+c'est-à-dire: mauvais, neutre ou bon.
 
-Afin de pouvoir évaluer un Tweet, il faut d'abord calculer P(c) : la probabilité
-d'appartenance à une classe (P(M), P(N), P(B)).
+Afin de pouvoir évaluer un Tweet, il faut d'abord calculer la probabilité $P(c)$ 
+d'appartenance à une classe $(P(M), P(N), P(B))$.
 Un Tweet étant un ensemble de mots, il a fallu déterminer l'appartenance d'un
 mot à une classe. Pour cela il a été nécessaire de répertorier la classe de
 chaque mot de chaque Tweet se trouvant dans la base de données pour chaque
