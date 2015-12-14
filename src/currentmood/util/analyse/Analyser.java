@@ -55,8 +55,8 @@ public class Analyser {
 		List<Tweet> temp = emptyBase;
 		List<Tweet> base = learningBaseOne;
 		base.addAll(learningBaseTwo);
-		for(Tweet tw : temp)
-			tw.setValue(-1);
+		for(int i =0; i<temp.size(); i++)
+			temp.get(i).setValue(-1);
 		for(int i=0; i<temp.size(); i++)
 		{
 			Tweet evaluate =ClassificationKNN.knnTweet(k, temp.get(i), base);

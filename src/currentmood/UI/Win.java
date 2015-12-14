@@ -65,7 +65,7 @@ public class Win extends JFrame {
 	protected String lastSearch;
 	protected ActionListener searchMotsClesAction,searchKNNAction, searchBayesTTT,searchBayesFFF,searchBayesFFT,searchBayesFTF,searchBayesFTT,searchBayesTFF,
 	searchBayesTFT,searchBayesTTF;
-	protected ActionListener motcleexpaction,knnexpaction,expTTT,expFFF,expFFT,expFTF,expFTT,expTFF;
+	protected ActionListener motcleexpaction,knnexpaction,expTTT,expFFF,expFFT,expFTF,expFTT,expTFF,expTTF,expTFT;
 	
 	protected Analyser analyser;
 	
@@ -74,6 +74,7 @@ public class Win extends JFrame {
 		this.annotatedTweets = new ArrayList<Tweet>();
 		cmTwitter = new CMTwitter();
 		this.initializeListener();
+		expListener();
 		//cmTwitter.setProxy(new Proxy("cache-etu.univ-lille1.fr", 3128));
 		System.out.println("1 " + (cmTwitter == null));
 		
@@ -739,6 +740,26 @@ public class Win extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int res = Win.this.analyser.bayesAnalyser(true,false,false);
+				JOptionPane.showMessageDialog(Win.this, "Le nombre d'erreur est de : "+res, "Résultat",JOptionPane.INFORMATION_MESSAGE);
+				
+			}
+		};
+		
+		this.expTFT = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int res = Win.this.analyser.bayesAnalyser(true,false,true);
+				JOptionPane.showMessageDialog(Win.this, "Le nombre d'erreur est de : "+res, "Résultat",JOptionPane.INFORMATION_MESSAGE);
+				
+			}
+		};
+		
+		this.expTTF = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int res = Win.this.analyser.bayesAnalyser(true,true,false);
 				JOptionPane.showMessageDialog(Win.this, "Le nombre d'erreur est de : "+res, "Résultat",JOptionPane.INFORMATION_MESSAGE);
 				
 			}
