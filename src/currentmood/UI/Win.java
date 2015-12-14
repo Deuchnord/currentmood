@@ -34,6 +34,7 @@ import currentmood.util.CMTwitter;
 import currentmood.util.CSVFile;
 import currentmood.util.NotConnectedException;
 import currentmood.util.Tweet;
+import currentmood.util.analyse.Analyser;
 import currentmood.util.classifier.ClassificationBaysienne;
 import currentmood.util.classifier.ClassificationKNN;
 import currentmood.util.classifier.ClassificationMotCle;
@@ -47,10 +48,13 @@ public class Win extends JFrame {
 	protected String cheminPositif, cheminNegatif;
 	
 	protected JMenuBar menu;
-	protected JMenu fileMenu, aboutMenu, annotation, optionMenu,bayesMenu,bayesFreqMenu,bayesPresMenu, bayesfreqpasmot,bayesfreqavecmot,bayesprespasmot,bayespresavecmot;
+	protected JMenu fileMenu, expMenu, annotation, optionMenu,bayesMenu,bayesFreqMenu,bayesPresMenu, bayesfreqpasmot,bayesfreqavecmot,bayesprespasmot,bayespresavecmot;
 	protected JMenuItem openCSVItem, createCSVItem, proxyItem,motcleItem,allMotsclesItem,allKNNItem,bayesfreqpasmotunigramme,bayesfreqpasmotbigramme,
 	bayesfreqavecmotunigramme,bayesfreqavecmotbigramme,bayespresavecmotunigramme,bayespresavecmotbigramme,bayesprespasmotunigramme,bayesprespasmotbigramme;
 	protected JPanel searchpanel, infopanel, tweetpanel;
+	
+	protected JMenuItem expMot,expknn,expBayesTTT,expBayesFFF,expBayesFFT,expBayesFTF,expBayesFTT,expBayesTFF;
+	
 	//protected MoodPanel moodPanel;
 	protected JTextField search;
 	protected JButton Btn_search_Ok;
@@ -61,6 +65,9 @@ public class Win extends JFrame {
 	protected String lastSearch;
 	protected ActionListener searchMotsClesAction,searchKNNAction, searchBayesTTT,searchBayesFFF,searchBayesFFT,searchBayesFTF,searchBayesFTT,searchBayesTFF,
 	searchBayesTFT,searchBayesTTF;
+	protected ActionListener motcleexpaction,knnexpaction,expTTT,expFFF,expFFT,expFTF,expFTT,expTFF;
+	
+	protected Analyser analyser;
 	
 	public Win()
 	{
@@ -92,6 +99,7 @@ public class Win extends JFrame {
 						Win.this.annotatedTweets = CSVFile.readTweetsInCSV(jfc.getSelectedFile().getAbsolutePath());
 						Win.this.readTweet();
 						Win.this.getStat();
+						Win.this.analyser = new Analyser(Win.this.annotatedTweets);
 					} catch (IOException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -181,8 +189,9 @@ public class Win extends JFrame {
 		});
 		this.optionMenu.add(motcleItem);
 		this.menu.add(optionMenu);
-		this.aboutMenu = new JMenu("A propos");
-		this.menu.add(this.aboutMenu);
+		this.expMenu = new JMenu("Analyse expérimentale");
+		
+		this.menu.add(this.expMenu);
 		
 		this.setJMenuBar(menu);
 		
@@ -586,6 +595,106 @@ public class Win extends JFrame {
 		}
 		WinChart resultat = new WinChart(new PieChart(),bad,neutral,good,"Proportion des sentiments dans la base");
 			
+	}
+	
+	private void analyseexpMenu()
+	{
+		expListener();
+		
+	}
+	
+	private void expListener()
+	{
+		this.motcleexpaction = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					int res  = Win.this.analyser.motclesAnalyser(Win.this.cheminPositif, Win.this.cheminNegatif);
+					JOptionPane.showMessageDialog(Win.this, "Le nombre d'erreur est de : "+res, "Résultat",JOptionPane.INFORMATION_MESSAGE);
+				} catch (IOException e) {
+					JOptionPane.showMessageDialog(Win.this, "Erreur lors de la lecture ou de l'écriture", "I/O Erreur",JOptionPane.ERROR_MESSAGE);
+				}
+				
+			}
+		};
+		
+		
+		this.knnexpaction = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int k  = Integer.parseInt(JOptionPane.showInputDialog(Win.this, "Indiquez un nombre de plus proches voisins :", "Choix du nombre des plus proches voisins", JOptionPane.QUESTION_MESSAGE));
+				try {
+					int res = Win.this.analyser.knnAnalyser(k);
+					JOptionPane.showMessageDialog(Win.this, "Le nombre d'erreur est de : "+res, "Résultat",JOptionPane.INFORMATION_MESSAGE);
+				} catch (OutOfBoundsException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
+		};
+		
+		this.expFFF = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+					int res = Win.this.analyser.bayesAnalyser(false, false, false);
+					JOptionPane.showMessageDialog(Win.this, "Le nombre d'erreur est de : "+res, "Résultat",JOptionPane.INFORMATION_MESSAGE);
+				
+			}
+		};
+		
+		this.expTTT = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int res = Win.this.analyser.bayesAnalyser(true, true, true);
+				JOptionPane.showMessageDialog(Win.this, "Le nombre d'erreur est de : "+res, "Résultat",JOptionPane.INFORMATION_MESSAGE);
+				
+			}
+		};
+		
+		this.expFFT = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int res = Win.this.analyser.bayesAnalyser(false, false, true);
+				JOptionPane.showMessageDialog(Win.this, "Le nombre d'erreur est de : "+res, "Résultat",JOptionPane.INFORMATION_MESSAGE);
+				
+			}
+		};
+		
+		this.expFTF = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int res = Win.this.analyser.bayesAnalyser(false, true,false);
+				JOptionPane.showMessageDialog(Win.this, "Le nombre d'erreur est de : "+res, "Résultat",JOptionPane.INFORMATION_MESSAGE);
+				
+			}
+		};
+		
+		this.expFTT = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int res = Win.this.analyser.bayesAnalyser(false, true, true);
+				JOptionPane.showMessageDialog(Win.this, "Le nombre d'erreur est de : "+res, "Résultat",JOptionPane.INFORMATION_MESSAGE);
+				
+			}
+		};
+		
+		this.expTFF = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int res = Win.this.analyser.bayesAnalyser(true,false,false);
+				JOptionPane.showMessageDialog(Win.this, "Le nombre d'erreur est de : "+res, "Résultat",JOptionPane.INFORMATION_MESSAGE);
+				
+			}
+		};
 	}
 
 }
