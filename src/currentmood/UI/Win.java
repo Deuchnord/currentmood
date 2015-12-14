@@ -123,7 +123,7 @@ public class Win extends JFrame {
 					try {
 						CSVFile.writeTweetsInCSV(jfc.getSelectedFile().getAbsolutePath(), Win.this.annotatedTweets, true);
 					} catch (IOException e1) {
-						JOptionPane.showMessageDialog(Win.this, "Une erreur s'es produite lors de l'enregistrement.\nVérifiez que vous avez les droits d'écriture à l'emplacement choisi.\n\nErreur : "+e1.getLocalizedMessage(), "Erreur à l'enregistrement", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(Win.this, "Une erreur s'est produite lors de l'enregistrement.\nVérifiez que vous avez les droits d'écriture à l'emplacement choisi.\n\nErreur : "+e1.getLocalizedMessage(), "Erreur à l'enregistrement", JOptionPane.ERROR_MESSAGE);
 					}
 				}
 			}
