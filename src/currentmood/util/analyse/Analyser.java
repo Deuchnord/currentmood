@@ -54,15 +54,17 @@ public class Analyser {
 		int error=0;
 		List<Tweet> temp = emptyBase;
 		List<Tweet> base = learningBaseOne;
-		base.addAll(learningBaseTwo);
-		for(int i =0; i<temp.size(); i++)
-			temp.get(i).setValue(-1);
-		for(int i=0; i<temp.size(); i++)
+		List<Tweet> basetwo = learningBaseTwo;
+		//base.addAll(basetwo);
+		this.concate(base, learningBaseTwo);
+		//for(int i =0; i<temp.size(); i++)
+			//temp.get(i).setValue(-1);
+		/*for(int i=0; i<temp.size(); i++)
 		{
 			Tweet evaluate =ClassificationKNN.knnTweet(k, temp.get(i), base);
 			if(evaluate.getValue()!=temp.get(i).getValue())
 				error++;
-		}
+		}*/
 		return error;
 	}
 	
@@ -79,7 +81,8 @@ public class Analyser {
 		int error=0;
 		List<Tweet> temp = emptyBase;
 		List<Tweet> base = learningBaseOne;
-		base.addAll(learningBaseTwo);
+		this.concate(base, learningBaseTwo);
+		//base.addAll(learningBaseTwo);
 		for(Tweet tw : temp)
 			tw.setValue(-1);
 		for(int i=0; i<temp.size(); i++)
@@ -97,6 +100,12 @@ public class Analyser {
 		int errordeux= this.bayesAnalyserpart(this.part2, this.part1, this.part3, frequence,sansMotsCourts,bigrammes);
 		int errortrois=this.bayesAnalyserpart(this.part3, this.part1, this.part2, frequence,sansMotsCourts,bigrammes);
 		return((errorun+errordeux+errortrois)/3);
+	}
+	
+	private void concate(List<Tweet> o, List<Tweet> t)
+	{
+		for(Tweet tw : t )
+			o.add(tw);
 	}
 	
 	
